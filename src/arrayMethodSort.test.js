@@ -9,21 +9,21 @@ test('sort2 is added to [].__proto__', () => {
     .toBeInstanceOf(Function);
 });
 
-test('sort return a link to the original array', () => {
+test('sort returns original array', () => {
   const source = [3, 12, 2, 11];
   const result = source.sort2();
   expect(source)
     .toBe(result);
 });
 
-test('the original array is sorted', () => {
+test('the array is sorted', () => {
   const source = [3, 12, 2, 11];
   source.sort2();
   expect(source)
     .toEqual([11, 12, 2, 3]);
 });
 
-test('sort numbers: [3, 12, 2, 11].sort2()', () => {
+test('numbers are sorted as strings by default: [3, 12, 2, 11].sort2()', () => {
   expect([3, 12, 2, 11].sort2())
     .toEqual([11, 12, 2, 3]);
 });
