@@ -9,6 +9,11 @@ test('sort2 is added to [].__proto__', () => {
     .toBeInstanceOf(Function);
 });
 
+test(`sort2 doesn't call default sort`, () => {
+  expect([].sort2.toString().includes('.sort('))
+    .toBe(false);
+});
+
 test('sort returns original array', () => {
   const source = [3, 12, 2, 11];
   const result = source.sort2();
