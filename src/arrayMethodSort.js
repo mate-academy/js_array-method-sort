@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function() {
+  [].__proto__.sort2 = function(compareFunction) {
     // write code here
   };
 }
