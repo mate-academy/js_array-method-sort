@@ -9,8 +9,8 @@ function applyCustomSort() {
     const swap = (first, second) => {
       let newFirst = first;
       let newSecond = second;
-      temp = first.toString();
-      newFirst = second.toString();
+      temp = first;
+      newFirst = second;
       newSecond = temp;
       return [newFirst, newSecond];
     };
@@ -22,9 +22,6 @@ function applyCustomSort() {
             [this[i], this[j]] = swap(this[i], this[j]);
           }
         }
-        if (!isNaN(Number(this[i]))) {
-          this[i] = Number(this[i]);
-        }
       }
     }
 
@@ -35,14 +32,11 @@ function applyCustomSort() {
             [this[i], this[j]] = swap(this[i], this[j]);
           }
         }
-
-        if (!isNaN(Number(this[i]))) {
-          this[i] = Number(this[i]);
-        }
       }
     }
     return this;
   };
 }
+applyCustomSort();
 
 module.exports = applyCustomSort;
