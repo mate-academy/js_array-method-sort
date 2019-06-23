@@ -5,18 +5,14 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    if (arguments.length !== 0 && typeof compareFunction !== 'function') {
-      throw new TypeError(compareFunction + ' is not a function');
-    }
-
-    let compare = compareFunction;
-
-    if (arguments.length === 0) {
-      compare = sortLikeString;
-    }
-
     function sortLikeString(item1, item2) {
       return String(item1) > String(item2);
+    }
+
+    const compare = compareFunction || sortLikeString;
+
+    if (typeof compare !== 'function') {
+      throw new TypeError(compareFunction + ' is not a function');
     }
 
     for (let i = 0; i < this.length - 1; i++) {
