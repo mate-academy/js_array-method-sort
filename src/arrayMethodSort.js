@@ -16,9 +16,7 @@ const compareTo = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    const sortFunction = (compareFunction === undefined)
-      ? compareTo
-      : compareFunction;
+    const sortFunction = compareFunction || compareTo;
 
     for (let i = 1; i < this.length; i++) {
       const currentElement = this[i];
@@ -33,5 +31,3 @@ function applyCustomSort() {
     return this;
   };
 }
-
-module.exports = applyCustomSort;
