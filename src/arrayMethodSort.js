@@ -8,9 +8,7 @@ const unicodeSort = (a, b) => {
   const strB = String(b);
 
   for (let i = 0; i < strA.length; i++) {
-    if (strB[i] === undefined) {
-      return 1;
-    } else if (strA[i] > strB[i]) {
+    if (!strB[i] || strA[i] > strB[i]) {
       return 1;
     } else if (strA[i] < strB[i]) {
       return -1;
@@ -29,9 +27,9 @@ function applyCustomSort() {
     for (let j = 0; j < this.length - 1; j++) {
       for (let i = 0; i < this.length - 1; i++) {
         if (testFunction(this[i], this[i + 1]) > 0) {
-          const tmp = this[i];
+          const buffer = this[i];
           this[i] = this[i + 1];
-          this[i + 1] = tmp;
+          this[i + 1] = buffer;
         }
       }
     }
