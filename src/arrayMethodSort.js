@@ -5,10 +5,10 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    let swappedElements = true;
+    let isSwapped = true;
 
-    while (swappedElements) {
-      swappedElements = false;
+    while (isSwapped) {
+      isSwapped = false;
 
       for (let i = 0; i < this.length - 1; i++) {
         if ((arguments[0] === undefined
@@ -19,7 +19,7 @@ function applyCustomSort() {
 
           this[i + 1] = this[i];
           this[i] = buffer;
-          swappedElements = true;
+          isSwapped = true;
         }
       }
     }
