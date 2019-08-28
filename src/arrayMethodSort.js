@@ -6,7 +6,7 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     for (let i = 0, endArray = this.length - 1; i < endArray; i++) {
-      let isSwap = false;
+      let isSwapped = false;
 
       for (let j = 0, endJ = endArray - i; j < endJ; j++) {
         if ((!compareFunction && (String(this[j]) > String(this[j + 1])))
@@ -14,11 +14,11 @@ function applyCustomSort() {
           const cachedItem = this[j];
           this[j] = this[j + 1];
           this[j + 1] = cachedItem;
-          isSwap = true;
+          isSwapped = true;
         }
       }
 
-      if (!isSwap) { break; }
+      if (!isSwapped) { break; }
     }
 
     return this;
