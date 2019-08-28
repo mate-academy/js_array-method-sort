@@ -20,9 +20,7 @@ const unicodeSort = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    const testFunction = compareFunction === undefined
-      ? unicodeSort
-      : compareFunction;
+    const testFunction = compareFunction || unicodeSort;
 
     for (let j = 0; j < this.length - 1; j++) {
       for (let i = 0; i < this.length - 1; i++) {
