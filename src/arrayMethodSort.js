@@ -9,8 +9,7 @@ function compareTo(a, b) {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    const sortFunction = compareFunction !== undefined
-      ? compareFunction : compareTo;
+    const sortFunction = compareFunction || compareTo;
 
     for (let i = 0; i < this.length; i++) {
       for (let j = i + 1; j < this.length; j++) {
