@@ -18,11 +18,11 @@ function applyCustomSort() {
 
                 this[i] = this[j];
                 this[j] = item;
-                break;
               }
+              break;
             } else if (String(this[i])[k] === undefined
-            && String(this[j])[k] === undefined) {
-              if (this[i].length > this[j].length) {
+            || String(this[j])[k] === undefined) {
+              if (String(this[i]).length > String(this[j]).length) {
                 const item = this[i];
 
                 this[i] = this[j];
@@ -50,7 +50,5 @@ function applyCustomSort() {
     return this;
   };
 }
-
-applyCustomSort();
 
 module.exports = applyCustomSort;
