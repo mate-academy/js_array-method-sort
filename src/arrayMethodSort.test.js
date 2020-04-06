@@ -17,13 +17,16 @@ test(`sort2 doesn't call default sort`, () => {
 test('sort returns original array', () => {
   const source = [3, 12, 2, 11];
   const result = source.sort2();
+
   expect(source)
     .toBe(result);
 });
 
 test('the array is sorted', () => {
   const source = [3, 12, 2, 11];
+
   source.sort2();
+
   expect(source)
     .toEqual([11, 12, 2, 3]);
 });
@@ -50,7 +53,7 @@ test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => a - b)',
   });
 
 test(
-  `custom compare function, strings: 
+  `custom compare function, strings:
   ['ёж','як','аист'].sort2((a, b) => a.localeCompare(b))`, () => {
     expect(['ёж', 'як', 'аист'].sort2((a, b) => a.localeCompare(b)))
       .toEqual(['аист', 'ёж', 'як']);
