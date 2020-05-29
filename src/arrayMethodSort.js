@@ -22,10 +22,5 @@ function applyCustomSort() {
     return this;
   };
 };
-applyCustomSort();
-
-const source = [3, 12, 2, 11];
-
-source.sort2();
 
 module.exports = applyCustomSort;
