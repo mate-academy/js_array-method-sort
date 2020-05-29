@@ -5,12 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    // const sorted = [];
     let isSorted = false;
-
-    // for (let i = 0; i < this.length; i++) {
-    //   sorted[i] = this[i];
-    // }
 
     const sort = (a, b) => {
       if (a > b) {
@@ -49,6 +44,4 @@ function applyCustomSort() {
   };
 }
 
-// applyCustomSort();
-// console.log(['c', 'b', 'a', 'd'].sort2());
 module.exports = applyCustomSort;
