@@ -5,7 +5,29 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+    const comparator = compareFunction
+    || ((current, next) => `${current}` > `${next}`);
+    const len = this.length;
+
+    for (let i = 0; i < len; i++) {
+      let sorted = true;
+
+      for (let j = 0; j < len - i - 1; j++) {
+        const current = j;
+        const next = j + 1;
+
+        if (comparator(this[current], this[next]) > 0) {
+          [this[current], this[next]] = [this[next], this[current]];
+          sorted = false;
+        }
+      }
+
+      if (sorted) {
+        break;
+      }
+    }
+
+    return this;
   };
 }
 
