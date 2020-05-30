@@ -5,14 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    let comparator = 0;
-
-    if (arguments.length === 0) {
-      comparator = (a, b) => `${a}` > `${b}`;
-    } else {
-      comparator = compareFunction;
-    }
-
+    const comparator = compareFunction || ((a, b) => `${a}` > `${b}`);
     const len = this.length;
 
     for (let i = 0; i < len; i++) {
