@@ -12,8 +12,11 @@ function applyCustomSort() {
       let sorted = true;
 
       for (let j = 0; j < len - i - 1; j++) {
-        if (comparator(this[j], this[j + 1]) > 0) {
-          [this[j], this[j + 1]] = [this[j + 1], this[j]];
+        const current = j;
+        const next = j + 1;
+
+        if (comparator(this[current], this[next]) > 0) {
+          [this[current], this[next]] = [this[next], this[current]];
           sorted = false;
         }
       }
