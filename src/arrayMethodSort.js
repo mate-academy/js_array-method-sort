@@ -16,16 +16,16 @@ function applyCustomSort() {
     const len = this.length;
 
     for (let i = 0; i < len; i++) {
-      let swapped = false;
+      let sorted = true;
 
       for (let j = 0; j < len - i - 1; j++) {
         if (comparator(this[j], this[j + 1]) > 0) {
           [this[j], this[j + 1]] = [this[j + 1], this[j]];
-          swapped = true;
+          sorted = false;
         }
       }
 
-      if (!swapped) {
+      if (sorted) {
         break;
       }
     }
