@@ -24,18 +24,18 @@ function applyCustomSort() {
 
         if (arguments.length === 0) {
           if (sort(a + '', b + '') >= 0) {
-            this[i] = b;
-            this[i + 1] = a;
             isSorted = false;
-            i = -1;
           }
         } else {
           if (compareFunction(a + '', b + '') >= 0) {
-            this[i] = b;
-            this[i + 1] = a;
             isSorted = false;
-            i = -1;
           }
+        }
+
+        if (!isSorted) {
+          this[i] = b;
+          this[i + 1] = a;
+          i = -1;
         }
       }
     } while (!isSorted);
