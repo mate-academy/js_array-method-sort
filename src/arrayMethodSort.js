@@ -13,7 +13,7 @@ function applyCustomSort() {
         this[i] = this[i + 1];
         this[i + 1] = temp;
 
-        if (i !== 0) {
+        if (i > 0) {
           i -= 2;
         }
       }
