@@ -11,7 +11,7 @@ function applyCustomSort() {
     const collateDistance = this.length;
 
     for (let indexPrimary = 0; indexPrimary < collateDistance; indexPrimary++) {
-      let done = true;
+      let done = false;
 
       for (let indexSecondary = 0;
         indexSecondary < collateDistance - indexPrimary - 1;
@@ -19,11 +19,11 @@ function applyCustomSort() {
         if (collate(this[indexSecondary], this[indexSecondary + 1]) > 0) {
           [this[indexSecondary], this[indexSecondary + 1]]
             = [this[indexSecondary + 1], this[indexSecondary]];
-          done = false;
+          done = true;
         }
       }
 
-      if (done) {
+      if (!done) {
         break;
       }
     }
