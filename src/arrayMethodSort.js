@@ -5,7 +5,8 @@
  */
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(compareFunction = (a, b) =>
+    String(a) > String(b)) {
     let count;
 
     do {
@@ -15,18 +16,10 @@ function applyCustomSort() {
         const element1 = this[i - 1];
         const element2 = this[i];
 
-        if (arguments.length < 1) {
-          if (String(element1) > String(element2)) {
-            this[i - 1] = element2;
-            this[i] = element1;
-            count++;
-          }
-        } else {
-          if (compareFunction(element1, element2) > 0) {
-            this[i - 1] = element2;
-            this[i] = element1;
-            count++;
-          }
+        if (compareFunction(element1, element2) > 0) {
+          this[i - 1] = element2;
+          this[i] = element1;
+          count++;
         }
       }
     } while (count > 0);
