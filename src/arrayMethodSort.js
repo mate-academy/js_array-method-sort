@@ -1,18 +1,6 @@
 'use strict';
 
-// const compar = (a, b) => {
-//   const first = (a).toString();
-//   const second = (b).toString();
-
-//   if (first > second) {
-//     return 1;
-//   } else if (first === second) {
-//     return 0;
-//   } else {
-//     return -1;
-//   }
-// };
-const compar = (a, b) => {
+const compare = (a, b) => {
   const first = String(a);
   const second = String(b);
 
@@ -26,7 +14,7 @@ const compar = (a, b) => {
 };
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = compar) {
+  [].__proto__.sort2 = function(compareFunction = compare) {
     let count;
 
     do {
