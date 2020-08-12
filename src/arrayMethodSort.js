@@ -4,8 +4,9 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(callback = (a, b) =>
-    a.toString() > b.toString()) {
+  [].__proto__.sort2 = function(
+    callback = (a, b) => a.toString() > b.toString()
+  ) {
     let counter;
 
     do {
