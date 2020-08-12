@@ -6,14 +6,11 @@
  */
 
 const compareStrings = (a, b) => {
-  const strA = String(a);
-  const strB = String(b);
-
-  if (strA > strB) {
+  if (a.toString() > b.toString()) {
     return 1;
   }
 
-  if (strA < strB) {
+  if (a.toString() < b.toString()) {
     return -1;
   }
 
