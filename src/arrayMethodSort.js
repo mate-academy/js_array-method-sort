@@ -11,11 +11,12 @@ function applyCustomSort() {
       return -1;
     }
   }) {
-    for (let i = 0; i < this.length - 1; i++) {
-      if (compareFunction(this[i], this[i + 1]) > 0) {
-        [this[i], this[i + 1]] = [this[i + 1], this[i]];
-        this.sort2(compareFunction);
-      }
+    for (let i = 0; i < this.length; i++) {
+      for (let j = i + 1; j < this.length; j++) {
+        if (compareFunction(this[i], this[j]) > 0) {
+          [this[j], this[i]] = [this[i], this[j]];
+        };
+      };
     }
 
     return this;
