@@ -11,13 +11,13 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
+        const previous = this[i - 1];
         const current = this[i];
 
         if (compareFunction(this[i - 1], this[i]) > 0) {
           count++;
           this[i - 1] = current;
-          this[i] = prev;
+          this[i] = previous;
         }
       }
     } while (count > 0);
