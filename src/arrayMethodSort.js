@@ -5,18 +5,18 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = stringFunction) {
-    let count = '';
+    let count;
 
     while (count !== 0) {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const second = this[i];
-        const first = this[i - 1];
+        const secondNumber = this[i];
+        const firstNumber = this[i - 1];
 
         if (compareFunction(this[i - 1], this[i]) > 0) {
-          this[i - 1] = second;
-          this[i] = first;
+          this[i - 1] = secondNumber;
+          this[i] = firstNumber;
 
           count++;
         }
@@ -27,12 +27,12 @@ function applyCustomSort() {
   };
 
   function stringFunction(a, b) {
-    const first = String(a);
-    const second = String(b);
+    const firstString = String(a);
+    const secondString = String(b);
 
-    if (first > second) {
+    if (firstString > secondString) {
       return 1;
-    } else if (second === first) {
+    } else if (secondString === firstString) {
       return 0;
     }
 
