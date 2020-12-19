@@ -25,7 +25,6 @@ function applyCustomSort() {
 
           this[i] = this[i + 1];
           this[i + 1] = currentEl;
-          counter--;
         } else {
           counter++;
         }
