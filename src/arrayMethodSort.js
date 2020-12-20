@@ -3,11 +3,8 @@
 /**
  * Implement method Sort
  */
-const charsCompare = function(a, b) {
-  const charA = '' + a;
-  const charB = '' + b;
-
-  if (charA > charB) {
+const charsCompare = (charA, charB) => {
+  if (('' + charA) > ('' + charB)) {
     return 1;
   }
 };
@@ -31,13 +28,11 @@ function applyCustomSort() {
       }
 
       if (counter === this.length - 1) {
-        break;
+        return this;
       }
 
       counter = 0;
     }
-
-    return this;
   };
 }
 
