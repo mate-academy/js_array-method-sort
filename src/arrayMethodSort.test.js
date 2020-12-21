@@ -53,8 +53,43 @@ test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => a - b)',
   });
 
 test(
-  `custom compare function, strings: 
+  `custom compare function, strings:
   ['ёж','як','аист'].sort2((a, b) => a.localeCompare(b))`, () => {
     expect(['ёж', 'як', 'аист'].sort2((a, b) => a.localeCompare(b)))
       .toEqual(['аист', 'ёж', 'як']);
   });
+
+// function applyCustomSort() {
+//   const defaultSort = (a, b) => {
+//     if (String(a) < String(b)) {
+//       return -1;
+//     }
+
+//     if (String(a) > String(b)) {
+//       return 1;
+//     }
+
+//     return 0;
+//   };
+
+//   [].__proto__.sort2 = function(compareFunction = defaultSort) {
+//     let counter;
+
+//     do {
+//       counter = 0;
+
+//       for (let i = 1; i < this.length; i++) {
+//         const prev = this[i - 1];
+//         const current = this[i];
+
+//         if (compareFunction(prev, current) > 0) {
+//           counter++;
+//           this[i - 1] = current;
+//           this[i] = prev;
+//         }
+//       }
+//     } while (counter > 0);
+
+//     return this;
+//   };
+// }
