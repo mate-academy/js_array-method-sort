@@ -17,7 +17,6 @@ function applyCustomSort(a, b) {
 }
 
 [].__proto__.sort2 = function(compareFunction = applyCustomSort) {
-  // write code here
   let count;
 
   do {
