@@ -4,10 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort(a, b) {
-  const strA = String(a);
-  const strB = String(b);
-
-  if (strA > strB) {
+  if (a.toString() > b.toString) {
     return 1;
   } else if (strA === strB) {
     return 0;
