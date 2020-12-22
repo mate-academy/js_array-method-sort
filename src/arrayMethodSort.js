@@ -8,8 +8,10 @@ function applyCustomSort() {
     const prevString = prev.toString();
     const currentString = current.toString();
 
-    return prevString > currentString ? 1
-      : prevString < currentString ? -1
+    return prevString > currentString
+      ? 1
+      : prevString < currentString
+        ? -1
         : 0;
   }) {
     let counter;
