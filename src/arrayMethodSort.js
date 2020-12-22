@@ -4,11 +4,14 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (prev, current) =>
-    `${prev}` > `${current}` ? 1
-      : `${prev}` < `${current}` ? -1
-        : 0
-  ) {
+  [].__proto__.sort2 = function(compareFunction = (prev, current) => {
+    const prevString = prev.toString();
+    const currentString = current.toString();
+
+    return prevString > currentString ? 1
+      : prevString < currentString ? -1
+        : 0;
+  }) {
     let counter;
 
     do {
