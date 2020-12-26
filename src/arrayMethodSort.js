@@ -1,8 +1,10 @@
 'use strict';
 
 const compareString = (a, b) =>
-  String(a) > String(b) ? 1
-    : String(b) > String(a) ? -1
+  String(a) > String(b)
+    ? 1
+    : String(b) > String(a)
+      ? -1
       : 0;
 
 function applyCustomSort() {
