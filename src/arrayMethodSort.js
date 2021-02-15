@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => {
+  const compareString = (a, b) => {
     const stringA = String(a);
     const stringB = String(b);
 
@@ -15,7 +15,9 @@ function applyCustomSort() {
     }
 
     return -1;
-  }) {
+  };
+
+  [].__proto__.sort2 = function(compareFunction = compareString) {
     let count;
 
     do {
