@@ -23,12 +23,8 @@ module.exports = function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const previous = this[i - 1];
-        const current = this[i];
-
-        if (compareFunction(previous, current) > 0) {
-          this[i - 1] = current;
-          this[i] = previous;
+        if (compareFunction(this[i - 1], this[i]) > 0) {
+          [this[i - 1], this[i]] = [this[i], this[i - 1]];
           count++;
         }
       }
