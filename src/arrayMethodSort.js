@@ -5,6 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
+    // sorted if no sorting function is provided, by default.
     if (arguments[0] === undefined) {
       let minIdx;
 
@@ -21,6 +22,7 @@ function applyCustomSort() {
 
       return this;
     }
+    // sorting with callback.
 
     let count;
 
@@ -38,12 +40,5 @@ function applyCustomSort() {
     return this;
   };
 }
-
-// applyCustomSort()
-
-// const source = [3, 12, 2, 11];
-// const result = source.sort2();
-
-// console.log(result);
 
 module.exports = applyCustomSort;
