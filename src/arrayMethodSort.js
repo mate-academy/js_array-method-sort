@@ -23,6 +23,7 @@ function applyCustomSort() {
       return this;
     }
     // sorting with callback.
+
     let count;
 
     do {
