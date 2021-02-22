@@ -4,18 +4,20 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (value1, value2) => {
-    const a = String(value1);
-    const b = String(value2);
+  const compareAsStrings = (a, b) => {
+    const aString = String(a);
+    const bString = String(b);
 
-    if (a > b) {
+    if (aString > bString) {
       return 1;
-    } else if (a === b) {
+    } else if (aString === bString) {
       return 0;
     } else {
       return -1;
     }
-  }) {
+  };
+
+  [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
     let count;
 
     do {
