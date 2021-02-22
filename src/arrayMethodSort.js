@@ -1,14 +1,14 @@
 'use strict';
 
-const compareAsStrings = (a, b) => {
-  const stringA = String(a);
-  const stringB = String(b);
+const compareAsStrings = (previous, next) => {
+  const stringPrevious = String(previous);
+  const stringNext = String(next);
 
-  if (stringA > stringB) {
+  if (stringPrevious > stringNext) {
     return 1;
   }
 
-  if (stringA === stringB) {
+  if (stringNext === stringPrevious) {
     return 0;
   } else {
     return -1;
@@ -20,7 +20,7 @@ module.exports = function applyCustomSort() {
     let count;
 
     do {
-      count = 0;
+      count = false;
 
       for (let i = 1; i < this.length; i++) {
         if (compareFunction(this[i - 1], this[i]) > 0) {
@@ -28,7 +28,7 @@ module.exports = function applyCustomSort() {
           count++;
         }
       }
-    } while (count > 0);
+    } while (count !== false);
 
     return this;
   };
