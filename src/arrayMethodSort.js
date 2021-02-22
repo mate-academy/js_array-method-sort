@@ -19,22 +19,22 @@ function applyCustomSort() {
   };
 
   [].__proto__.sort2 = function(callback = compareAsStrings) {
-    let count;
+    let isSorted;
 
     do {
-      count = false;
+      isSorted = false;
 
       for (let i = 1; i < this.length; i++) {
         const previous = this[i - 1];
         const current = this[i];
 
         if (callback(previous, current) > 0) {
-          count++;
+          isSorted = true;
           this[i - 1] = current;
           this[i] = previous;
         }
       }
-    } while (count !== false);
+    } while (isSorted);
 
     return this;
   };
