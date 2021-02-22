@@ -5,13 +5,13 @@
  */
 
 function applyCustomSort() {
-  const compareAsStrings = (a, b) => {
-    const stringA = String(a);
-    const stringB = String(b);
+  const compareAsStrings = (previous, current) => {
+    const stringPrevious = String(previous);
+    const stringCurrent = String(current);
 
-    if (stringA > stringB) {
+    if (stringPrevious > stringCurrent) {
       return 1;
-    } else if (stringA === stringB) {
+    } else if (stringPrevious === stringCurrent) {
       return 0;
     } else {
       return -1;
@@ -22,19 +22,19 @@ function applyCustomSort() {
     let count;
 
     do {
-      count = 0;
+      count = false;
 
       for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
+        const previous = this[i - 1];
         const current = this[i];
 
-        if (callback(prev, current) > 0) {
+        if (callback(previous, current) > 0) {
           count++;
           this[i - 1] = current;
-          this[i] = prev;
+          this[i] = previous;
         }
       }
-    } while (count > 0);
+    } while (count !== false);
 
     return this;
   };
