@@ -10,32 +10,31 @@ function applyCustomSort() {
 
     if (stringA > stringB) {
       return 1;
-    } else if (stringA === stringB) {
-      return 0;
     } else {
       return -1;
     }
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    // write code here
-    // eslint-disable-next-line no-unused-vars
     let count;
 
-    do {
+    while (count !== 0) {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
-        const next = this[i];
+        const previousElement = this[i - 1];
+        const nextElement = this[i];
 
-        if (compareFunction(prev, next) > 0) {
-          this[i - 1] = next;
-          this[i] = prev;
+        if (compareFunction(previousElement, nextElement) > 0) {
+          this[i - 1] = nextElement;
+          this[i] = previousElement;
           count++;
+        } else if (compareFunction(previousElement, nextElement) < 0) {
+          this[i - 1] = previousElement;
+          this[i] = nextElement;
         }
       }
-    } while (count > 0);
+    }
 
     return this;
   };
