@@ -5,33 +5,33 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let count;
+    let isChanged;
 
     do {
-      count = 0;
+      isChanged = false;
 
       for (let i = 0; i < this.length - 1; i++) {
         const nextValue = this[i + 1];
         const currentValue = this[i];
 
         if (compareFunction(currentValue, nextValue) > 0) {
-          count++;
+          isChanged = true;
           this[i] = nextValue;
           this[i + 1] = currentValue;
         }
       }
-    } while (count > 0);
+    } while (isChanged);
 
     return this;
   };
 
-  const compareAsStrings = (a, b) => {
-    const stringA = String(a);
-    const stringB = String(b);
+  const compareAsStrings = (current, next) => {
+    const currentString = String(current);
+    const nextString = String(next);
 
-    if (stringA > stringB) {
+    if (currentString > nextString) {
       return 1;
-    } else if (stringA === stringB) {
+    } else if (currentString === nextString) {
       return 0;
     } else {
       return -1;
