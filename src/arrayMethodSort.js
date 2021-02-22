@@ -4,15 +4,15 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  const compareAsStrings = (a, b) => {
-    const aString = a.toString();
-    const bString = b.toString();
+  const compareAsStrings = (previous, next) => {
+    const stringPrevious = previous.toString();
+    const stringNext = next.toString();
 
-    if (aString > bString) {
+    if (stringPrevious > stringNext) {
       return 1;
     }
 
-    if (aString === bString) {
+    if (stringPrevious === stringNext) {
       return 0;
     }
 
@@ -20,22 +20,22 @@ function applyCustomSort() {
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let count;
+    let isSorted;
 
     do {
-      count = 0;
+      isSorted = false;
 
       for (let i = 1; i < this.length; i++) {
         const element = this[i];
         const previousElement = this[i - 1];
 
         if (compareFunction(previousElement, element) > 0) {
-          count++;
+          isSorted = true;
           this[i] = previousElement;
           this[i - 1] = element;
         }
       }
-    } while (count > 0);
+    } while (isSorted);
 
     return this;
   };
