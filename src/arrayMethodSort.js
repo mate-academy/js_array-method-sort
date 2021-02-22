@@ -28,7 +28,7 @@ module.exports = function applyCustomSort() {
           count++;
         }
       }
-    } while (count !== false);
+    } while (count);
 
     return this;
   };
