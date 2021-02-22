@@ -21,7 +21,6 @@ function applyCustomSort() {
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    // write code here
     let count = 1;
 
     while (count > 0) {
