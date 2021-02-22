@@ -17,18 +17,18 @@ const compareAsStrings = (previous, next) => {
 
 module.exports = function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let count;
+    let isChanged;
 
     do {
-      count = false;
+      isChanged = false;
 
       for (let i = 1; i < this.length; i++) {
         if (compareFunction(this[i - 1], this[i]) > 0) {
           [this[i - 1], this[i]] = [this[i], this[i - 1]];
-          count++;
+          isChanged++;
         }
       }
-    } while (count);
+    } while (isChanged);
 
     return this;
   };
