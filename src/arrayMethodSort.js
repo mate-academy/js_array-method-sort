@@ -5,12 +5,12 @@
  */
 function applyCustomSort() {
   const compareAsStrings = (a, b) => {
-    const aString = String(a);
-    const bString = String(b);
+    const previousString = String(a);
+    const nextString = String(b);
 
-    if (aString > bString) {
+    if (previousString > nextString) {
       return 1;
-    } else if (aString === bString) {
+    } else if (previousString === nextString) {
       return 0;
     } else {
       return -1;
@@ -18,22 +18,22 @@ function applyCustomSort() {
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let count;
+    let hasChanged;
 
     do {
-      count = 0;
+      hasChanged = false;
 
       for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
+        const previous = this[i - 1];
         const current = this[i];
 
-        if (compareFunction(prev, current) > 0) {
-          count++;
+        if (compareFunction(previous, current) > 0) {
+          hasChanged = true;
           this[i - 1] = current;
-          this[i] = prev;
+          this[i] = previous;
         }
       }
-    } while (count > 0);
+    } while (hasChanged);
 
     return this;
   };
