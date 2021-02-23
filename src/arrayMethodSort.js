@@ -5,10 +5,10 @@
  */
 function applyCustomSort() {
   const compareAsStrings = (a, b) => {
-    const stringA = String(a);
-    const stringB = String(b);
+    const previousString = String(a);
+    const nextString = String(b);
 
-    if (stringA > stringB) {
+    if (previousString > nextString) {
       return 1;
     } else {
       return -1;
@@ -34,7 +34,7 @@ function applyCustomSort() {
           this[i] = nextElement;
         }
       }
-    } while (isSorted === true);
+    } while (isSorted);
 
     return this;
   };
