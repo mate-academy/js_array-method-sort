@@ -18,20 +18,20 @@ function applyCustomSort() {
     let hasChanged = 0;
 
     do {
-      hasChanged = 0;
+      hasChanged = false;
 
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
         const currennt = this[i];
 
         if (compareFunction(prev, currennt) > 0) {
-          hasChanged++;
+          hasChanged = true;
 
           this[i - 1] = currennt;
           this[i] = prev;
         }
       }
-    } while (hasChanged > 0);
+    } while (hasChanged);
 
     return this;
   };
