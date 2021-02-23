@@ -5,15 +5,15 @@
  */
 function applyCustomSort() {
   // write code here
-  const compareAsStrings = function(a, b) {
-    const aString = String(a);
-    const bString = String(b);
+  const compareAsStrings = function(previous, current) {
+    const previousString = String(previous);
+    const currentString = String(current);
 
-    if (aString > bString) {
+    if (previousString > currentString) {
       return 1;
     }
 
-    if (aString === bString) {
+    if (previousString === currentString) {
       return 0;
     }
 
@@ -21,17 +21,17 @@ function applyCustomSort() {
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let count = 1;
+    let hasSomeChanges = true;
 
-    while (count > 0) {
-      count = 0;
+    while (hasSomeChanges) {
+      hasSomeChanges = false;
 
       for (let i = 1; i < this.length; i++) {
         const previousValue = this[i - 1];
         const currentValue = this[i];
 
         if (compareFunction(previousValue, currentValue) > 0) {
-          count++;
+          hasSomeChanges = true;
           this[i] = previousValue;
           this[i - 1] = currentValue;
         }
