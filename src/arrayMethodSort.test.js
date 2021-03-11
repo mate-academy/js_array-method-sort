@@ -58,3 +58,12 @@ test(
     expect(['ёж', 'як', 'аист'].sort2((a, b) => a.localeCompare(b)))
       .toEqual(['аист', 'ёж', 'як']);
   });
+
+const mixOfValues = [1, 2, 3, 10, 20, 'a', 'b', null, undefined];
+
+test(
+  `sort mixed values: 
+  mixOfValues.sort2((a, b) => a - b)`, () => {
+    expect(mixOfValues.sort2((a, b) => a - b))
+      .toEqual(mixOfValues);
+  });
