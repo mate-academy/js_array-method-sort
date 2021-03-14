@@ -18,7 +18,7 @@ const defaultCompareFunction = (a, b) => {
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    const compFunc = compareFunction === undefined
+    const compFunc = !compareFunction
       ? defaultCompareFunction
       : compareFunction;
 
