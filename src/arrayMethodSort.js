@@ -4,24 +4,20 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let callback = compareFunction;
+  const callback = (x, y) => {
+    const stringX = String(x);
+    const stringY = String(y);
 
-    if (compareFunction === undefined) {
-      callback = (x, y) => {
-        const stringX = String(x);
-        const stringY = String(y);
-
-        if (stringX > stringY) {
-          return 1;
-        } else if (stringX === stringY) {
-          return 0;
-        } else {
-          return -1;
-        };
-      };
+    if (stringX > stringY) {
+      return 1;
+    } else if (stringX === stringY) {
+      return 0;
+    } else {
+      return -1;
     };
+  };
 
+  [].__proto__.sort2 = function(compareFunction = callback) {
     let count;
 
     do {
@@ -31,7 +27,7 @@ function applyCustomSort() {
         const prev = this[i - 1];
         const current = this[i];
 
-        if (callback(prev, current) > 0) {
+        if (compareFunction(prev, current) > 0) {
           count++;
           this[i - 1] = current;
           this[i] = prev;
