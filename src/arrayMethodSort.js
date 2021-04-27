@@ -3,16 +3,27 @@
 /**
  * Implement method Sort
  */
-function compareStrings(a, b) {
-  const strA = a.toString();
-  const strB = b.toString();
-
-  return strA > strB ? 1 : strA < strB ? -1 : 0;
-};
-
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = compareStrings) {
+  [].__proto__.sort2 = function(compareFunction) {
+    let compare = compareFunction;
     let count;
+
+    if (!compare) {
+      compare = function(a, b) {
+        const strA = a.toString();
+        const strB = b.toString();
+
+        if (strA > strB) {
+          return 1;
+        }
+
+        if (strA < strB) {
+          return -1;
+        }
+
+        return 0;
+      };
+    }
 
     do {
       count = 0;
@@ -21,7 +32,7 @@ function applyCustomSort() {
         const prev = this[i - 1];
         const cur = this[i];
 
-        if (compareFunction(prev, cur) > 0) {
+        if (compare(prev, cur) > 0) {
           this[i] = prev;
           this[i - 1] = cur;
           count++;
