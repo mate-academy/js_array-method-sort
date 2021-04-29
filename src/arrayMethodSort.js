@@ -8,31 +8,23 @@ function applyCustomSort() {
     const c1 = t.toString();
     const c2 = u.toString();
 
-    if (c1 > c2) {
-      return 1;
-    }
-
-    if (c1 < c2) {
-      return -1;
-    }
-
-    return 0;
+    return c1 > c2 ? 1 : (c1 < c2) ? -1 : 0;
   }) {
     let count = 0;
 
     do {
       count = 0;
 
-      for (let j = 0; j < this.length; j++) {
-        if (compareFunction(this[j], this[j + 1]) > 0) {
-          const temp = this[j];
+      for (let j = 1; j < this.length; j++) {
+        const temp = this[j - 1];
 
-          this[j] = this[j + 1];
-          this[j + 1] = temp;
+        if (compareFunction(this[j - 1], this[j]) > 0) {
+          this[j - 1] = this[j];
+          this[j] = temp;
           count++;
         }
       }
-    } while (count > 0);
+    } while (count);
 
     return this;
   };
