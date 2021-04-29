@@ -4,14 +4,9 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let callback = compareFunction;
-    const defaultCallback = (a, b) => a.toString() > b.toString();
-
-    if (typeof callback !== 'function') {
-      callback = defaultCallback;
-    }
-
+  [].__proto__.sort2 = function(
+    compareFunction = (a, b) => a.toString() > b.toString()
+  ) {
     let wasChange = false;
 
     do {
@@ -21,7 +16,7 @@ function applyCustomSort() {
         const first = this[i];
         const second = this[i + 1];
 
-        if (callback(first, second) > 0) {
+        if (compareFunction(first, second) > 0) {
           this[i] = second;
           this[i + 1] = first;
           wasChange = true;
