@@ -8,13 +8,7 @@ function applyCustomSort() {
     let callback = compareFunction;
 
     if (callback === undefined) {
-      callback = function(a, b) {
-        if (a.toString() > b.toString()) {
-          return 1;
-        } else {
-          return 0;
-        }
-      };
+      callback = (a, b) => a.toString() > b.toString();
     }
 
     let changes = true;
