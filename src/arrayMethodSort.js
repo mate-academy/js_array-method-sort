@@ -3,18 +3,9 @@
 /**
  * Implement method Sort
  */
-const copmareStrings = (a, b) => {
-  if (String(a) > String(b)) {
-    return 1;
-  } else if (String(a) < String(b)) {
-    return -1;
-  }
-
-  return 0;
-};
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = copmareStrings) {
+  [].__proto__.sort2 = function(compareFunc = (a, b) => String(a) > String(b)) {
     let count;
 
     do {
@@ -24,7 +15,7 @@ function applyCustomSort() {
         const previousElement = this[i - 1];
         const currentElement = this[i];
 
-        if (compareFunction(previousElement, currentElement) > 0) {
+        if (compareFunc(previousElement, currentElement) > 0) {
           this[i - 1] = currentElement;
           this[i] = previousElement;
           count++;
