@@ -4,21 +4,9 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(callback) {
-    let compareFunction;
-
-    if (!callback) {
-      compareFunction = function(a, b) {
-        if (a.toString() > b.toString()) {
-          return 1;
-        }
-
-        return 0;
-      };
-    } else {
-      compareFunction = callback;
-    }
-
+  [].__proto__.sort2 = function(compareFunction
+  = (a, b) => a.toString() > b.toString()
+  ) {
     let countReplacements;
 
     do {
