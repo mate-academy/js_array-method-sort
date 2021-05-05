@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = noArguments) {
+  [].__proto__.sort2 = function(compareFunction = defaultSort) {
     let count = 0;
 
     do {
@@ -26,6 +26,8 @@ function applyCustomSort() {
   };
 }
 
-const noArguments = (a, b) => a.toString() > b.toString();
+function defaultSort(a, b) {
+  return a.toString() > b.toString();
+}
 
 module.exports = applyCustomSort;
