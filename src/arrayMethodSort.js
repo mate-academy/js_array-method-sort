@@ -4,9 +4,9 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => {
-    return a.toString() > b.toString();
-  }) {
+  [].__proto__.sort2 = function(
+    compareFunction = (a, b) => a.toString() > b.toString()
+  ) {
     let changes = 0;
 
     for (let i = 0; i < this.length - 1; i++) {
