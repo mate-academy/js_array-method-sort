@@ -15,24 +15,18 @@ const compareAsStrings = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let left = 0;
-    let right = this.length - 1;
+    let count;
 
-    while (left <= right) {
-      for (let i = right; i > left; i--) {
+    do {
+      count = 0;
+
+      for (let i = 1; i < this.length; i++) {
         if (compareFunction(this[i - 1], this[i]) > 0) {
           [this[i - 1], this[i]] = [this[i], this[i - 1]];
+          count++;
         }
       }
-      left++;
-
-      for (let i = left; i < right; ++i) {
-        if (compareFunction(this[i], this[i + 1]) > 0) {
-          [this[i], this[i + 1]] = [this[i + 1], this[i]];
-        }
-      }
-      right--;
-    }
+    } while (count > 0);
 
     return this;
   };
