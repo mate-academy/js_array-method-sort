@@ -5,7 +5,9 @@
  */
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunc = (a, b) => String(a) > String(b)) {
+  [].__proto__.sort2 = function(
+    compareFunc = (a, b) => String(a) > String(b)
+  ) {
     let count;
 
     do {
