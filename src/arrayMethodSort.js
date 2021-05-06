@@ -8,27 +8,17 @@ function applyCustomSort() {
     let comparator = compareFunction;
 
     if (comparator === undefined) {
-      comparator = function(a, b) {
-        if (String(a) < String(b)) {
-          return -1;
-        }
-
-        if (String(a) > String(b)) {
-          return 1;
-        }
-
-        return 0;
-      };
+      comparator = (a, b) => a.toString() > b.toString();
     }
 
-    let value;
+    let tmpValue;
 
     for (let i = this.length - 1; i > 0; i--) {
       for (let j = 0; j < i; j++) {
         if (comparator(this[j], this[j + 1]) > 0) {
-          value = this[j];
+          tmpValue = this[j];
           this[j] = this[j + 1];
-          this[j + 1] = value;
+          this[j + 1] = tmpValue;
         }
       }
     }
