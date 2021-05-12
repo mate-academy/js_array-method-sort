@@ -11,17 +11,20 @@ function applyCustomSort() {
       comparator = (a, b) => a.toString() > b.toString();
     }
 
-    let tmpValue;
+    let tmpValue, isExchange;
 
-    for (let i = this.length - 1; i > 0; i--) {
-      for (let j = 0; j < i; j++) {
-        if (comparator(this[j], this[j + 1]) > 0) {
-          tmpValue = this[j];
-          this[j] = this[j + 1];
-          this[j + 1] = tmpValue;
+    do {
+      isExchange = false;
+
+      for (let i = 0; i < this.length - 1; i++) {
+        if (comparator(this[i], this[i + 1]) > 0) {
+          tmpValue = this[i];
+          this[i] = this[i + 1];
+          this[i + 1] = tmpValue;
+          isExchange = true;
         }
       }
-    }
+    } while (isExchange);
 
     return this;
   };
