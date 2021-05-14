@@ -11,10 +11,10 @@ function applyCustomSort() {
       sortFunc = compareFunction;
     }
 
-    let switcher = true;
+    let change = true;
 
-    do {
-      switcher = false;
+    while (change) {
+      change = false;
 
       for (let i = 0; i < this.length - 1; i++) {
         if (sortFunc(this[i], this[i + 1]) > 0) {
@@ -22,10 +22,10 @@ function applyCustomSort() {
 
           this[i] = this[i + 1];
           this[i + 1] = temp;
-          switcher = true;
+          change = true;
         }
       }
-    } while (switcher);
+    }
 
     return this;
   };
