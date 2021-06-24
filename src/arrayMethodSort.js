@@ -4,18 +4,12 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let functionForComparing = compareFunction;
-
-    if (typeof compareFunction === 'undefined') {
-      functionForComparing = compareAsStrings;
-    }
-
+  [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
     for (let i = 1; i < this.length; i++) {
       const key = this[i];
       let j = i - 1;
 
-      while (j >= 0 && functionForComparing(key, this[j]) < 0) {
+      while (j >= 0 && compareFunction(key, this[j]) < 0) {
         this[j + 1] = this[j];
         j--;
       }
