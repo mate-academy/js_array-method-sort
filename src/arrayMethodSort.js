@@ -31,9 +31,13 @@ function defaulSortCallback(a, b) {
   const defaultA = a.toString();
   const defaultB = b.toString();
 
-  return defaultA > defaultB
-    ? 1 : defaultA < defaultB
-      ? -1 : 0;
+  if (defaultA > defaultB) {
+    return 1;
+  } else if (defaultA < defaultB) {
+    return -1;
+  } else {
+    return 0;
+  }
 }
 
 module.exports = applyCustomSort;
