@@ -11,8 +11,6 @@ function applyCustomSort() {
       for (let j = i + 1; j < this.length; j++) {
         if (compareFunction(this[i], this[j]) > 0) {
           [this[i], this[j]] = [this[j], this[i]];
-        } else {
-          continue;
         }
       }
     }
