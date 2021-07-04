@@ -20,19 +20,19 @@ const compareFunctionDefault = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareFunctionDefault) {
-    let booleanVariable;
+    let swapped;
 
     for (let i = 0; i < this.length; i++) {
-      booleanVariable = false;
+      swapped = false;
 
       for (let j = i + 1; j < this.length; j++) {
         if ((compareFunction(this[i], this[j]) > 0)) {
           [this[i], this[j]] = [this[j], this[i]];
-          booleanVariable = true;
+          swapped = true;
         }
       }
 
-      if (!booleanVariable) {
+      if (!swapped) {
         return this;
       }
     }
