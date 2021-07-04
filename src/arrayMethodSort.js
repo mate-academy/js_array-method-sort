@@ -3,7 +3,20 @@
 /**
  * Implement method Sort
  */
-const compareFunctionDefault = (a, b) => (String(a) < String(b) ? 0 : 1);
+const compareFunctionDefault = (a, b) => {
+  const stringA = String(a);
+  const stringB = String(b);
+
+  if (stringA > stringB) {
+    return 1;
+  }
+
+  if (stringA < stringB) {
+    return -1;
+  }
+
+  return 0;
+};
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareFunctionDefault) {
