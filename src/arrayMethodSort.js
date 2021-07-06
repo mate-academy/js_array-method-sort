@@ -7,18 +7,14 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     for (let i = 0; i < this.length - 1; i++) {
       for (let j = i + 1; j < this.length; j++) {
-        if (compareFunction) {
-          if (compareFunction(this[i], this[j]) > 0) {
-            const saveValue = this[j];
+        const defaultSort = !compareFunction
+          && (String(this[i]) > String(this[j]));
 
-            this[j] = this[i];
-            this[i] = saveValue;
-          }
-        } else if (String(this[i]) > String(this[j])) {
-          const saveValue = this[j];
+        const compareSort = compareFunction
+          && compareFunction(this[i], this[j]) > 0;
 
-          this[j] = this[i];
-          this[i] = saveValue;
+        if (defaultSort || compareSort) {
+          [this[i], this[j]] = [this[j], this[i]];
         }
       }
     }
