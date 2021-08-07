@@ -8,44 +8,38 @@ function applyCustomSort() {
     let count = 0;
     let prev = null;
     let now = null;
+    let totalCompare = null;
 
     if (!compareFunction) {
-      do {
-        count = 0;
-
-        for (let i = 1; i < this.length; i++) {
-          prev = String(this[i - 1]);
-          now = String(this[i]);
-
-          if (prev > now) {
-            this[i - 1] = now;
-            this[i] = prev;
-            count++;
-          }
+      const defaultCompare = (a, b) => {
+        if (String(a) > String(b)) {
+          return 1;
+        } else if (String(a) < String(b)) {
+          return -1;
+        } else {
+          return 1;
         }
-      } while (count > 0);
+      };
 
-      for (let i = 0; i < this.length; i++) {
-        if (!isNaN(this[i])) {
-          this[i] = +this[i];
+      totalCompare = defaultCompare;
+    } else {
+      totalCompare = compareFunction;
+    }
+
+    do {
+      count = 0;
+
+      for (let i = 1; i < this.length; i++) {
+        prev = this[i - 1];
+        now = this[i];
+
+        if (totalCompare(prev, now) > 0) {
+          this[i - 1] = now;
+          this[i] = prev;
+          count++;
         }
       }
-    } else {
-      do {
-        count = 0;
-
-        for (let i = 1; i < this.length; i++) {
-          prev = this[i - 1];
-          now = this[i];
-
-          if (compareFunction(prev, now) > 0) {
-            this[i - 1] = now;
-            this[i] = prev;
-            count++;
-          }
-        }
-      } while (count > 0);
-    }
+    } while (count > 0);
 
     return this;
   };
