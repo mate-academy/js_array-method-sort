@@ -30,16 +30,11 @@ function compareAsStrings(a, b) {
   const stringA = String(a);
   const stringB = String(b);
 
-  switch (true) {
-    case stringA > stringB:
-      return 1;
-
-    case stringA < stringB:
-      return -1;
-
-    case stringA === stringB:
-      return 0;
-  }
+  return stringA > stringB
+    ? 1
+    : stringA < stringB
+      ? -1
+      : 0;
 }
 
 module.exports = applyCustomSort;
