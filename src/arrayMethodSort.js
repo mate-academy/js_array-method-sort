@@ -25,7 +25,20 @@ function applyCustomSort() {
   };
 
   function compareAsStrings(a, b) {
-    return (String(a) > String(b)) ? 1 : -1;
+    const x = String(a);
+    const y = String(b);
+
+    if (x > y) {
+      return 1;
+    }
+
+    if (x < y) {
+      return -1;
+    }
+
+    if (x === y) {
+      return 0;
+    }
   }
 }
 
