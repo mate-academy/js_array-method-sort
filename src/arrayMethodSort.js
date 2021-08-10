@@ -3,18 +3,30 @@
 /**
  * Implement method Sort
  */
-function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const comparator = compareFunction !== undefined
-      ? compareFunction
-      : (a, b) => String(a) > String(b) ? 1 : String(a) < String(b) ? -1 : 0;
-    let changesDone = 1;
+const defaultCompare = (a, b) => {
+  const aToString = String(a);
+  const bToString = String(b);
 
-    while (changesDone !== 0) {
+  if (aToString > bToString) {
+    return 1;
+  }
+
+  if (aToString < bToString) {
+    return -1;
+  }
+
+  return 0;
+};
+
+function applyCustomSort() {
+  [].__proto__.sort2 = function(compareFunction = defaultCompare) {
+    let changesDone;
+
+    do {
       changesDone = 0;
 
       for (let i = 1; i < this.length; i++) {
-        if (comparator(this[i - 1], this[i]) > 0) {
+        if (compareFunction(this[i - 1], this[i]) > 0) {
           const temporalPrevious = this[i - 1];
 
           this[i - 1] = this[i];
@@ -22,7 +34,7 @@ function applyCustomSort() {
           changesDone++;
         }
       }
-    }
+    } while (changesDone !== 0);
 
     return this;
   };
