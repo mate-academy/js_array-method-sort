@@ -36,9 +36,7 @@ function applyCustomSort() {
       return -1;
     }
 
-    if (x === y) {
-      return 0;
-    }
+    return 0;
   }
 }
 
