@@ -6,11 +6,13 @@ const compareAsStrings = (a, b) => {
 
   if (stringA > stringB) {
     return 1;
-  } else if (stringB > stringA) {
-    return -1;
-  } else {
-    return 0;
   }
+
+  if (stringB > stringA) {
+    return -1;
+  }
+
+  return 0;
 };
 
 function applyCustomSort() {
