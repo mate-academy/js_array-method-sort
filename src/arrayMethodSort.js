@@ -26,7 +26,7 @@ function applyCustomSort() {
   };
 
   function compare(a, b) {
-    return (String(a) > String(b)) ? 1 : -1;
+    return (String(a) === String(b)) ? 0 : (String(a) > String(b) ? 1 : -1);
   }
 }
 
