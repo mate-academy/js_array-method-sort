@@ -23,11 +23,22 @@ function applyCustomSort() {
 
       for (let i = 1; i < this.length; i++) {
         const previous = this[i - 1];
-        const current = this[i];
+        let current = this[i];
+
+        if (this[i] === undefined) {
+          this[this.length] = this[i];
+          this.splice(i, 1);
+        }
+
+        if (this[i] === null) {
+          current = 0;
+        }
 
         if (compareFunction(previous, current) > 0) {
-          this[i - 1] = current;
-          this[i] = previous;
+          const tmp = this[i];
+
+          this[i] = this[i - 1];
+          this[i - 1] = tmp;
           count++;
         }
       }
