@@ -14,11 +14,13 @@ function applyCustomSort() {
       const defaultCompare = (a, b) => {
         if (String(a) > String(b)) {
           return 1;
-        } else if (String(a) < String(b)) {
-          return -1;
-        } else {
-          return 1;
         }
+
+        if (String(a) < String(b)) {
+          return -1;
+        }
+
+        return 0;
       };
 
       totalCompare = defaultCompare;
