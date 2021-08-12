@@ -11,7 +11,11 @@ const compareAsStrings = function(a, b) {
     return 1;
   }
 
-  return secondElement > firstElement ? -1 : 0;
+  if (secondElement > firstElement) {
+    return -1;
+  }
+
+  return 0;
 };
 
 function applyCustomSort() {
