@@ -22,7 +22,14 @@ function applyCustomSort() {
   };
 
   const compareAsStrings = (itemOne, itemTwo) => {
-    return String(itemOne) > String(itemTwo) ? 1 : -1;
+    const stringOne = String(itemOne);
+    const stringTwo = String(itemTwo);
+
+    if (stringOne === stringTwo) {
+      return 0;
+    }
+
+    return stringOne > stringTwo ? 1 : -1;
   };
 }
 
