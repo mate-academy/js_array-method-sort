@@ -5,14 +5,14 @@
  */
 function applyCustomSort() {
   function compareString(a, b) {
-    const fiirstString = String(a);
+    const firstString = String(a);
     const secondString = String(b);
 
-    if (fiirstString > secondString) {
+    if (firstString > secondString) {
       return 1;
     }
 
-    if (fiirstString === secondString) {
+    if (firstString === secondString) {
       return 0;
     }
 
