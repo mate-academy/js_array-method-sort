@@ -8,12 +8,15 @@ const compareAsString = (a, b) => {
   const aToString = String(a);
   const bToString = String(b);
 
-  if (aToString > bToString) {
-    return 1;
-  } else if (aToString === bToString) {
-    return 0;
-  } else {
-    return -1;
+  switch (true) {
+    case aToString > bToString:
+      return 1;
+
+    case aToString === bToString:
+      return 0;
+
+    default:
+      return -1;
   }
 };
 
