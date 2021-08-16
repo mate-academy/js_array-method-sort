@@ -34,6 +34,10 @@ const compareAsStrings = (a, b) => {
     return 1;
   }
 
+  if (stringA === stringB) {
+    return 0;
+  }
+
   return -1;
 };
 
