@@ -10,7 +10,9 @@ const compareAsString = (a, b) => {
 
   if (aToString > bToString) {
     return 1;
-  } else if (aToString === bToString) {
+  }
+
+  if (aToString === bToString) {
     return 0;
   }
 
