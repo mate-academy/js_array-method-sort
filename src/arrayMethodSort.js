@@ -32,8 +32,6 @@ const compareAsStrings = (a, b) => {
 
   if (stringA > stringB) {
     return 1;
-  } else if (stringA === stringB) {
-    return 0;
   }
 
   return -1;
