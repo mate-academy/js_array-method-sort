@@ -8,17 +8,17 @@ function applyCustomSort() {
     let counter;
 
     do {
-      counter = 0
+      counter = 0;
 
       for (let i = 1; i < this.length; i++) {
         const prevValue = this[i - 1];
-        const currentValue = this[1];
-      }
-  
-      if (compareFunction(prevValue, currentValue) > 0) {
-        counter++
-        this[i - 1] = currentValue;
-        this[i] = prevValue;
+        const currentValue = this[i];
+
+        if (compareFunction(prevValue, currentValue) > 0) {
+          counter++;
+          this[i - 1] = currentValue;
+          this[i] = prevValue;
+        }
       }
     } while (counter > 0);
 
@@ -33,10 +33,10 @@ const compareAsStrings = (a, b) => {
   if (stringA > stringB) {
     return 1;
   } else if (stringA === stringB) {
-return 0;
-  } else {
-    return -1;
+    return 0;
   }
-}
+
+  return -1;
+};
 
 module.exports = applyCustomSort;
