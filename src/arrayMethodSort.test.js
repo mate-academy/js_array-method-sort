@@ -31,7 +31,7 @@ test('the array is sorted', () => {
     .toEqual([11, 12, 2, 3]);
 });
 
-test('numbers are sorted as strings by default: [3, 12, 2, 11].sort2()', () => {
+test('this are sorted as strings by default: [3, 12, 2, 11].sort2()', () => {
   expect([3, 12, 2, 11].sort2())
     .toEqual([11, 12, 2, 3]);
 });
@@ -46,7 +46,7 @@ test(`sort cyrillic letters: ['ёж','як','аист'].sort2()`, () => {
     .toEqual(['аист', 'як', 'ёж']);
 });
 
-test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => a - b)',
+test('custom compare function, this: [3, 12, 2, 11].sort2((a, b) => a - b)',
   () => {
     expect([3, 12, 2, 11].sort2((a, b) => a - b))
       .toEqual([2, 3, 11, 12]);
