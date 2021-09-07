@@ -11,19 +11,12 @@ function strCompare(a, b) {
 }
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(compareFunction = strCompare) {
     if (this.length === 0) {
       return this;
     }
 
-    let compareFunctionInt = compareFunction;
-
-    if (typeof compareFunction === 'undefined') {
-      compareFunctionInt = function(item1, item2) {
-        return strCompare(item1, item2);
-      };
-    }
-
+    const compareFunctionInt = compareFunction;
     let count;
 
     do {
