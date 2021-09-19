@@ -3,38 +3,31 @@
 /**
  * Implement method Sort
  */
+const defaultCompareFunction = (a, b) => {
+  const prev = String(a);
+  const next = String(b);
+
+  if (prev > next) {
+    return 1;
+  }
+
+  if (next > prev) {
+    return -1;
+  }
+
+  return 0;
+};
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+  [].__proto__.sort2 = function(compareFunction = defaultCompareFunction) {
     for (let i = this.length - 1; i >= 0; i--) {
       for (let j = 1; j <= i; j++) {
-        if (this[j - 1].toString() > this[j].toString()) {
-          const temp = this[j - 1];
+        const prev = this[j - 1];
+        const current = this[j];
 
-          this[j - 1] = this[j];
-          this[j] = temp;
-        }
-      }
-    }
-
-    if (compareFunction) {
-      for (let i = this.length - 1; i >= 0; i--) {
-        for (let j = 1; j <= i; j++) {
-          if (this[j - 1] > this[j]) {
-            const temp = this[j - 1];
-
-            this[j - 1] = this[j];
-            this[j] = temp;
-          }
-
-          if (typeof this[j - 1] === 'string'
-            && this[j - 1].localeCompare(this[j])
-            > this[j].localeCompare(this[j - 1])) {
-            const temp = this[j - 1];
-
-            this[j - 1] = this[j];
-            this[j] = temp;
-          }
+        if (compareFunction(prev, current) > 0) {
+          this[j] = prev;
+          this[j - 1] = current;
         }
       }
     }
