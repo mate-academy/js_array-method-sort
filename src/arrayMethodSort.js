@@ -29,10 +29,10 @@ function applyCustomSort() {
   };
 
   function stringCompare(a, b) {
-    const strA = '' + a;
-    const strB = '' + b;
+    const prev = a.toString();
+    const current = b.toString();
 
-    if (strA <= strB) {
+    if (prev <= current) {
       return -1;
     } else {
       return 1;
