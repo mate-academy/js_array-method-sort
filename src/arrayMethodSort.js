@@ -14,10 +14,7 @@ function applyCustomSort() {
         const before = this[i];
         const after = this[i + 1];
 
-        if (compareFunction(this[i], this[i + 1]) < 0) {
-          this[i] = before;
-          this[i + 1] = after;
-        } else {
+        if (compareFunction(this[i], this[i + 1]) > 0) {
           this[i] = after;
           this[i + 1] = before;
           isChanged = true;
