@@ -1,17 +1,18 @@
 'use strict';
 
 function elementCompare(firstElement, secondElement) {
-  if (String(firstElement) > String(secondElement)) {
+  const firstOperand = String(firstElement);
+  const secondOperand = String(secondElement);
+
+  if (firstOperand > secondOperand) {
     return 1;
   }
 
-  if (String(firstElement) < String(secondElement)) {
+  if (firstOperand < secondOperand) {
     return -1;
   }
 
-  if (String(firstElement) === String(secondElement)) {
-    return 0;
-  }
+  return 0;
 }
 
 function applyCustomSort() {
@@ -25,7 +26,7 @@ function applyCustomSort() {
         const previous = this[i - 1];
         const current = this[i];
 
-        if (compareFunction(previous, current)) {
+        if (compareFunction(previous, current) > 0) {
           this[i - 1] = current;
           this[i] = previous;
           count++;
