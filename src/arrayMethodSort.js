@@ -29,10 +29,10 @@ function applyCustomSort() {
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length; j++) {
         if (this[i].toString() < this[j].toString()) {
-          const a = this[j];
+          const element = this[j];
 
           this[j] = this[i];
-          this[i] = a;
+          this[i] = element;
         }
       }
     }
