@@ -3,12 +3,15 @@
 /**
  * Implement method Sort
  */
+
+const standartSort = (leftItem, rightItem) => {
+  if (`${leftItem}` > `${rightItem}`) {
+    return 1;
+  };
+};
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (leftItem, rightItem) => {
-    if (`${leftItem}` > `${rightItem}`) {
-      return 1;
-    }
-  }) {
+  [].__proto__.sort2 = function(compareFunction = standartSort) {
     // write code here
     for (let i = 0; i < this.length; i++) {
       for (let j = i + 1; j < this.length; j++) {
