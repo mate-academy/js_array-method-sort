@@ -9,6 +9,10 @@ const standartSort = (leftItem, rightItem) => {
     return 1;
   };
 
+  if (`${leftItem}` < `${rightItem}`) {
+    return -1;
+  }
+
   return 0;
 };
 
