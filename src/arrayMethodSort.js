@@ -8,22 +8,29 @@ const standartSort = (leftItem, rightItem) => {
   if (`${leftItem}` > `${rightItem}`) {
     return 1;
   };
+
+  return 0;
 };
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = standartSort) {
     // write code here
-    for (let i = 0; i < this.length; i++) {
-      for (let j = i + 1; j < this.length; j++) {
-        const item1 = this[i];
-        const item2 = this[j];
+    let count;
 
-        if (compareFunction(this[i], this[j]) >= 1) {
-          this[i] = item2;
-          this[j] = item1;
+    do {
+      count = 0;
+
+      for (let i = 1; i < this.length; i++) {
+        const item1 = this[i - 1];
+        const item2 = this[i];
+
+        if (compareFunction(item1, item2) >= 1) {
+          count++;
+          this[i - 1] = item2;
+          this[i] = item1;
         }
       }
-    }
+    } while (count > 0);
 
     return this;
   };
