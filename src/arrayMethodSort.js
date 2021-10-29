@@ -26,12 +26,8 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
-        const curr = this[i];
-
-        if (callBack(prev, curr) > 0) {
-          this[i - 1] = curr;
-          this[i] = prev;
+        if (callBack(this[i - 1], this[i]) > 0) {
+          [this[i - 1], this[i]] = [this[i], this[i - 1]];
           count++;
         }
       }
