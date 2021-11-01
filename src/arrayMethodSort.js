@@ -13,7 +13,7 @@ function applyCustomSort() {
 
       return stringA > stringB
         ? 1
-        :  0
+        : 0;
     };
 
     const callBack = compareFunction === undefined
