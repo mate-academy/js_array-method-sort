@@ -8,15 +8,15 @@ function applyCustomSort() {
     const callback = compareFunction || compareAsStrings;
 
     for (let i = 1; i < this.length; i++) {
-      const current = this[i];
-      let j = i - 1;
+      const unsortedElement = this[i];
+      let sortedPos = i - 1;
 
-      while (j >= 0 && callback(this[j], current) > 0) {
-        this[j + 1] = this[j];
-        j--;
+      while (sortedPos >= 0 && callback(this[sortedPos], unsortedElement) > 0) {
+        this[sortedPos + 1] = this[sortedPos];
+        sortedPos--;
       }
 
-      this[j + 1] = current;
+      this[sortedPos + 1] = unsortedElement;
     }
 
     return this;
