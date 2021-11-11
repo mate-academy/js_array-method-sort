@@ -7,35 +7,22 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     const callback = compareFunction || compareAsStrings;
 
-    while (true) {
-      let wasMoved = false;
+    for (let i = 1; i < this.length; i++) {
+      const current = this[i];
+      let j = i - 1;
 
-      for (let i = 1; i < this.length; i++) {
-        const previous = this[i - 1];
-        const current = this[i];
-
-        if (callback(previous, current) > 0) {
-          this[i] = previous;
-          this[i - 1] = current;
-
-          wasMoved = true;
-        }
+      while (j >= 0 && callback(this[j], current) > 0) {
+        this[j + 1] = this[j];
+        j--;
       }
 
-      if (!wasMoved) {
-        return this;
-      }
+      this[j + 1] = current;
     }
+
+    return this;
   };
 }
 
-/**
- *
- * @param {string|number} a
- * @param {string|number} b
- *
- * @returns {number}
- */
 function compareAsStrings(a, b) {
   const element1 = String(a);
   const element2 = String(b);
