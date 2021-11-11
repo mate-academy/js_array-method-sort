@@ -5,13 +5,13 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    const callback = compareFunction || compareAsStrings;
+    const compare = compareFunction || compareAsStrings;
 
     for (let i = 1; i < this.length; i++) {
       const unsortedElement = this[i];
       let sortedPos = i - 1;
 
-      while (sortedPos >= 0 && callback(this[sortedPos], unsortedElement) > 0) {
+      while (sortedPos >= 0 && compare(this[sortedPos], unsortedElement) > 0) {
         this[sortedPos + 1] = this[sortedPos];
         sortedPos--;
       }
