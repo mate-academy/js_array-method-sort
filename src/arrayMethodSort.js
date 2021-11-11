@@ -4,9 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const compare = compareFunction || compareAsStrings;
-
+  [].__proto__.sort2 = function(compare = compareAsStrings) {
     for (let i = 1; i < this.length; i++) {
       const unsortedElement = this[i];
       let sortedPos = i - 1;
