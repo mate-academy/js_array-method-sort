@@ -10,7 +10,7 @@ function applyCustomSort() {
 
     if (aString > bString) {
       return 1;
-    } else if (aString === bString) {
+    } else if (aString < bString) {
       return -1;
     } else {
       return 0;
