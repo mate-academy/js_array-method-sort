@@ -4,14 +4,9 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let sort;
-
-    if (compareFunction) {
-      sort = compareFunction;
-    } else {
-      sort = (a, b) => a.toString() > b.toString();
-    }
+  // eslint-disable-next-line max-len
+  [].__proto__.sort2 = function(compareFunction = (a, b) => a.toString() > b.toString()) {
+    const sort = compareFunction;
 
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - 1; j++) {
