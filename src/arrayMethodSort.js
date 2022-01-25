@@ -24,7 +24,7 @@ function applyCustomSort() {
   };
 }
 
-function func(a, b) {
+function descriptiveName(a, b) {
   const strA = '' + a;
   const strB = '' + b;
 
