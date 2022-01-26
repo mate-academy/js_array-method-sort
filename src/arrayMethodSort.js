@@ -26,7 +26,7 @@ function applyCustomSort() {
 }
 
 function compareAsStrings(prev, current) {
-  if (String(a) > String(b)) {
+  if (String(prev) > String(current)) {
     return 1;
   }
 
