@@ -25,7 +25,7 @@ function applyCustomSort() {
   };
 }
 
-function compareAsStrings(a, b) {
+function compareAsStrings(prev, current) {
   if (String(a) > String(b)) {
     return 1;
   }
