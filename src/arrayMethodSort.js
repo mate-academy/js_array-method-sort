@@ -28,10 +28,18 @@ function applyCustomSort() {
   };
 
   const compareAsString = (a, b) => {
-    const strA = String(a);
-    const strB = String(b);
-
-    return (strA > strB) ? 1 : (strA === strB) ? 0 : -1;
+    const prevString = String(a);
+    const currentString  = String(b);
+    
+    if (prevString > currentString ) {
+      return 1;
+    }
+    
+    if (prevString === currentString) {
+      return 0;
+    }
+    
+    return -1;
   };
 }
 
