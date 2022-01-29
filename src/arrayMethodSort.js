@@ -5,7 +5,6 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareAsString) {
-    // write code here
 
     let count;
 
@@ -30,15 +29,15 @@ function applyCustomSort() {
   const compareAsString = (a, b) => {
     const prevString = String(a);
     const currentString  = String(b);
-    
+
     if (prevString > currentString ) {
       return 1;
     }
-    
+
     if (prevString === currentString) {
       return 0;
     }
-    
+
     return -1;
   };
 }
