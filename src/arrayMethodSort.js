@@ -28,9 +28,9 @@ function applyCustomSort() {
 
   const compareAsString = (a, b) => {
     const prevString = String(a);
-    const currentString  = String(b);
+    const currentString = String(b);
 
-    if (prevString > currentString ) {
+    if (prevString > currentString) {
       return 1;
     }
 
