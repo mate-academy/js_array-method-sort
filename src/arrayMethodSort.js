@@ -29,6 +29,10 @@ function applyCustomSort() {
     const prevString = String(prevValue);
     const nextString = String(nextValue);
 
+    if (prevString === nextString) {
+      return 0;
+    }
+
     return prevString > nextString ? 1 : -1;
   }
 }
