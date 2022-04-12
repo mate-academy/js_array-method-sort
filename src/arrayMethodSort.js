@@ -5,6 +5,19 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
+    const stringCompaison = (x, y) => {
+      const strX = String(x);
+      const strY = String(y);
+
+      if (strX > strY) {
+        return 1;
+      } else if (strX === strY) {
+        return 0;
+      } else {
+        return -1;
+      }
+    };
+
     let count;
 
     do {
@@ -14,22 +27,20 @@ function applyCustomSort() {
         const prev = this[i - 1];
         const curr = this[i];
 
-        if (compareFunction) {
-          if (this.every(elem => typeof elem === 'number')) {
-            if (curr < prev) {
-              count++;
-              this[i - 1] = curr;
-              this[i] = prev;
-            }
-          } else if (this.every(elem => typeof elem === 'string')) {
-            if (curr.localeCompare(prev) === -1) {
-              count++;
-              this[i - 1] = curr;
-              this[i] = prev;
-            }
+        if (compareFunction && typeof this[0] === 'number') {
+          if (curr < prev) {
+            count++;
+            this[i - 1] = curr;
+            this[i] = prev;
+          }
+        } else if (compareFunction && typeof this[0] === 'string') {
+          if (curr.localeCompare(prev) === -1) {
+            count++;
+            this[i - 1] = curr;
+            this[i] = prev;
           }
         } else {
-          if (curr.toString() < prev.toString()) {
+          if (stringCompaison(prev, curr) > 0) {
             count++;
             this[i - 1] = curr;
             this[i] = prev;
