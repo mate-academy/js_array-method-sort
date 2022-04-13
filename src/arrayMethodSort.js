@@ -7,18 +7,7 @@
 // const compareAsString
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => {
-    const stringA = String(a);
-    const stringB = String(b);
-
-    if (stringA > stringB) {
-      return 1;
-    } else if (stringA === stringB) {
-      return 0;
-    } else {
-      return -1;
-    }
-  }) {
+  [].__proto__.sort2 = function(compareFunction = callback) {
     let count;
 
     do {
@@ -39,5 +28,18 @@ function applyCustomSort() {
     return this;
   };
 }
+
+const callback = function(a, b) {
+  const stringA = a.toString();
+  const stringB = b.toString();
+
+  if (stringA > stringB) {
+    return 1;
+  } else if (stringA < stringB) {
+    return -1;
+  } else {
+    return 0;
+  }
+};
 
 module.exports = applyCustomSort;
