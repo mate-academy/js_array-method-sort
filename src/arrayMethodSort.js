@@ -4,14 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const compFunc = arguments.length > 0 ? compareFunction
-      : (a, b) => {
-        const strA = String(a);
-        const strB = String(b);
-
-        return (strA > strB) ? 1 : (strA < strB) ? -1 : 0;
-      };
+  [].__proto__.sort2 = function(compFunc = compareStr) {
     let flag;
 
     do {
@@ -28,5 +21,18 @@ function applyCustomSort() {
     return this;
   };
 }
+
+function compareStr(a, b) {
+  const strA = String(a);
+  const strB = String(b);
+
+  if (strA > strB) {
+    return 1;
+  } else if (strA < strB) {
+    return -1;
+  } else {
+    return 0;
+  }
+};
 
 module.exports = applyCustomSort;
