@@ -7,7 +7,7 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = checkString) {
     let check = true;
 
-    for (;;) {
+    while (true) {
       for (let item = 0; item < this.length - 1; item++) {
         const current = this[item];
         const next = this[item + 1];
