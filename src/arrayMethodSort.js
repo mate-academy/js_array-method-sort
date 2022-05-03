@@ -3,12 +3,9 @@
 /**
  * Implement method Sort
  */
-function campareAsStrings(first, second) {
-  let a = first;
-  let b = second;
-
-  a = String(a);
-  b = String(b);
+function campareAsStrings(firstElement, secondElement) {
+  const a = String(firstElement);
+  const b = String(secondElement);
 
   if (a > b) {
     return 1;
