@@ -26,11 +26,12 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        if (compareFunction(this[i - 1], this[i]) > 0) {
-          const placeholder = this[i];
+        const previous = this[i - 1];
+        const current = this[i];
 
-          this[i] = this[i - 1];
-          this[i - 1] = placeholder;
+        if (compareFunction(previous, current) > 0) {
+          this[i] = previous;
+          this[i - 1] = current;
           count++;
         }
       }
