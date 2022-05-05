@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 
-function stringComparison(a, b) {
+function sortByString(a, b) {
   const stringA = String(a);
   const stringB = String(b);
 
@@ -20,7 +20,7 @@ function stringComparison(a, b) {
 };
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = stringComparison) {
+  [].__proto__.sort2 = function(compareFunction = sortByString) {
     let count;
 
     do {
