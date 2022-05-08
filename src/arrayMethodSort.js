@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
-
 function compareFormstring(first, second) {
   let a = first;
   let b = second;
