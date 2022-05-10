@@ -1,11 +1,8 @@
 'use strict';
 
 function compareFormstring(first, second) {
-  let a = first;
-  let b = second;
-
-  a = String(a);
-  b = String(b);
+  const a = String(first);
+  const b = String(second);
 
   if (a > b) {
     return 1;
