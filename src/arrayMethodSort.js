@@ -3,15 +3,15 @@
 /**
  * Implement method Sort
  */
-function compare(A, B) {
-  const a = '' + A;
-  const b = '' + B;
+function compareStrings(a, b) {
+  const A = '' + a;
+  const B = '' + b;
 
-  if (a < b) {
+  if (A < B) {
     return -1;
   }
 
-  if (a > b) {
+  if (A > B) {
     return 1;
   }
 
@@ -19,7 +19,7 @@ function compare(A, B) {
 }
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = compare) {
+  [].__proto__.sort2 = function(compareFunction = compareStrings) {
     let sorted = false;
 
     while (!sorted) {
