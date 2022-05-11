@@ -19,7 +19,7 @@ function compareAsStrings(a, b) {
 }
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction = compareAsStrings) {
+  [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
     // write code here
     let count;
 
@@ -27,13 +27,13 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        let prev = this[i - 1];
-        let curr = this[i];
+        const previousElement = this[i - 1];
+        const currentElement = this[i];
 
-        if (compareFunction(prev, curr) > 0) {
+        if (compareFunction(previousElement, currentElement) > 0) {
           count++;
-          this[i - 1] = curr;
-          this[i] = prev;
+          this[i - 1] = currentElement;
+          this[i] = previousElement;
         }
       }
     } while (count > 0);
