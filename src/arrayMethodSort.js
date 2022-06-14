@@ -11,12 +11,12 @@ function applyCustomSort() {
       swap = false;
 
       for (let i = 1; i < this.length; i++) {
-        const prevValue = this[i - 1];
-        const currentValue = this[i];
+        const prevStep = this[i - 1];
+        const currentStep = this[i];
 
-        if (compareFunction(prevValue, currentValue) > 0) {
-          this[i - 1] = currentValue;
-          this[i] = prevValue;
+        if (compareFunction(prevStep, currentStep) > 0) {
+          this[i - 1] = currentStep;
+          this[i] = prevStep;
           swap = true;
         }
       }
