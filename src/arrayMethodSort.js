@@ -5,7 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    let callbackFunction = compareFunction 
+    let callbackFunction = compareFunction;
     let checked = false;
 
     if (arguments.length === 0) {
@@ -19,7 +19,7 @@ function applyCustomSort() {
         }
 
         return 0;
-      }
+      };
     }
 
     // bubble sort
@@ -29,9 +29,9 @@ function applyCustomSort() {
       for (let i = 0; i < this.length - 1; i++) {
         if (callbackFunction(this[i], this[i + 1]) > 0) {
           const temp = this[i];
+
           this[i] = this[i + 1];
           this[i + 1] = temp;
-
           checked = true;
         }
       }
