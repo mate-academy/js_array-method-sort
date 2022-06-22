@@ -12,9 +12,9 @@ function applyCustomSort() {
       return 1;
     } else if (strA === strB) {
       return 0;
-    } else {
-      return -1;
     }
+
+    return -1;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
@@ -37,10 +37,6 @@ function applyCustomSort() {
 
     return this;
   };
-
-  const result = [].__proto__.sort((a, b) => a - b);
-
-  return result;
 };
 
 module.exports = applyCustomSort;
