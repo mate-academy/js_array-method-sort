@@ -7,12 +7,10 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     let madeSwitches = false;
     let replacedTemporary;
-    let comparement;
+    let comparement = compareFunction;
 
     if (arguments.length === 0) {
       comparement = (first, second) => first.toString() > second.toString();
-    } else {
-      comparement = compareFunction;
     }
 
     do {
