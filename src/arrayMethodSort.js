@@ -8,10 +8,10 @@ function applyCustomSort() {
     String(itemA) > String(itemB) ? 1 : 0) {
     let isSorted;
 
-    for (let loop = 1; loop < this.length; loop++) {
+    for (let decIteration = 1; decIteration < this.length; decIteration++) {
       isSorted = true;
 
-      for (let item = 0; item < this.length - loop; item++) {
+      for (let item = 0; item < this.length - decIteration; item++) {
         if (compareFunction(this[item], this[item + 1]) > 0) {
           [this[item], this[item + 1]] = [this[item + 1], this[item]];
           isSorted = false;
