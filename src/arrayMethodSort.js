@@ -3,26 +3,29 @@
 /**
  * Implement method Sort
  */
+
+const compareDefault = (a, b) => {
+  const stringA = String(a);
+  const stringB = String(b);
+
+  if (stringA === stringB) {
+    return 0;
+  }
+
+  return stringA > stringB ? 1 : -1;
+};
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let operationCount = -1;
+  [].__proto__.sort2 = function(compareFunction = compareDefault) {
+    let isSwapped = true;
 
-    while (operationCount !== 0) {
-      operationCount = 0;
+    while (isSwapped === true) {
+      isSwapped = false;
 
-      if (!compareFunction) {
-        for (let i = 0; i <= this.length - 1; i++) {
-          if (String(this[i]) > String(this[i + 1]) && this[i + 1]) {
-            [this[i], this[i + 1]] = [this[i + 1], this[i]];
-            operationCount++;
-          }
-        }
-      } else {
-        for (let i = 0; i <= this.length - 1; i++) {
-          if (compareFunction(this[i], this[i + 1]) > 0) {
-            [this[i], this[i + 1]] = [this[i + 1], this[i]];
-            operationCount++;
-          }
+      for (let i = 0; i <= this.length - 1; i++) {
+        if (compareFunction(this[i], this[i + 1]) > 0 && this[i + 1]) {
+          [this[i], this[i + 1]] = [this[i + 1], this[i]];
+          isSwapped = true;
         }
       }
     }
