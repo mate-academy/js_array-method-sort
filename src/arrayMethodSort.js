@@ -5,7 +5,28 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+    let madeSwitches = false;
+    let replacedTemporary;
+    let comparement = compareFunction;
+
+    if (arguments.length === 0) {
+      comparement = (first, second) => first.toString() > second.toString();
+    }
+
+    do {
+      madeSwitches = false;
+
+      for (let i = 0; i < this.length - 1; i++) {
+        if (comparement(this[i], this[i + 1]) > 0) {
+          replacedTemporary = this[i];
+          this[i] = this[i + 1];
+          this[i + 1] = replacedTemporary;
+          madeSwitches = true;
+        }
+      }
+    } while (madeSwitches);
+
+    return this;
   };
 }
 
