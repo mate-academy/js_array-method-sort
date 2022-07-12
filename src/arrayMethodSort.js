@@ -6,6 +6,7 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     let compFunc;
+    let hadChanges = false;
 
     if (arguments.length === 0) {
       compFunc = defaultCompareFunction;
@@ -13,13 +14,16 @@ function applyCustomSort() {
       compFunc = compareFunction;
     }
 
-    while (!isSorted(this, compFunc)) {
+    do {
+      hadChanges = 0;
+
       for (let i = 0; i < this.length - 1; i++) {
         if (compFunc(this[i], this[i + 1]) > 0) {
           switchPlaces(this, i, i + 1);
+          hadChanges = true;
         }
       }
-    }
+    } while (hadChanges);
 
     return this;
   };
@@ -32,15 +36,15 @@ function switchPlaces(arr, index1, index2) {
   arr[index2] = memory;
 }
 
-function isSorted(arr, callback) {
-  for (let i = 0; i < arr.length - 1; i++) {
-    if (callback(arr[i], arr[i + 1]) > 0) {
-      return false;
-    }
-  }
+// function isSorted(arr, callback) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     if (callback(arr[i], arr[i + 1]) > 0) {
+//       return false;
+//     }
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
 function defaultCompareFunction(a, b) {
   const first = '' + a;
