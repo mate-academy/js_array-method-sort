@@ -9,7 +9,7 @@ function applyCustomSort() {
       let temp = 0;
       const result = compareFunction(this[i], this[i + 1]);
 
-      if (result >= 1) {
+      if (result > 0) {
         temp = this[i + 1];
         this[i + 1] = this[i];
         this[i] = temp;
@@ -21,11 +21,8 @@ function applyCustomSort() {
   };
 }
 
-const deafult = (a, b) => {
-  const firstElem = String(a);
-  const secondElem = String(b);
-
-  return firstElem > secondElem;
+const deafult = (firstElem, secondElem) => {
+  return String(firstElem) > String(secondElem);
 };
 
 module.exports = applyCustomSort;
