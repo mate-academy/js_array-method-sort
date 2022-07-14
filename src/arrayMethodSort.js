@@ -3,6 +3,19 @@
 /**
  * Implement method Sort
  */
+const compareFunction = (a, b) => {
+  const strictA = String(a);
+  const strictB = String(b);
+
+  if (strictA > strictB) {
+    return 1;
+  } else if (strictA === strictB) {
+    return 0;
+  } else {
+    return -1;
+  }
+};
+
 function applyCustomSort() {
   [].__proto__.sort2 = function(callback = compareFunction) {
     let count;
@@ -25,18 +38,5 @@ function applyCustomSort() {
     return this;
   };
 }
-
-const compareFunction = (a, b) => {
-  const strictA = String(a);
-  const strictB = String(b);
-
-  if (strictA > strictB) {
-    return 1;
-  } else if (strictA === strictB) {
-    return 0;
-  } else {
-    return -1;
-  }
-};
 
 module.exports = applyCustomSort;
