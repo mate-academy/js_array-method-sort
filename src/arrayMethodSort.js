@@ -3,26 +3,24 @@
 /**
  * Implement method Sort
  */
+function defaultFunction(previous, current) {
+  const prevString = previous.toString();
+  const currString = current.toString();
+
+  if (prevString > currString) {
+    return 1;
+  }
+
+  if (prevString < currString) {
+    return -1;
+  }
+
+  return 0;
+}
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(compareFunction = defaultFunction) {
     let count = 0;
-    let compareFunctionForUse;
-
-    const defaultFunction = (previous, current) => {
-      if (previous.toString() > current.toString()) {
-        return 1;
-      }
-
-      if (previous.toString() < current.toString()) {
-        return -1;
-      }
-
-      return 0;
-    };
-
-    arguments.length < 1
-      ? compareFunctionForUse = defaultFunction
-      : compareFunctionForUse = compareFunction;
 
     do {
       count = 0;
@@ -31,7 +29,7 @@ function applyCustomSort() {
         const previous = this[i - 1];
         const current = this[i];
 
-        if (compareFunctionForUse(previous, current) > 0) {
+        if (compareFunction(previous, current) > 0) {
           this[i] = previous;
           this[i - 1] = current;
           count++;
