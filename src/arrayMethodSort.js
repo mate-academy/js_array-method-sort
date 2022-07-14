@@ -38,7 +38,7 @@ function defaultCompareFunction(a, b) {
     case first > second: return 1;
     case first === second: return 0;
     default:
-      throw new Error('some error'); // I have no idea what is it.
+      return 0;
   }
 }
 
