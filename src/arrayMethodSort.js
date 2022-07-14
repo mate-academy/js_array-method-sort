@@ -4,21 +4,14 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let compFunc;
+  [].__proto__.sort2 = function(compareFunction = defaultCompareFunction) {
     let hadChanges;
-
-    if (arguments.length === 0) {
-      compFunc = defaultCompareFunction;
-    } else {
-      compFunc = compareFunction;
-    }
 
     do {
       hadChanges = false;
 
       for (let i = 0; i < this.length - 1; i++) {
-        if (compFunc(this[i], this[i + 1]) > 0) {
+        if (compareFunction(this[i], this[i + 1]) > 0) {
           switchPlaces(this, i, i + 1);
           hadChanges = true;
         }
@@ -44,6 +37,8 @@ function defaultCompareFunction(a, b) {
     case first < second: return -1;
     case first > second: return 1;
     case first === second: return 0;
+    default:
+      throw new Error('some error'); // I have no idea what is it.
   }
 }
 
