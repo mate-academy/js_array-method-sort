@@ -8,20 +8,14 @@ function applyCustomSort() {
     const aStr = String(a);
     const bStr = String(b);
 
-    if (aStr > bStr) {
-      return 1;
-    } else if (aStr === bStr) {
-      return 0;
-    } else {
-      return -1;
-    }
+    return aStr > bStr;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
-    let count;
+    let isLastIteration;
 
     do {
-      count = 0;
+      isLastIteration = false;
 
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
@@ -30,10 +24,10 @@ function applyCustomSort() {
         if (compareFunction(this[i - 1], this[i]) > 0) {
           this[i - 1] = current;
           this[i] = prev;
-          count++;
+          isLastIteration = true;
         }
       }
-    } while (count > 0);
+    } while (isLastIteration);
 
     return this;
   };
