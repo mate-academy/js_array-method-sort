@@ -18,7 +18,7 @@ const compareAsStrings = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(callback = compareAsStrings) {
-    let count = 0;
+    let count;
 
     do {
       count = 0;
