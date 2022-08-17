@@ -5,7 +5,18 @@
  */
 function applyCustomSort() {
   const compareString = (a, b) => {
-    return +(String(a) > String(b));
+    const strA = String(a);
+    const strB = String(b);
+
+    if (strA < strB) {
+      return -1;
+    }
+
+    if (strA > strB) {
+      return 1;
+    }
+
+    return 0;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareString) {
