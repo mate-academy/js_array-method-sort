@@ -4,15 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const defaultCompare = function(a, b) {
-      switch (true) {
-        case (`${a}` > `${b}`): return 1;
-        case (`${a}` < `${b}`): return -1;
-        case (`${a}` === `${b}`): return 0;
-        default: throw new Error('Error: defaulCompre');
-      }
-    };
+  [].__proto__.sort2 = function(compareFunction = defaultCompare) {
     const comparator = compareFunction !== undefined
       ? compareFunction
       : defaultCompare;
@@ -37,4 +29,12 @@ function applyCustomSort() {
   };
 }
 
+function defaultCompare(a, b) {
+  switch (true) {
+    case (`${a}` > `${b}`): return 1;
+    case (`${a}` < `${b}`): return -1;
+    case (`${a}` === `${b}`): return 0;
+    default: throw new Error('Error: defaultCompre');
+  }
+};
 module.exports = applyCustomSort;
