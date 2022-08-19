@@ -21,7 +21,8 @@ function applyCustomSort() {
           count++;
         }
       }
-    } while (count > 0);
+    }
+    while (count > 0);
 
     return this;
   };
