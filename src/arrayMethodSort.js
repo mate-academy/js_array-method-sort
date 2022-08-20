@@ -3,9 +3,10 @@
 /**
  * Implement method Sort
  */
+const callback = (a, b) => a.toString() > b.toString();
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(callback = (a, b) =>
-    a.toString() > b.toString()) {
+  [].__proto__.sort2 = function(customSort = callback) {
     // write code here
     let count;
 
@@ -16,7 +17,7 @@ function applyCustomSort() {
         const current = this[i];
         const next = this[i + 1];
 
-        if (callback(current, next) > 0) {
+        if (customSort(current, next) > 0) {
           count++;
           this[i + 1] = current;
           this[i] = next;
