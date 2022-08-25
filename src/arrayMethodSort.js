@@ -3,13 +3,13 @@
 /**
  * Implement method Sort
  */
-function applyCustomSort() {
+function appltempCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     // write code here
-    let x = compareFunction;
+    let compare = compareFunction;
 
-    if (x === undefined) {
-      x = function(a, b) {
+    if (compare === undefined) {
+      compare = function(a, b) {
         if (a.toString() >= b.toString()) {
           return 1;
         } else {
@@ -18,14 +18,14 @@ function applyCustomSort() {
       };
     };
 
-    let y = 0;
+    let temp = 0;
 
     for (let i = 0; i < this.length - 1; i++) {
-      for (let i2 = 0; i2 < this.length - 1 - i; i2++) {
-        if (x(this[i2], this[i2 + 1]) > 0) {
-          y = this[i2];
-          this[i2] = this[i2 + 1];
-          this[i2 + 1] = y;
+      for (let j = 0; j < this.length - 1 - i; j++) {
+        if (compare(this[j], this[j + 1]) > 0) {
+          temp = this[j];
+          this[j] = this[j + 1];
+          this[j + 1] = temp;
         };
       };
     };
@@ -34,4 +34,4 @@ function applyCustomSort() {
   };
 }
 
-module.exports = applyCustomSort;
+module.exports = appltempCustomSort;
