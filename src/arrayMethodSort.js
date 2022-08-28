@@ -8,9 +8,11 @@ function applyCustomSort() {
     const stringA = String(a);
     const stringB = String(b);
 
-    return (stringA > stringB) ? 1
-      : (stringA === stringB) ? 0
-        : -1;
+    if (stringA > stringB) {
+      return 1;
+    } else if (stringA === stringB) {
+      return -1;
+    }
   };
 
   [].__proto__.sort2 = function(compareFunction = defaultSort) {
@@ -20,12 +22,12 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const first = this[i - 1];
-        const second = this[i];
+        const previousValue = this[i - 1];
+        const currentValue = this[i];
 
-        if (compareFunction(first, second) > 0) {
-          this[i] = first;
-          this[i - 1] = second;
+        if (compareFunction(previousValue, currentValue) > 0) {
+          this[i] = previousValue;
+          this[i - 1] = currentValue;
           count++;
         }
       }
