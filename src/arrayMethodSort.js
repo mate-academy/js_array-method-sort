@@ -5,8 +5,8 @@
  */
 function applyCustomSort() {
   const compareString = (a, b) => {
-    const stringA = `${a}`;
-    const stringB = `${b}`;
+    const stringA = String(a);
+    const stringB = String(b);
 
     if (stringA > stringB) {
       return 1;
