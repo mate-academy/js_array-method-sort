@@ -7,15 +7,19 @@
 const compareStrings = (a, b) => {
   const stringFirst = String(b);
   const stringSecond = String(a);
-  const res = (stringFirst < stringSecond) ? 1
-    : (stringFirst > stringSecond) ? -1 : 0;
+  let res = 0;
+
+  if (stringFirst < stringSecond) {
+    res = 1;
+  } else if (stringFirst > stringSecond) {
+    res = -1;
+  }
 
   return res;
 };
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(callback) {
-    // write code here
     let myCallback;
 
     if (callback === undefined) {
