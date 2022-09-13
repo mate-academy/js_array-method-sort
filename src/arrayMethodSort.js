@@ -10,11 +10,13 @@ const compareStrings = (a, b) => {
 
   if (StringA > StringB) {
     return 1;
-  } else if (StringA === StringB) {
+  } 
+  
+    if (StringA === StringB) {
     return 0;
-  } else {
+  } 
+  
     return -1;
-  }
 };
 
 function applyCustomSort() {
