@@ -5,7 +5,7 @@
  */
 function applyCustomSort() {
   /*
-    We need this func instead of localCompare, becouse we need to
+    We need this func instead of localCompare, because we need to
     implement native sort method
   */
   const stringCompare = (prev, curr) => {
