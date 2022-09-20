@@ -4,15 +4,19 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  const stringCompare = (a, b) => {
-    const stringA = String(a);
-    const stringB = String(b);
+  /*
+    We need this func instead of localCompare, becouse we need to
+    implement native sort method
+  */
+  const stringCompare = (prev, curr) => {
+    const prevString = String(prev);
+    const currString = String(curr);
 
-    if (stringA > stringB) {
+    if (prevString > currString) {
       return 1;
     }
 
-    if (stringA < stringB) {
+    if (prevString < currString) {
       return -1;
     }
 
