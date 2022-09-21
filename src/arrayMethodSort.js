@@ -15,14 +15,14 @@ function applyCustomSort() {
         const prev = this[i - 1];
         const curr = this[i];
 
-        if(compareFunction(prev, curr) > 0) {
+        if (compareFunction(prev, curr) > 0) {
           this[i - 1] = curr;
           this[i] = prev;
 
           count++;
         }
       }
-    } while (count > 0)
+    } while (count > 0);
 
     // if (this.length > startArray.length) {
     //   return startArray;
@@ -45,6 +45,6 @@ const compareAsStrings = (a, b) => {
   }
 
   return -1;
-}
+};
 
 module.exports = applyCustomSort;
