@@ -5,6 +5,7 @@
  */
 
 const compareAsStrings = (a, b) => {
+  // return String(a).localeCompare(String(b));
   const stringA = String(a);
   const stringB = String(b);
 
