@@ -5,7 +5,8 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction =
-  compareFuncAsOriginalArraySortMethod) {
+  initialCompareFn
+  ) {
     let count = 1;
 
     while (count > 0) {
@@ -24,7 +25,7 @@ function applyCustomSort() {
     return this;
   };
 
-  function compareFuncAsOriginalArraySortMethod(firstElement, secondElement) {
+  function initialCompareFn(firstElement, secondElement) {
     const firstItem = firstElement.toString();
     const secondItem = secondElement.toString();
 
