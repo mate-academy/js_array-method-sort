@@ -12,7 +12,7 @@ const defaultCompare = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = defaultCompare) {
-    let len = this.length;
+    let len = this.length * 2;
 
     while (len > 0) {
       for (let i = 1; i < this.length; i++) {
