@@ -5,18 +5,18 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = defaultComparison) {
-    let cnt = 1;
+    let count = 1;
 
-    while (cnt !== 0) {
+    while (count !== 0) {
       let prev = this[0];
 
-      cnt = 0;
+      count = 0;
 
       for (let i = 1; i < this.length; i++) {
         if (compareFunction(prev, this[i]) > 0) {
           this[i - 1] = this[i];
           this[i] = prev;
-          cnt++;
+          count++;
         }
 
         prev = this[i];
@@ -35,9 +35,7 @@ function applyCustomSort() {
       return 0;
     }
 
-    if (a.toString() > b.toString()) {
-      return 1;
-    }
+   return 1;
   }
 }
 
