@@ -26,13 +26,13 @@ function applyCustomSort() {
   };
 }
 
-const compareString = (a, b) => {
-  const strA = `${a}`;
-  const strB = `${b}`;
+const compareString = (prevValue, currentValue) => {
+  const strPrev = `${prevValue}`;
+  const strCurrent = `${currentValue}`;
 
-  if (strA > strB) {
+  if (strPrev > strCurrent) {
     return 1;
-  } else if (strA < strB) {
+  } else if (strPrev < strCurrent) {
     return -1;
   } else {
     return 0;
