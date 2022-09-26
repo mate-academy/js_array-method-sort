@@ -5,20 +5,7 @@
  */
 
 function applyCustomSort() {
-  const copmareAsStrings = (a, b) => {
-    const stringA = String(a);
-    const stringB = String(b);
-
-    if (stringA > stringB) {
-      return 1;
-    } else if (stringA === stringB) {
-      return 0;
-    }
-
-    return -1;
-  };
-
-  [].__proto__.sort2 = function(compareFunction = copmareAsStrings) {
+  [].__proto__.sort2 = function(compareFunction = compareInit) {
     let count;
 
     do {
@@ -37,6 +24,21 @@ function applyCustomSort() {
     } while (count > 0);
 
     return this;
+  };
+
+  const compareInit = (firstElem, secondElem) => {
+    const stringA = String(firstElem);
+    const stringB = String(secondElem);
+
+    if (stringA > stringB) {
+      return 1;
+    }
+
+    if (stringA === stringB) {
+      return 0;
+    }
+
+    return -1;
   };
 }
 
