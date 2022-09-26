@@ -5,9 +5,9 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareString) {
-    let count = 1;
+    let count;
 
-    while (count > 0) {
+    do {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
@@ -20,15 +20,15 @@ function applyCustomSort() {
           count++;
         }
       }
-    }
+    } while (count > 0);
 
     return this;
   };
 }
 
 const compareString = (prevValue, currentValue) => {
-  const strPrev = `${prevValue}`;
-  const strCurrent = `${currentValue}`;
+  const strPrev = prevValue + '';
+  const strCurrent = currentValue + '';
 
   if (strPrev > strCurrent) {
     return 1;
