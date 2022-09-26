@@ -3,7 +3,9 @@
 const defaultCompare = (a, b) => {
   if (String(a) > String(b)) {
     return 1;
-  } else if (String(a) < String(b)) {
+  }
+
+  if (String(a) < String(b)) {
     return -1;
   }
 
