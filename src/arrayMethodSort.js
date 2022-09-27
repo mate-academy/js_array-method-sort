@@ -32,11 +32,13 @@ const compareString = (prevValue, currentValue) => {
 
   if (strPrev > strCurrent) {
     return 1;
-  } else if (strPrev < strCurrent) {
-    return -1;
-  } else {
-    return 0;
   }
+
+  if (strPrev < strCurrent) {
+    return -1;
+  }
+
+  return 0;
 };
 
 module.exports = applyCustomSort;
