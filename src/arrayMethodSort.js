@@ -6,29 +6,29 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     let switchElements = false;
+    let counter = 1;
+    const compareFunctionExist = arguments.length;
 
-    for (let i = 1; i < this.length; i++) {
-      switch (arguments.length) {
-        case 0:
-          if ('' + this[i - 1] > '' + this[i]) {
-            switchElements = true;
-          }
-          break;
+    while (counter < this.length) {
+      if (!compareFunctionExist) {
+        switchElements = ('' + this[counter - 1] > '' + this[counter]);
+      }
 
-        default:
-          if ((compareFunction(this[i - 1], this[i])) > 0) {
-            switchElements = true;
-          }
+      if (compareFunctionExist) {
+        switchElements = (
+          (compareFunction(this[counter - 1], this[counter])) > 0
+        );
       }
 
       if (switchElements) {
-        [this[i - 1], this[i]] = [this[i], this[i - 1]];
+        [this[counter - 1], this[counter]] = [this[counter], this[counter - 1]];
 
-        if (i > 1) {
-          i -= 2;
-        }
+        counter = (counter > 1)
+          ? counter -= 2
+          : counter;
       }
 
+      counter++;
       switchElements = false;
     }
 
