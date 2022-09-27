@@ -12,10 +12,7 @@ function applyCustomSort() {
 
       for (let i = 1; i < this.length; i++) {
         if (compareFunction(this[i - 1], this[i]) > 0) {
-          const previous = this[i - 1];
-
-          this[i - 1] = this[i];
-          this[i] = previous;
+          [this[i], this[i - 1]] = [this[i - 1], this[i]];
           isChanged = true;
         }
       }
