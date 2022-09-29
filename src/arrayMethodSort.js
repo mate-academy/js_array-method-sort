@@ -4,16 +4,18 @@
  * Implement method Sort
  */
 const compareAsStrings = (a, b) => {
-  const stringA = String(a);
-  const stringB = String(b);
+  const prevItem = String(a);
+  const currentItem = String(b);
 
-  if (stringA > stringB) {
+  if (prevItem > currentItem) {
     return 1;
-  } else if (stringA === stringB) {
-    return 0;
-  } else {
-    return -1;
   }
+
+  if (prevItem === currentItem) {
+    return 0;
+  }
+
+  return -1;
 };
 
 function applyCustomSort() {
