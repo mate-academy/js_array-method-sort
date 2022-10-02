@@ -5,8 +5,8 @@
  */
 function applyCustomSort() {
   const compareFn = (a, b) => {
-    const aToString = String(a); // a.toString()
-    const bToString = String(b); // a.toString()
+    const aToString = String(a);
+    const bToString = String(b);
 
     if (aToString > bToString) {
       return 1;
@@ -26,12 +26,12 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const firstCheked = this[i - 1];
-        const secondCheked = this[i];
+        const previous = this[i - 1];
+        const current = this[i];
 
-        if (compareFunction(firstCheked, secondCheked) > 0) {
-          this[i - 1] = secondCheked;
-          this[i] = firstCheked;
+        if (compareFunction(previous, current) > 0) {
+          this[i - 1] = current;
+          this[i] = previous;
 
           count++;
         }
