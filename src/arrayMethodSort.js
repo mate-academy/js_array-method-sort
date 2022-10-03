@@ -9,11 +9,13 @@ const sortFunction = (a, b) => {
 
   if (srtingA > stringB) {
     return 1;
-  } else if (srtingA === stringB) {
-    return 0;
-  } else {
-    return -1;
   }
+
+  if (srtingA === stringB) {
+    return 0;
+  }
+
+  return -1;
 };
 
 function applyCustomSort() {
