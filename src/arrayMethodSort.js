@@ -6,10 +6,6 @@ const compareFunction = (a, b) => {
 
   if (strA > strB) {
     return 1;
-  } else if (strA === strB) {
-    return 0;
-  } else {
-    return -1;
   }
 };
 
