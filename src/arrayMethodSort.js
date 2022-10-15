@@ -7,6 +7,14 @@ const compareFunction = (a, b) => {
   if (strA > strB) {
     return 1;
   }
+
+  if (strA === strB) {
+    return 0;
+  }
+
+  if (strA < strB) {
+    return -1;
+  }
 };
 
 function applyCustomSort() {
