@@ -3,9 +3,28 @@
 /**
  * Implement method Sort
  */
+const compareAsStrings = (a, b) => (String(a) > String(b)) ? 1 : -1;
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+  [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
+    let count;
+
+    do {
+      count = 0;
+
+      for (let i = 1; i < this.length; i++) {
+        const prev = this[i - 1];
+        const curent = this[i];
+
+        if (compareFunction(prev, curent) > 0) {
+          this[i] = prev;
+          this[i - 1] = curent;
+          count++;
+        }
+      }
+    } while (count > 0);
+
+    return this;
   };
 }
 
