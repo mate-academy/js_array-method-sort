@@ -4,15 +4,14 @@
  * Implement method Sort
  */
 function compareAsString(a, b) {
-  /* eslint-disable no-param-reassign */
-  a = String(a);
-  b = String(b);
+  const element1 = String(a);
+  const element2 = String(b);
 
-  if (a > b) {
+  if (element1 > element2) {
     return 1;
   }
 
-  if (a < b) {
+  if (element1 < element2) {
     return -1;
   }
 
