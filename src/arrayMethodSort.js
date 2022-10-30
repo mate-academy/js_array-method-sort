@@ -4,12 +4,13 @@ function toStringSort(firstElment, seondElement) {
   const firstStrElement = String(firstElment);
   const secondStrElement = String(seondElement);
 
-  if (firstStrElement > secondStrElement) {
-    return 1;
-  } else if (firstStrElement < secondStrElement) {
-    return -1;
-  } else {
-    return 0;
+  switch (true) {
+    case (firstStrElement > secondStrElement):
+      return 1;
+    case (firstStrElement < secondStrElement):
+      return -1;
+    case (firstStrElement === secondStrElement):
+      return 0;
   }
 }
 
