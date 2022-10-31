@@ -4,6 +4,21 @@
  * Implement method Sort
  */
 function applyCustomSort() {
+  const stringComperison = (prev, current) => {
+    const prevEl = '' + prev;
+    const curEl = '' + current;
+
+    if (prevEl > curEl) {
+      return 1;
+    }
+
+    if (prevEl < curEl) {
+      return -1;
+    }
+
+    return 0;
+  };
+
   [].__proto__.sort2 = function(compareFunction = stringComperison) {
     // write code here
     let counter;
@@ -25,21 +40,6 @@ function applyCustomSort() {
     } while (counter > 0);
 
     return this;
-  };
-
-  const stringComperison = (prev, current) => {
-    const prevEl = '' + prev;
-    const curEl = '' + current;
-
-    if (prevEl > curEl) {
-      return 1;
-    }
-
-    if (prevEl < curEl) {
-      return -1;
-    }
-
-    return 0;
   };
 }
 
