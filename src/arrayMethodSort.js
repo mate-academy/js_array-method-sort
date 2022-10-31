@@ -4,15 +4,18 @@ function toStringSort(firstElment, seondElement) {
   const firstStrElement = String(firstElment);
   const secondStrElement = String(seondElement);
 
-  switch (true) {
-    case (firstStrElement > secondStrElement):
-      return 1;
-    case (firstStrElement < secondStrElement):
-      return -1;
-    case (firstStrElement === secondStrElement):
-      return 0;
-  }
-}
+  if (firstStrElement > secondStrElement) {
+    return 1;
+  };
+
+  if (firstStrElement < secondStrElement) {
+    return -1;
+  };
+
+  if (firstStrElement === secondStrElement) {
+    return 0;
+  };
+};
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = toStringSort) {
