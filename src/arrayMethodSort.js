@@ -27,11 +27,14 @@ function applyCustomSort() {
 }
 
 function compareAsStrings(a, b) {
-  if (String(a) > String(b)) {
+  const strA = String(a);
+  const strB = String(b);
+
+  if (strA > strB) {
     return 1;
   }
 
-  if (String(a) < String(b)) {
+  if (strA < strB) {
     return -1;
   }
 
