@@ -19,33 +19,16 @@ function applyCustomSort() {
       };
     }
 
-    // for (let i = 0; i < this.length; i++) {
-    //   for (let j = i + 1; j < this.length; j++) {
-    //     if (internalExternalSwitchFunc(this[i], this[j]) > 0) {
-    //       const temp = this[i];
-    //       this[i] = this[j];
-    //       this[j] = temp;
-    //     }
-    //   }
-    // }
+    for (let i = 0; i < this.length; i++) {
+      for (let j = i + 1; j < this.length; j++) {
+        if (internalExternalSwitchFunc(this[i], this[j]) > 0) {
+          const temp = this[i];
 
-    let counter;
-
-    do {
-      counter = 0;
-
-      for (let i = 1; i < this.length; i++) {
-        const prevElem = this[i - 1];
-        const currentElem = this[i];
-
-        if (internalExternalSwitchFunc(prevElem, currentElem) > 0) {
-          this[i] = prevElem;
-          this[i - 1] = currentElem;
-
-          counter++;
+          this[i] = this[j];
+          this[j] = temp;
         }
       }
-    } while (counter > 0);
+    }
 
     return this;
   };
