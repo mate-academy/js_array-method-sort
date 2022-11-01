@@ -1,8 +1,20 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
+const compareStrings = (previuos, next) => {
+  const previousString = String(previuos);
+  const nextString = String(next);
+
+  if (previousString > nextString) {
+    return 1;
+  }
+
+  if (previousString === nextString) {
+    return 0;
+  }
+
+  return -1;
+};
+
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
     let count;
@@ -11,12 +23,12 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const previosValue = this[i - 1];
+        const previousValue = this[i - 1];
         const nextValue = this[i];
 
-        if (compareFunction(previosValue, nextValue) > 0) {
+        if (compareFunction(previousValue, nextValue) > 0) {
           this[i - 1] = nextValue;
-          this[i] = previosValue;
+          this[i] = previousValue;
 
           count++;
         }
@@ -25,17 +37,6 @@ function applyCustomSort() {
 
     return this;
   };
-}
-
-function compareStrings(previos, next) {
-  const previosString = String(previos);
-  const nextString = String(next);
-
-  if (previosString > nextString) {
-    return 1;
-  }
-
-  return -1;
 }
 
 module.exports = applyCustomSort;
