@@ -25,7 +25,7 @@ function applyCustomSort() {
     do {
       count = 0;
 
-      for (let i = 1; i < this.lenght; i++) {
+      for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
         const current = this[i];
 
