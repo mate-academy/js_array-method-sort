@@ -3,9 +3,24 @@
 /**
  * Implement method Sort
  */
+const compareStrings = (a, b) => {
+  const firstString = String(a);
+  const secondString = String(b);
+
+  if (firstString > secondString) {
+    return 1;
+  }
+
+  if (firstString === secondString) {
+    return 0;
+  }
+
+  return -1;
+};
+
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
-    let count = 0;
+    let count;
 
     do {
       count = 0;
@@ -25,17 +40,6 @@ function applyCustomSort() {
 
     return this;
   };
-}
-
-function compareStrings(a, b) {
-  const firstString = String(a);
-  const secondString = String(b);
-
-  if (firstString > secondString) {
-    return 1;
-  }
-
-  return -1;
 }
 
 module.exports = applyCustomSort;
