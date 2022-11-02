@@ -1,21 +1,19 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
-
 function applyCustomSort() {
   function compareAsStrings(a, b) {
-    const stringA = String(a);
-    const stringB = String(b);
+    const prev = a.toString();
+    const current = b.toString();
 
-    if (stringA > stringB) {
+    if (prev > current) {
       return 1;
-    } else if (stringA === stringB) {
-      return 0;
-    } else {
+    }
+
+    if (prev < current) {
       return -1;
     }
+
+    return 0;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
