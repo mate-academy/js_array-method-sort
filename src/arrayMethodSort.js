@@ -9,7 +9,8 @@ const compareStrings = (a, b) => {
 
   if (strA > strB) {
     return 1;
-  } else if (strA === strB) {
+  }
+  if (strA === strB) {
     return 0;
   };
 
