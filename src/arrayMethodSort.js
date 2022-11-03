@@ -18,9 +18,11 @@ const compareAsStrings = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let count = 0;
+    let count;
 
     do {
+      count = 0;
+
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
         const current = this[i];
