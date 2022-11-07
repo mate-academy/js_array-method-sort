@@ -7,12 +7,10 @@ const compareAsStr = (a, b) => {
   const stringA = String(a);
   const stringB = String(b);
 
-  if (stringA > stringB) {
-    return 1;
-  } else if (stringA === stringB) {
-    return 0;
-  } else {
-    return -1;
+  switch (stringA > stringB) {
+    case true: return 1;
+    case false: return -1;
+    default: return 0;
   }
 };
 
