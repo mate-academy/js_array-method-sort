@@ -55,6 +55,6 @@ test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => a - b)',
 test(
   `custom compare function, strings: 
   ['ёж','як','аист'].sort2((a, b) => a.localeCompare(b))`, () => {
-    expect(['ёж', 'як', 'аист'].sort2((a, b) => a. localeCompare(b)))
+    expect(['ёж', 'як', 'аист'].sort2((a, b) => a.localeCompare(b)))
       .toEqual(['аист', 'ёж', 'як']);
   });
