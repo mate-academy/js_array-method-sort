@@ -5,27 +5,12 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    function compareStr(a, b) {
-      const strA = String(a);
-      const strB = String(b);
-
-      if (strA > strB) {
-        return 1;
-      }
-
-      if (strA < strB) {
-        return -1;
-      }
-
-      return 0;
-    }
-
     const callback = compareFunction || compareStr;
 
-    let cnt;
+    let countChangeOperation;
 
     do {
-      cnt = 0;
+      countChangeOperation = 0;
 
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
@@ -34,13 +19,28 @@ function applyCustomSort() {
         if (callback(prev, current) > 0) {
           this[i - 1] = current;
           this[i] = prev;
-          cnt++;
+          countChangeOperation++;
         }
       }
-    } while (cnt > 0);
+    } while (countChangeOperation > 0);
 
     return this;
   };
+}
+
+function compareStr(a, b) {
+  const strA = String(a);
+  const strB = String(b);
+
+  if (strA > strB) {
+    return 1;
+  }
+
+  if (strA < strB) {
+    return -1;
+  }
+
+  return 0;
 }
 
 module.exports = applyCustomSort;
