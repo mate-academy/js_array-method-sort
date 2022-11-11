@@ -8,13 +8,11 @@ function applyCustomSort() {
     const stringA = String(a);
     const stringB = String(b);
 
-    if (stringA > stringB) {
-      return 1;
-    } else if (stringA < stringB) {
-      return -1;
-    } else {
+    if (stringA === stringB) {
       return 0;
     }
+
+    return stringA > stringB ? 1 : -1;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsSrings) {
