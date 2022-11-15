@@ -5,24 +5,30 @@
  */
 
 function compareString(a, b) {
-  if (String(a) > String(b)) {
-    return 1;
-  } else if (String(a) < String(b)) {
-    return -1;
-  } else {
-    return 0;
-  }
+  const stringA = String(a);
+  const stringB = String(b);
+
+  return (stringA > stringB) ? 1 : (stringA === stringB) ? 0 : -1;
 };
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareString) {
-    for (let i = 0; i < this.length; i++) {
-      for (let j = i + 1; j < this.length; j++) {
-        if (compareFunction(this[i], this[j]) > 0) {
-          [this[i], this[j]] = [this[j], this[i]];
+    let count;
+
+    do {
+      count = 0;
+
+      for (let i = 1; i < this.length; i++) {
+        const prev = this[i - 1];
+        const current = this[i];
+
+        if (compareFunction(prev, current) > 0) {
+          count++;
+          this[i - 1] = current;
+          this[i] = prev;
         }
       }
-    }
+    } while (count > 0);
 
     return this;
   };
