@@ -3,29 +3,39 @@
 /**
  * Implement method Sort
  */
+function compareAsStrings(prev, current) {
+  const prevStr = prev.toString();
+  const currentStr = current.toString();
+
+  if (prevStr > currentStr) {
+    return 1;
+  } else if (prevStr === currentStr) {
+    return 0;
+  } else {
+    return -1;
+  }
+}
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    for (let x = 0; x < this.length; x++) {
-      for (let y = 0; y < (this.length - x - 1); y++) {
-        const currentIndex = String(this[y]);
-        const nextIndex = String(this[y + 1]);
+  [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
+    let count;
 
-        let compareResult = false;
+    do {
+      count = 0;
 
-        if (typeof (compareFunction) === 'function') {
-          compareResult = compareFunction(this[y], this[y + 1]) > 0;
-        } else {
-          compareResult = (currentIndex > nextIndex);
-        };
+      for (let x = 1; x < this.length; x++) {
+        const prev = this[x - 1];
+        const current = this[x];
 
-        if (compareResult) {
-          const temp = this[y];
+        if (compareFunction(prev, current) > 0) {
+          const temp = current;
 
-          this[y] = this[y + 1];
-          this[y + 1] = temp;
+          this[x] = prev;
+          this[x - 1] = temp;
+          count++;
         }
       }
-    }
+    } while (count > 0);
 
     return this;
   };
