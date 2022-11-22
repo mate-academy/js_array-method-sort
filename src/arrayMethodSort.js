@@ -11,7 +11,7 @@ function compareStrings(previos, next) {
     return 1;
   }
 
-  return -1;
+  return 0;
 }
 
 function applyCustomSort() {
@@ -39,16 +39,3 @@ function applyCustomSort() {
 }
 
 module.exports = applyCustomSort;
-// function sortFunction(a, b){
-//   2
-//     if(a меньше, чем b по некоторому критерию)
-//   3
-//        return -1 // Или любое число, меньшее нуля
-//   4
-//     if(a больше, чем b по некоторому критерию)
-//   5
-//        return 1  // Или любое число, большее нуля
-//   6
-//     // в случае а = b вернуть 0
-//   7
-//     return 0
