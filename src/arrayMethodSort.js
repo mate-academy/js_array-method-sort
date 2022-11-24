@@ -4,42 +4,25 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(compareFunction = (a, b) =>
+    a.toString().localeCompare(b.toString())
+  ) {
     let count;
-    let current;
     let prev;
 
-    if (!compareFunction) {
-      do {
-        count = 0;
+    do {
+      count = 0;
 
-        for (let i = 1; i < this.length; i++) {
-          current = this[i];
-          prev = this[i - 1];
+      for (let i = 1; i < this.length; i++) {
+        prev = this[i - 1];
 
-          if (current.toString().localeCompare(prev.toString()) < 0) {
-            this[i] = prev;
-            this[i - 1] = current;
-            count++;
-          }
+        if (compareFunction(this[i], prev) < 0) {
+          this[i - 1] = this[i];
+          this[i] = prev;
+          count++;
         }
-      } while (count > 0);
-    } else {
-      do {
-        count = 0;
-
-        for (let i = 1; i < this.length; i++) {
-          current = this[i];
-          prev = this[i - 1];
-
-          if (compareFunction(current, prev) < 0) {
-            this[i] = prev;
-            this[i - 1] = current;
-            count++;
-          }
-        }
-      } while (count > 0);
-    }
+      }
+    } while (count > 0);
 
     return this;
   };
