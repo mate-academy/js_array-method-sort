@@ -4,33 +4,35 @@
  * Implement method Sort
  */
 
-function noCallback(a, b) {
+function defaultCompare(a, b) {
   const stringA = String(a);
   const stringB = String(b);
 
   if (stringA > stringB) {
     return 1;
-  } else if (stringA === stringB) {
-    return 0;
-  } else {
-    return -1;
   }
+
+  if (stringA === stringB) {
+    return 0;
+  }
+
+  return -1;
 }
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = noCallback) {
+  [].__proto__.sort2 = function(compareFunction = defaultCompare) {
     let count;
 
     do {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const firstElement = this[i - 1];
-        const secondElement = this[i];
+        const previous = this[i - 1];
+        const current = this[i];
 
-        if (compareFunction(firstElement, secondElement) > 0) {
-          this[i - 1] = secondElement;
-          this[i] = firstElement;
+        if (compareFunction(previous, current) > 0) {
+          this[i - 1] = current;
+          this[i] = previous;
           count++;
         }
       };
