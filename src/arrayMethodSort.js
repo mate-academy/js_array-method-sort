@@ -5,21 +5,18 @@
  */
 function applyCustomSort() {
   const defaultCompare = (can1, can2) => {
-    const can1Str = typeof can1 === 'string' ? can1 : can1.toString();
-    const can2Str = typeof can2 === 'string' ? can2 : can2.toString();
-    let currentDif;
+    const str1 = String(can1);
+    const str2 = String(can2);
 
-    for (let i = 0; i < can1Str.length; i++) {
-      currentDif = can1Str.charCodeAt(i) - can2Str.charCodeAt(i);
-
-      if (currentDif > 0) {
-        return 1;
-      } else if (currentDif === 0) {
-        continue;
-      } else {
-        return -1;
-      }
+    if (str1 > str2) {
+      return 1;
     }
+
+    if (str1 < str2) {
+      return -1;
+    }
+
+    return 0;
   };
 
   [].__proto__.sort2 = function(compareFunction = defaultCompare) {
