@@ -11,13 +11,11 @@ function compareFunction(a, b) {
     return 1;
   }
 
-  if (stringA === stringB) {
-    return 0;
-  }
-
   if (stringA < stringB) {
     return -1;
   }
+
+  return 0;
 }
 
 function applyCustomSort() {
