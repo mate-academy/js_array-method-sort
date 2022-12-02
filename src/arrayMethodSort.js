@@ -4,21 +4,6 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  const testString = (a, b) => {
-    const firstString = String(a);
-    const secondString = String(b);
-
-    if (firstString > secondString) {
-      return 1;
-    }
-
-    if (firstString < secondString) {
-      return -1;
-    }
-
-    return 0;
-  };
-
   [].__proto__.sort2 = function(compareFunction = testString) {
     let count = 1; // 2
 
@@ -44,5 +29,20 @@ function applyCustomSort() {
     return this;
   };
 }
+
+const testString = (a, b) => {
+  const firstString = String(a);
+  const secondString = String(b);
+
+  if (firstString > secondString) {
+    return 1;
+  }
+
+  if (firstString < secondString) {
+    return -1;
+  }
+
+  return 0;
+};
 
 module.exports = applyCustomSort;
