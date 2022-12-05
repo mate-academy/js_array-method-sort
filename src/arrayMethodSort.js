@@ -3,22 +3,22 @@
 /**
  * Implement method Sort
  */
+const compareAsString = (a, b) => {
+  const aToString = String(a);
+  const bToString = String(b);
+
+  if (aToString > bToString) {
+    return 1;
+  }
+
+  if (aToString < bToString) {
+    return -1;
+  }
+
+  return 0;
+};
+
 function applyCustomSort() {
-  const compareAsString = (a, b) => {
-    const aToString = String(a);
-    const bToString = String(b);
-
-    if (aToString > bToString) {
-      return 1;
-    }
-
-    if (aToString < bToString) {
-      return -1;
-    }
-
-    return 0;
-  };
-
   [].__proto__.sort2 = function(compareFunction = compareAsString) {
     let count;
 
