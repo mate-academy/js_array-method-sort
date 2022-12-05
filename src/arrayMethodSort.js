@@ -32,10 +32,6 @@ function applyCustomSort() {
           this[i - 1] = next;
           this[i] = prev;
         }
-
-        if (arguments.length < 1) {
-
-        }
       }
     } while (count > 0);
 
