@@ -10,11 +10,13 @@ function applyCustomSort() {
 
     if (strA > strB) {
       return 1;
-    } else if (strA === strB) {
-      return 0;
-    } else {
+    }
+
+    if (strA < strB) {
       return -1;
     }
+
+    return 0;
   };
 
   [].__proto__.sort2 = function(callback = compareFunction) {
