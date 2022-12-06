@@ -6,16 +6,20 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = defaultSort) {
     let temp;
+    let limiter;
 
-    for (let i = 0; i < this.length; i++) {
-      for (let j = i + 1; j < this.length; j++) {
-        if (compareFunction(this[i], this[j]) > 0) {
+    do {
+      limiter = false;
+
+      for (let i = 0; i < this.length - 1; i++) {
+        if (compareFunction(this[i], this[i + 1]) > 0) {
           temp = this[i];
-          this[i] = this[j];
-          this[j] = temp;
+          this[i] = this[i + 1];
+          this[i + 1] = temp;
+          limiter = true;
         }
       }
-    }
+    } while (limiter);
 
     return this;
   };
@@ -24,11 +28,13 @@ function applyCustomSort() {
 function defaultSort(a, b) {
   if (String(a) > String(b)) {
     return 1;
-  } else if (String(a) < String(b)) {
-    return -1;
-  } else {
-    return 0;
   }
+
+  if (String(a) < String(b)) {
+    return -1;
+  }
+
+  return 0;
 }
 
 module.exports = applyCustomSort;
