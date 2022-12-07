@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = compareString) {
+  [].__proto__.sort2 = function(compareFunction = compareItems) {
     let count;
 
     do {
@@ -26,7 +26,7 @@ function applyCustomSort() {
   };
 }
 
-const compareString = function compareItems(a, b) {
+function compareItems(a, b) {
   if (String(a) > String(b)) {
     return 1;
   }
