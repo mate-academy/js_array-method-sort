@@ -32,7 +32,9 @@ const defaultCompare = (a, b) => {
 
   if (aStr > bStr) {
     return 1;
-  } else if (aStr === bStr) {
+  }
+
+  if (aStr === bStr) {
     return 0;
   }
 
