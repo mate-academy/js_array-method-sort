@@ -26,8 +26,6 @@ function applyCustomSort() {
         if (compareFunction(prev, current) > 0) {
           this[j - 1] = current;
           this[j] = prev;
-        } else {
-          break;
         }
       }
     }
