@@ -29,14 +29,15 @@ function compareAsString(a, b) {
   const strA = String(a);
   const strB = String(b);
 
-  switch (true) {
-    case (strA > strB):
-      return 1;
-    case (strA === strB):
-      return 0;
-    default:
-      return -1;
+  if (strA > strB) {
+    return 1;
   }
+
+  if (strA < strB) {
+    return -1;
+  }
+
+  return 0;
 }
 
 module.exports = applyCustomSort;
