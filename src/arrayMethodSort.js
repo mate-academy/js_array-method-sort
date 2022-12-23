@@ -9,7 +9,9 @@ function compareFunction(current, next) {
 
   if (firstValue > secondValue) {
     return 1;
-  } else if (firstValue === secondValue) {
+  }
+
+  if (firstValue === secondValue) {
     return 0;
   }
 
