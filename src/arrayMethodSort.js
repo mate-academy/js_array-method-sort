@@ -29,8 +29,8 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        zero = this[i - 1];
-        first = this[i];
+        const previousElement = this[i - 1];
+        const currentElement = this[i];
 
         if (compareFunction(zero, first) > 0) {
           count++;
