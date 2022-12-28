@@ -5,11 +5,10 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = comparator) {
-    let temp = 0;
-
     for (let i = 0; i < this.length - 1; i++) {
       if (compareFunction(this[i], this[i + 1]) > 0) {
-        temp = this[i];
+        const temp = this[i];
+
         this[i] = this[i + 1];
         this[i + 1] = temp;
         i = -1;
