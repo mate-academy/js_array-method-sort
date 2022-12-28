@@ -21,8 +21,6 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareDefault) {
     // write code here
 
-    let zero = this[0];
-    let first = this[1];
     let count;
 
     do {
