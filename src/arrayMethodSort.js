@@ -10,30 +10,32 @@ function applyCustomSort() {
 
     if (stringA > stringB) {
       return 1;
-    } else if (stringA === stringB) {
-      return 0;
-    } else {
-      return -1;
     }
+
+    if (stringA === stringB) {
+      return 0;
+    }
+
+    return -1;
   };
 
-  [].__proto__.sort2 = function(compareFunction = defaultSorting) {
+  [].__proto__.sort2 = function (compareFunction = defaultSorting) {
     let isChanged;
 
     do {
       isChanged = false;
 
       for (let i = 1; i < this.length; i++) {
-        const previousValue = this[i - 1];
-        const currentValue = this[i];
+        const previousItem = this[i - 1];
+        const currentItem = this[i];
 
-        if (compareFunction(previousValue, currentValue) > 0) {
-          this[i] = previousValue;
-          this[i - 1] = currentValue;
+        if (compareFunction(previousItem, currentItem) > 0) {
+          this[i - 1] = currentItem;
+          this[i] = previousItem;
           isChanged = true;
         }
       }
-    } while (isChanged === true);
+    } while (isChanged);
 
     return this;
   };
