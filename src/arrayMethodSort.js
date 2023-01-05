@@ -4,17 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => {
-    if (String(a) > String(b) || a === undefined) {
-      return 1;
-    }
-
-    if (String(a) === String(b)) {
-      return 0;
-    }
-
-    return -1;
-  }) {
+  [].__proto__.sort2 = function(compareFunction = defaultCompare) {
     let previousElement;
     let currentElement;
     let count;
@@ -37,4 +27,17 @@ function applyCustomSort() {
     return this;
   };
 };
+
+function defaultCompare(a, b) {
+  if (String(a) > String(b) || a === undefined) {
+    return 1;
+  }
+
+  if (String(a) === String(b)) {
+    return 0;
+  }
+
+  return -1;
+};
+
 module.exports = applyCustomSort;
