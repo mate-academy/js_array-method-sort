@@ -1,11 +1,14 @@
 'use strict';
 
 function compareAsString(a, b) {
-  if (String(a) > String(b)) {
+  const previous = String(a);
+  const current = String(b);
+
+  if (previous > current) {
     return 1;
   }
 
-  if (String(a) < String(b)) {
+  if (previous < current) {
     return -1;
   }
 
@@ -21,10 +24,10 @@ function applyCustomSort() {
 
       for (let i = 1; i < this.length; i++) {
         const previous = this[i - 1];
-        const curent = this[i];
+        const current = this[i];
 
-        if (compare(previous, curent) > 0) {
-          this[i - 1] = curent;
+        if (compare(previous, current) > 0) {
+          this[i - 1] = current;
           this[i] = previous;
           counter++;
         }
