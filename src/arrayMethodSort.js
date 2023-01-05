@@ -10,7 +10,9 @@ function compareAsString(a, b) {
 
   if (stringA > stringB) {
     return 1;
-  } else if (stringA === stringB) {
+  }
+
+  if (stringA === stringB) {
     return 0;
   }
 
