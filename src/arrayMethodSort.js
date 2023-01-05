@@ -3,40 +3,36 @@
 /**
  * Implement method Sort
  */
+
+function compareAsString(a, b) {
+  const stringA = String(a);
+  const stringB = String(b);
+
+  if (stringA > stringB) {
+    return 1;
+  } else if (stringA === stringB) {
+    return 0;
+  }
+
+  return -1;
+};
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let callback = compareFunction;
-    let prev;
-    let curr;
+  [].__proto__.sort2 = function(compareFunction = compareAsString) {
+    let previousItem;
+    let currentItem;
     let count;
-
-    const defaultFunction = function(a, b) {
-      const aStr = String(a);
-      const bStr = String(b);
-
-      if (aStr > bStr) {
-        return 1;
-      } else if (aStr === bStr) {
-        return 0;
-      } else {
-        return -1;
-      }
-    };
-
-    if (arguments.length === 0) {
-      callback = defaultFunction;
-    }
 
     do {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        prev = this[i - 1];
-        curr = this[i];
+        previousItem = this[i - 1];
+        currentItem = this[i];
 
-        if (callback(prev, curr) > 0) {
-          this[i - 1] = curr;
-          this[i] = prev;
+        if (compareFunction(previousItem, currentItem) > 0) {
+          this[i - 1] = currentItem;
+          this[i] = previousItem;
           count++;
         }
       }
