@@ -6,13 +6,13 @@
 function applyCustomSort() {
   function compareString(a, b) {
     const firstString = String(a);
-    const secString = String(b);
+    const secondString = String(b);
 
-    if (firstString > secString) {
+    if (firstString > secondString) {
       return 1;
     }
 
-    if (firstString === secString) {
+    if (firstString === secondString) {
       return 0;
     }
 
