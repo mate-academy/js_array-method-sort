@@ -29,7 +29,7 @@ function applyCustomSort() {
 };
 
 function defaultCompare(a, b) {
-  if (String(a) > String(b) || a === undefined) {
+  if (String(a) > String(b)) {
     return 1;
   }
 
