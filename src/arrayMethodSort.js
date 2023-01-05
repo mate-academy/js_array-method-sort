@@ -5,8 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = (a, b) => {
-    if (String(a) > String(b)
-    || a === undefined) {
+    if (String(a) > String(b) || a === undefined) {
       return 1;
     }
 
@@ -16,20 +15,20 @@ function applyCustomSort() {
 
     return -1;
   }) {
-    let prevElem;
-    let currentElem;
+    let previousElement;
+    let currentElement;
     let count;
 
     do {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        prevElem = this[i - 1];
-        currentElem = this[i];
+        previousElement = this[i - 1];
+        currentElement = this[i];
 
         if (compareFunction(this[i - 1], this[i]) > 0) {
-          this[i - 1] = currentElem;
-          this[i] = prevElem;
+          this[i - 1] = currentElement;
+          this[i] = previousElement;
           count++;
         }
       }
