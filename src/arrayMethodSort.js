@@ -7,11 +7,13 @@ function applyCustomSort() {
   const defaultSort = (a, b) => {
     if (a.toString() > b.toString()) {
       return 1;
-    } else if (a.toString() < b.toString()) {
-      return -1;
-    } else {
-      return 0;
     }
+
+    if (a.toString() < b.toString()) {
+      return -1;
+    }
+
+    return 0;
   };
 
   [].__proto__.sort2 = function(compareFunction = defaultSort) {
@@ -21,12 +23,12 @@ function applyCustomSort() {
       isChanged = false;
 
       for (let i = 1; i < this.length; i++) {
-        const prevEl = this[i - 1];
-        const currentEl = this[i];
+        const previousElement = this[i - 1];
+        const currentElement = this[i];
 
-        if (compareFunction(prevEl, currentEl) > 0) {
-          this[i - 1] = currentEl;
-          this[i] = prevEl;
+        if (compareFunction(previousElement, currentElement) > 0) {
+          this[i - 1] = currentElement;
+          this[i] = previousElement;
           isChanged = true;
         }
       }
