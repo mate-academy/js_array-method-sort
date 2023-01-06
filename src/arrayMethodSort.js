@@ -3,24 +3,23 @@
 /**
  * Implement method Sort
  */
+const compareAsStrings = (a, b) => {
+  const stringA = String(a);
+  const stringB = String(b);
+
+  if (stringA > stringB) {
+    return 1;
+  }
+
+  if (stringA < stringB) {
+    return -1;
+  }
+
+  return 0;
+};
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const compareAsStrings = (a, b) => {
-      const stringA = String(a);
-      const stringB = String(b);
-
-      if (stringA > stringB) {
-        return 1;
-      }
-
-      if (stringA < stringB) {
-        return -1;
-      }
-
-      return 0;
-    };
-
-    const compare = !compareFunction ? compareAsStrings : compareFunction;
+  [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
     let count;
 
     do {
@@ -30,7 +29,7 @@ function applyCustomSort() {
         const prev = this[i - 1];
         const current = this[i];
 
-        if (compare(prev, current) > 0) {
+        if (compareFunction(prev, current) > 0) {
           this[i - 1] = current;
           this[i] = prev;
 
