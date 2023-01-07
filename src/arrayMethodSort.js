@@ -34,9 +34,9 @@ const compareAsStrings = (a, b) => {
     return 1;
   } else if (stringA === stringB) {
     return 0;
-  } else {
-    return -1;
   }
+
+  return -1;
 };
 
 module.exports = applyCustomSort;
