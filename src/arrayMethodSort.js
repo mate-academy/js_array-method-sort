@@ -32,11 +32,13 @@ const defaultCallback = (a, b) => {
 
   if (prev > current) {
     return 1;
-  } else if (prev === current) {
-    return 0;
-  } else {
-    return -1;
   }
+
+  if (prev === current) {
+    return 0;
+  }
+
+  return -1;
 };
 
 module.exports = applyCustomSort;
