@@ -8,14 +8,14 @@ function applyCustomSort() {
     let count;
 
     do {
-      count = 0;
+      count = false;
 
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
         const current = this[i];
 
         if (compareFunction(prev, current) > 0) {
-          count++;
+          count = true;
           this[i - 1] = current;
           this[i] = prev;
         }
