@@ -3,6 +3,7 @@
 /**
  * Implement method Sort
  */
+
 function applyCustomSort() {
   const compareAsString = (a, b) => {
     const stringA = String(a);
