@@ -4,11 +4,14 @@
  * Implement method Sort
  */
 const defaultCompareFunction = (a, b) => {
-  if (a.toString() < b.toString()) {
+  const stringA = a.toString();
+  const stringB = b.toString();
+
+  if (stringA < stringB) {
     return -1;
   }
 
-  if (a.toString() > b.toString()) {
+  if (stringA > stringB) {
     return 1;
   }
 
