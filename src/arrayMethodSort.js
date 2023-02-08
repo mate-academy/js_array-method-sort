@@ -5,7 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
-    let count;
+    let count = 0;
 
     do {
       count = 0;
