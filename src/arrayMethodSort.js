@@ -12,16 +12,16 @@ function applyCustomSort() {
       return 1;
     } else if (stringA === stringB) {
       return 0;
-    } else {
-      return -1;
     }
+
+    return -1;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let count;
+    let wasShift;
 
     do {
-      count = 0;
+      wasShift = false;
 
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
@@ -31,10 +31,10 @@ function applyCustomSort() {
           this[i - 1] = current;
           this[i] = prev;
 
-          count++;
+          wasShift = true;
         }
       }
-    } while (count > 0);
+    } while (wasShift === true);
 
     return this;
   };
