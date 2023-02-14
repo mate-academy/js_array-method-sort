@@ -10,7 +10,9 @@ function applyCustomSort() {
 
     if (stringA > stringB) {
       return 1;
-    } else if (stringA === stringB) {
+    }
+    
+    if (stringA === stringB) {
       return 0;
     }
 
@@ -34,7 +36,7 @@ function applyCustomSort() {
           wasShift = true;
         }
       }
-    } while (wasShift === true);
+    } while (wasShift);
 
     return this;
   };
