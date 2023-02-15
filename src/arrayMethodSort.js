@@ -12,7 +12,7 @@ function compareString(a, b) {
   }
 
   if (compareA < compareB) {
-    return 1;
+    return -1;
   }
 
   return 0;
