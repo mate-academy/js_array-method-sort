@@ -20,22 +20,22 @@ function compareString(a, b) {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareString) {
-    let count;
+    let isContinue;
 
     do {
-      count = false;
+      isContinue = false;
 
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
         const current = this[i];
 
         if (compareFunction(prev, current) > 0) {
-          count = true;
+          isContinue = true;
           this[i - 1] = current;
           this[i] = prev;
         }
       }
-    } while (count === true);
+    } while (isContinue);
 
     return this;
   };
