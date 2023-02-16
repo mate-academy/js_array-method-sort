@@ -9,13 +9,12 @@ function applyCustomSort() {
     let callback = compareFunction;
 
     if (!compareFunction) {
-      callback = function(curr, prev) {
-        return String(curr) < String(prev) ? -1 : 1;
-      };
+      callback = (curr, prev) => String(curr) < String(prev) ? -1
+        : String(curr) > String(prev) ? 1 : 0;
     }
 
     do {
-      step = 0;
+      step = false;
 
       for (let i = 1; i < this.length; i++) {
         const curr = this[i];
@@ -24,10 +23,10 @@ function applyCustomSort() {
         if (callback(curr, prev) < 0) {
           this[i - 1] = curr;
           this[i] = prev;
-          step++;
+          step = true;
         }
       }
-    } while (step > 0);
+    } while (step);
 
     return this;
   };
