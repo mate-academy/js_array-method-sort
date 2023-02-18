@@ -12,28 +12,28 @@ function applyCustomSort() {
       return 1;
     } else if (firstString === secondString) {
       return 0;
-    } else {
-      return -1;
     }
+
+    return -1;
   }
 
   [].__proto__.sort2 = function(compareFunction = compareAsString) {
-    let count;
+    let hasShuffle = true;
 
     do {
-      count = 0;
+      hasShuffle = false;
 
       for (let i = 1; i < this.length; i++) {
         const previous = this[i - 1];
         const current = this[i];
 
         if (compareFunction(previous, current) > 0) {
-          count++;
+          hasShuffle = true;
           this[i - 1] = current;
           this[i] = previous;
         }
       }
-    } while (count > 0);
+    } while (hasShuffle === true);
 
     return this;
   };
