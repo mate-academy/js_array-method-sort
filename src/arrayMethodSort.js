@@ -5,11 +5,15 @@
  */
 function applyCustomSort() {
   const compareStrings = (a, b) => {
-    return (String(a) > String(b))
-      ? 1
-      : (String(a) < String(b))
-        ? -1
-        : 0;
+    if (String(a) > String(b)) {
+      return 1;
+    }
+
+    if (String(a) < String(b)) {
+      return -1;
+    }
+
+    return 0;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
