@@ -3,15 +3,23 @@
 /**
  * Implement method Sort
  */
-function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let step;
-    let callback = compareFunction;
+function defaultFunction(curr, prev) {
+  if (String(curr) < String(prev)) {
+    return -1;
+  };
 
-    if (!compareFunction) {
-      callback = (curr, prev) => String(curr) < String(prev) ? -1
-        : String(curr) > String(prev) ? 1 : 0;
-    }
+  if (String(curr) > String(prev)) {
+    return 1;
+  };
+
+  if (String(curr) === String(prev)) {
+    return 0;
+  };
+}
+
+function applyCustomSort() {
+  [].__proto__.sort2 = function(compareFunction = defaultFunction) {
+    let step;
 
     do {
       step = false;
@@ -20,7 +28,7 @@ function applyCustomSort() {
         const curr = this[i];
         const prev = this[i - 1];
 
-        if (callback(curr, prev) < 0) {
+        if (compareFunction(curr, prev) < 0) {
           this[i - 1] = curr;
           this[i] = prev;
           step = true;
