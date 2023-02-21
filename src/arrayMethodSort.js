@@ -6,49 +6,38 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     // write code here
-    let a;
+    let prev;
     let count;
+    let compareFunctionByDefault;
 
-    if (compareFunction === undefined) {
-      do {
-        count = 0;
-
-        for (let i = 1; i < this.length; i++) {
-          if (this[i].toString() < this[i - 1].toString()) {
-            count++;
-            a = this[i];
-            this[i] = this[i - 1];
-            this[i - 1] = a;
-          }
-        }
-      } while (count > 0);
-    } else if (typeof this[0] === 'number') {
-      do {
-        count = 0;
-
-        for (let i = 1; i < this.length; i++) {
-          if (this[i] < this[i - 1]) {
-            count++;
-            a = this[i];
-            this[i] = this[i - 1];
-            this[i - 1] = a;
-          }
-        }
-      } while (count > 0);
+    if (compareFunction) {
+      compareFunctionByDefault = compareFunction;
     } else {
-      do {
-        count = 0;
-
-        for (let i = 1; i < this.length; i++) {
-          if (this[i].localeCompare(this[i - 1]) < 0) {
-            count++;
-            a = this[i];
-            this[i] = this[i - 1];
-            this[i - 1] = a;
-          }
+      compareFunctionByDefault = (curr, previous) => {
+        if (previous.toString() > curr.toString()) {
+          return -1;
         }
-      } while (count > 0);
+
+        if (previous.toString() > curr.toString()) {
+          return 1;
+        }
+
+        return 0;
+      };
     }
+
+    do {
+      count = 0;
+
+      for (let i = 1; i < this.length; i++) {
+        if (compareFunctionByDefault(this[i], (this[i - 1])) < 0) {
+          count++;
+          prev = this[i];
+          this[i] = this[i - 1];
+          this[i - 1] = prev;
+        }
+      }
+    } while (count > 0);
 
     return this;
   };
