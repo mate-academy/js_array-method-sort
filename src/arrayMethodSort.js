@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => {
+  const defaulCompareFunction = (a, b) => {
     if (`${a}` < `${b}`) {
       return -1;
     } else if (`${a}` > `${b}`) {
@@ -12,7 +12,9 @@ function applyCustomSort() {
     } else {
       return 0;
     }
-  }) {
+  };
+
+  [].__proto__.sort2 = function(compareFunction = defaulCompareFunction) {
     const length = this.length;
 
     for (let i = 0; i < length - 1; i++) {
