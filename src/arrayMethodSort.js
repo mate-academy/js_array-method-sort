@@ -10,14 +10,12 @@ function applyCustomSort() {
         const current = this[j];
         const next = this[j + 1];
 
-        if (compareFunction === undefined) {
-          if (String(current) > String(next)) {
-            [this[j], this[j + 1]] = [next, current];
-          }
-        } else {
-          if (compareFunction(current, next) > 0) {
-            [this[j], this[j + 1]] = [next, current];
-          }
+        const isCurrentBigger = compareFunction
+          ? compareFunction(current, next) > 0
+          : String(current) > String(next);
+
+        if (isCurrentBigger) {
+          [this[j], this[j + 1]] = [next, current];
         }
       }
     }
