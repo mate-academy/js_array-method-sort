@@ -7,7 +7,9 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(callback) {
     let count;
-    const compareFunction = callback || (a, b) => String(a) > String(b);
+    const compareFunction = callback || function(a, b) {
+      return String(a) > String(b);
+    };
 
     do {
       count = 0;
