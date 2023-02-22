@@ -5,14 +5,11 @@
  */
 
 const compareAsStrings = (a, b) => {
-  const stringA = String(a);
-  const stringB = String(b);
-
-  if (stringA > stringB) {
+  if (String(a) > String(b)) {
     return 1;
   }
 
-  if (stringA < stringB) {
+  if (String(a) < String(b)) {
     return -1;
   }
 
