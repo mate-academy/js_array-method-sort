@@ -7,7 +7,7 @@ const defaultCompare = (previous, current) => {
   const stringPrevious = String(previous);
   const stringCurrent = String(current);
 
-  switch(true) {
+  switch (true) {
     case stringPrevious > stringCurrent:
       return 1;
 
