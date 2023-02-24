@@ -4,16 +4,10 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  const compareStrings = (prev, current) => {
-    if (String(prev) > String(current)) {
-      return 1;
-    }
-
-    if (String(prev) < String(current)) {
-      return -1;
-    }
-
-    return 0;
+  const compareStrings = (firstElement, secondElement) => {
+    return String(firstElement) > String(secondElement)
+      ? 1
+      : 0;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
@@ -23,12 +17,12 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
-        const current = this[i];
+        const firstElement = this[i - 1];
+        const secondElement = this[i];
 
-        if (compareFunction(prev, current) > 0) {
-          this[i - 1] = current;
-          this[i] = prev;
+        if (compareFunction(firstElement, secondElement) > 0) {
+          this[i - 1] = secondElement;
+          this[i] = firstElement;
           count++;
         }
       }
