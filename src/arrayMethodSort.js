@@ -16,13 +16,13 @@ function applyCustomSort() {
       isSorted = true;
 
       for (let i = 1; i < this.length; i++) {
-        if (compare(this[i - 1], this[i]) > 0) {
+        const previousValue = this[i - 1];
+        const currentValue = this[i];
+
+        if (compare(previousValue, currentValue) > 0) {
           isSorted = false;
-
-          const temp = this[i - 1];
-
-          this[i - 1] = this[i];
-          this[i] = temp;
+          this[i - 1] = currentValue;
+          this[i] = previousValue;
         }
       }
     } while (!isSorted);
