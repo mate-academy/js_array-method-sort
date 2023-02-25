@@ -4,16 +4,10 @@
  * Implement method Sort
  */
 const asStrings = (a, b) => {
-  const stringA = String(a);
-  const stringB = String(b);
+  const strA = String(a);
+  const strB = String(b);
 
-  if (stringA > stringB) {
-    return 1;
-  } else if (stringA === stringB) {
-    return 0;
-  } else {
-    return -1;
-  }
+  return (strA > strB) - (strA < strB);
 };
 
 function applyCustomSort() {
