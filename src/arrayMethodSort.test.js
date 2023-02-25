@@ -57,4 +57,5 @@ test(
   ['ёж','як','аист'].sort2((a, b) => a.localeCompare(b))`, () => {
     expect(['ёж', 'як', 'аист'].sort2((a, b) => a.localeCompare(b)))
       .toEqual(['аист', 'ёж', 'як']);
-  });
+  }
+);
