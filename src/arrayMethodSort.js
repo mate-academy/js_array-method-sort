@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * Implement method Sort
  */
 const asStrings = (a, b) => {
