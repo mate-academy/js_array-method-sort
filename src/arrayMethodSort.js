@@ -7,18 +7,14 @@ const defaultCompare = (previous, current) => {
   const stringPrevious = String(previous);
   const stringCurrent = String(current);
 
-  switch (true) {
-    case stringPrevious > stringCurrent:
-      return 1;
-
-    case stringPrevious < stringCurrent:
-      return -1;
-  }
+  return stringPrevious > stringCurrent
+    ? 1
+    : -1;
 };
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = defaultCompare) {
-    let count = 0;
+    let count;
 
     do {
       count = 0;
