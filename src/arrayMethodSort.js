@@ -3,24 +3,29 @@
 /**
  * Implement method Sort
  */
+const defaultCompare = (a, b) => {
+  return a.toString() > b.toString();
+};
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const defaultCompare = (a, b) => {
-      return a.toString() > b.toString();
-    };
+  [].__proto__.sort2 = function(compareFunction = defaultCompare) {
+    let count;
 
-    const useFunction = compareFunction || defaultCompare;
+    do {
+      count = 0;
 
-    for (let i = 0; i < this.length - 1; i++) {
-      for (let j = i + 1; j < this.length; j++) {
-        if (useFunction(this[i], this[j]) > 0) {
-          const firstElement = this[i];
+      for (let i = 0; i < this.length - 1; i++) {
+        const firstElement = this[i];
+        const secondElement = this[i + 1];
 
-          this[i] = this[j];
-          this[j] = firstElement;
+        if (compareFunction(firstElement, secondElement) > 0) {
+          count++;
+
+          this[i] = secondElement;
+          this[i + 1] = firstElement;
         }
       }
-    }
+    } while (count > 0);
 
     return this;
   };
