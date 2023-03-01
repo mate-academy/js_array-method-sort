@@ -15,16 +15,22 @@ function applyCustomSort() {
   };
 
   [].__proto__.sort2 = function (callback = compareFunction) {
-    for (let i = 0; i < this.length; i++) {
-      for (let j = i + 1; j < this.length; j++) {
-        if (callback(this[j], this[i]) < 0) {
-          const temp = this[i];
+    let count;
 
-          this[i] = this[j];
-          this[j] = temp;
+    do {
+      count = 0;
+
+      for (let i = 1; i < this.length; i++) {
+        const prev = this[i - 1];
+        const current = this[i];
+
+        if (callback(prev, current) > 0) {
+          count++;
+          this[i - 1] = current;
+          this[i] = prev;
         }
       }
-    }
+    } while (count > 0);
 
     return this;
   };
