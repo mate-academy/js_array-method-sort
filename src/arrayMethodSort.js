@@ -15,30 +15,28 @@ function compareAsStrings(a, b) {
     return -1;
   }
 
-  if (previousString === currentString) {
-    return 0;
-  }
+  return 0;
 }
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
     // write code here
-    let count;
+    let isResume;
 
     do {
-      count = 0;
+      isResume = false;
 
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
         const current = this[i];
 
         if (compareFunction(prev, current) > 0) {
-          count++;
+          isResume = true;
           this[i - 1] = current;
           this[i] = prev;
         }
       }
-    } while (count > 0);
+    } while (isResume);
 
     return this;
   };
