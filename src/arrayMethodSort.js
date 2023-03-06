@@ -8,16 +8,7 @@ function applyCustomSort() {
     const copmareFunc = typeof compareFunction === 'function'
       ? compareFunction
       : (a, b) => {
-        const strA = String(a);
-        const strB = String(b);
-
-        if (strA === strB) {
-          return 0;
-        } else if (strA < strB) {
-          return -1;
-        } else {
-          return 1;
-        }
+        return String(a) > String(b);
       };
 
     let swapped;
@@ -26,11 +17,12 @@ function applyCustomSort() {
       swapped = false;
 
       for (let i = 0; i < this.length - 1; i++) {
-        if (copmareFunc(this[i], this[i + 1]) > 0) {
-          const temp = this[i];
+        const current = this[i];
+        const next = this[i + 1];
 
-          this[i] = this[i + 1];
-          this[i + 1] = temp;
+        if (copmareFunc(current, next) > 0) {
+          this[i] = next;
+          this[i + 1] = current;
           swapped = true;
         }
       }
