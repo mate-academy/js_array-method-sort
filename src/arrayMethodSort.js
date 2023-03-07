@@ -5,23 +5,15 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    let callback = compareFunction;
-    let countArrayItterations;
+    const compareAsStrings = (prev, curr) => {
+      return String(prev) > String(curr);
+    };
 
-    if (arguments.length === 0) {
-      callback = (prev, curr) => {
-        if (String(prev) > String(curr)) {
-          return 1;
-        } else if (String(prev) === String(curr)) {
-          return 0;
-        }
-
-        return -1;
-      };
-    }
+    const callback = compareFunction || compareAsStrings;
+    let countSwapped;
 
     do {
-      countArrayItterations = 0;
+      countSwapped = 0;
 
       for (let i = 1; i < this.length; i++) {
         const prevElement = this[i - 1];
@@ -32,10 +24,10 @@ function applyCustomSort() {
         if (comparingResult > 0) {
           this[i] = prevElement;
           this[i - 1] = currElement;
-          countArrayItterations++;
+          countSwapped++;
         }
       }
-    } while (countArrayItterations > 0);
+    } while (countSwapped > 0);
 
     return this;
   };
