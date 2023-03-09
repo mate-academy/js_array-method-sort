@@ -1,21 +1,7 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
 const compareAsStrings = (a, b) => {
-  const strA = String(a);
-  const strB = String(b);
-
-  if (strA > strB) {
-    return 1;
-  }
-
-  if (strA < strB) {
-    return -1;
-  }
-
-  return 0;
+  return String(a) > String(b);
 };
 
 function applyCustomSort() {
