@@ -3,9 +3,42 @@
 /**
  * Implement method Sort
  */
+
+function compareAsStrings(a, b) {
+  const stringA = String(a);
+  const stringB = String(b);
+
+  if (stringA > stringB) {
+    return 1;
+  }
+
+  if (stringA < stringB) {
+    return -1;
+  }
+
+  return 0;
+}
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+  [].__proto__.sort2 = function(callback = compareAsStrings) {
+    let count;
+
+    do {
+      count = 0;
+
+      for (let i = 1; i < this.length; i++) {
+        const previousItem = this[i - 1];
+        const currentItem = this[i];
+
+        if (callback(previousItem, currentItem) > 0) {
+          count++;
+          this[i - 1] = currentItem;
+          this[i] = previousItem;
+        }
+      }
+    } while (count > 0);
+
+    return this;
   };
 }
 
