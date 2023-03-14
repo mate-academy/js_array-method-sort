@@ -5,8 +5,13 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    for (let i = 0; i < this.length; i++) {
-      for (let j = 1; j < this.length; j++) {
+    let swapped = true;
+    let i = 0;
+
+    while (swapped) {
+      swapped = false;
+
+      for (let j = 1; j < this.length - i; j++) {
         const previous = this[j - 1];
         const next = this[j];
 
@@ -14,8 +19,10 @@ function applyCustomSort() {
           || (compareFunction && compareFunction(previous, next) > 0)) {
           this[j] = previous;
           this[j - 1] = next;
+          swapped = true;
         }
       }
+      i++;
     }
 
     return this;
