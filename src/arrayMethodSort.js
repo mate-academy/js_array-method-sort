@@ -38,7 +38,7 @@ const compareAsStrings = function(a, b) {
     return 0;
   }
 
-  return 1;
+  return -1;
 };
 
 module.exports = applyCustomSort;
