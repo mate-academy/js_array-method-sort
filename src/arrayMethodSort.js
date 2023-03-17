@@ -17,7 +17,7 @@ const localeCompare = function(a, b) {
 };
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = localeCompare) {
+  [].__proto__.sort2 = function(compareFunction = (a, b) => String(a) > String(b) {
     let count;
 
     do {
