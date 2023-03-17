@@ -3,7 +3,7 @@
 /**
  * Implement method Sort
  */
-const localeCompare = function(a, b) {
+const AslocaleCompare = function(a, b) {
   const firstString = String(a);
   const secondString = String(b);
 
@@ -17,7 +17,7 @@ const localeCompare = function(a, b) {
 };
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => String(a) > String(b) {
+  [].__proto__.sort2 = function(compareFunction = AslocaleCompare) {
     let count;
 
     do {
