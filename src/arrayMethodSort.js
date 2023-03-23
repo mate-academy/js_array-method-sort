@@ -3,8 +3,8 @@
 /**
  * Implement method Sort
  */
-function defaultSort(a, b) {
-  const compareParams = String(a) > String(b);
+function defaultSort(previousElement, currentElement) {
+  const compareParams = String(previousElement) > String(currentElement);
 
   if (compareParams) {
     return 1;
