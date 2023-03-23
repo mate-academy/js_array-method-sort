@@ -1,11 +1,6 @@
 'use strict';
 
-const compareStrings = (a, b) => {
-  const StringA = String(a);
-  const StringB = String(b);
-
-  return StringA > StringB;
-};
+const compareStrings = (a, b) => a.toString() > b.toString();
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(callback = compareStrings) {
