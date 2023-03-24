@@ -3,20 +3,28 @@
 /**
  * Implement method Sort
  */
-function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    for (let i = 0; i < this.length; i++) {
-      for (let j = i + 1; j < this.length; j++) {
-        if (compareFunction
-          ? compareFunction(this[i], this[j]) > 0
-          : String(this[i]) > String(this[j])) {
-          const temp = this[i];
+const compareStrings = (firstString, secondString) => {
+  return String(firstString) > String(secondString);
+};
 
-          this[i] = this[j];
-          this[j] = temp;
+function applyCustomSort() {
+  [].__proto__.sort2 = function(compareFunction = compareStrings) {
+    let counter;
+
+    do {
+      counter = 0;
+
+      for (let i = 1; i < this.length; i++) {
+        const previous = this[i - 1];
+        const current = this[i];
+
+        if (compareFunction(previous, current) > 0) {
+          counter++;
+          this[i - 1] = current;
+          this[i] = previous;
         }
       }
-    }
+    } while (counter > 0);
 
     return this;
   };
