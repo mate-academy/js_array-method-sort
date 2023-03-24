@@ -13,12 +13,15 @@ function applyCustomSort() {
     do {
       counter = 0;
 
-      for (let i = 0; i < this.length - 1 - shift; i++) {
-        const compareResult = compareFunction(this[i], this[i + 1]);
+      for (let index = 0; index < this.length - 1 - shift; index++) {
+        const currentValue = this[index];
+        const nextValue = this[index + 1];
+
+        const compareResult = compareFunction(currentValue, nextValue);
 
         if (compareResult > 0) {
           counter++;
-          [this[i], this[i + 1]] = [this[i + 1], this[i]];
+          [this[index], this[index + 1]] = [nextValue, currentValue];
         }
       }
 
