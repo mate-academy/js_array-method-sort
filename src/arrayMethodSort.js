@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
 function applyCustomSort() {
   const compareAsStrings = (a, b) => {
     const stringA = String(a);
@@ -18,7 +15,6 @@ function applyCustomSort() {
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    // write code here
     let count = 0;
 
     do {
