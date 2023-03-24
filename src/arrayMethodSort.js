@@ -18,19 +18,22 @@ function applyCustomSort() {
       : compareFunction;
 
     let count = 0;
+    let quantityElements = this.length;
 
     do {
       count = 0;
 
-      for (let i = 1; i < this.length; i++) {
-        if (currentSort(this[i - 1], this[i]) > 0) {
-          const transferValue = this[i - 1];
+      for (let i = 1; i < quantityElements; i++) {
+        const [elementA, elementB] = [this[i - 1], this[i]];
 
-          this[i - 1] = this[i];
-          this[i] = transferValue;
+        if (currentSort(elementA, elementB) > 0) {
+          this[i - 1] = elementB;
+          this[i] = elementA;
           count++;
         }
       }
+
+      quantityElements--;
     } while (count > 0);
 
     return this;
