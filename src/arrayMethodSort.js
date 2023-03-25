@@ -16,16 +16,10 @@ function applyCustomSort() {
       return 0;
     }
 
-    if (stringA < stringB) {
-      return -1;
-    }
+    return -1;
   };
 
   [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    if (compareFunction === undefined) {
-
-    }
-
     let count;
 
     do {
