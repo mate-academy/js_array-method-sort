@@ -3,17 +3,19 @@
 /**
  * Implement method Sort
  */
-const compareAsString = (a, b) => {
-  const strA = String(a);
-  const strB = String(b);
+const compareAsString = (firstItem, secondItem) => {
+  const firstString = String(firstItem);
+  const secondString = String(secondItem);
 
-  if (strA > strB) {
+  if (firstString > secondString) {
     return 1;
-  } else if (strA === strB) {
-    return 0;
-  } else {
-    return -1;
   }
+
+  if (firstString === secondString) {
+    return 0;
+  }
+
+  return -1;
 };
 
 function applyCustomSort() {
@@ -24,12 +26,12 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
-        const curr = this[i];
+        const previous = this[i - 1];
+        const current = this[i];
 
-        if (compareFunction(prev, curr) > 0) {
-          this[i - 1] = curr;
-          this[i] = prev;
+        if (compareFunction(previous, current) > 0) {
+          this[i - 1] = current;
+          this[i] = previous;
           count++;
         }
       }
