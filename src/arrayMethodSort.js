@@ -24,11 +24,8 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < quantityElements; i++) {
-        const [elementA, elementB] = [this[i - 1], this[i]];
-
-        if (currentSort(elementA, elementB) > 0) {
-          this[i - 1] = elementB;
-          this[i] = elementA;
+        if (currentSort(this[i - 1], this[i]) > 0) {
+          [this[i], this[i - 1]] = [this[i - 1], this[i]];
           count++;
         }
       }
