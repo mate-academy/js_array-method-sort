@@ -20,7 +20,7 @@ const functionCompare = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(callback = functionCompare) {
-    let count;
+    let count = false;
 
     do {
       count = 0;
@@ -30,12 +30,12 @@ function applyCustomSort() {
         const current = this[i];
 
         if (callback(prev, current) > 0) {
-          count++;
+          count = true;
           this[i - 1] = current;
           this[i] = prev;
         }
       }
-    } while (count > 0);
+    } while (count);
 
     return this;
   };
