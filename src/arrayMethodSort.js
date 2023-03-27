@@ -4,16 +4,18 @@
  * Implement method Sort
  */
 const defaultCallback = (a, b) => {
-  const strA = a + '';
-  const strB = b + '';
+  const strA = String(a);
+  const strB = String(b);
 
   if (strA > strB) {
     return 1;
-  } else if (strA === strB) {
+  };
+
+  if (strA === strB) {
     return 0;
-  } else {
-    return -1;
   }
+
+  return -1;
 };
 
 function applyCustomSort() {
@@ -21,7 +23,7 @@ function applyCustomSort() {
     let count;
 
     do {
-      count = 0;
+      count = false;
 
       for (let i = 1; i < this.length; i++) {
         const a = this[i - 1];
@@ -30,7 +32,7 @@ function applyCustomSort() {
         if (compareFunction(a, b) > 0) {
           this[i - 1] = b;
           this[i] = a;
-          count++;
+          count = true;
         }
       }
     } while (count);
