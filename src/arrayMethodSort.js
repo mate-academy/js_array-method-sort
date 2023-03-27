@@ -3,8 +3,20 @@
 /**
  * Implement method Sort
  */
+function standartSort(prevElement, currentElement) {
+  if (String(prevElement) < String(currentElement)) {
+    return -1;
+  }
+
+  if (String(prevElement) > String(currentElement)) {
+    return 1;
+  }
+
+  return 0;
+}
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => String(a) > String(b)) { // eslint-disable-line
+  [].__proto__.sort2 = function(compareFunction = standartSort) {
     let count = 0;
 
     do {
