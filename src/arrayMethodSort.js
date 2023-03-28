@@ -21,11 +21,19 @@ function applyCustomSort() {
   };
 }
 
-function sortWithoutParams() {
-  const firstString = `${arguments[0]}`;
-  const secondString = `${arguments[1]}`;
+function sortWithoutParams(a, b) {
+  const strA = String(a);
+  const strB = String(b);
 
-  return firstString > secondString ? 1 : -1;
+  if (strA < strB) {
+    return -1;
+  };
+
+  if (strA > strB) {
+    return 1;
+  };
+
+  return 0;
 }
 
 module.exports = applyCustomSort;
