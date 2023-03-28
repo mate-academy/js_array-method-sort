@@ -6,11 +6,15 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     const defaultSort = (elementA, elemenrB) => {
-      return String(elementA) > String(elemenrB)
-        ? 1
-        : String(elementA) === String(elemenrB)
-          ? 0
-          : -1;
+      if (String(elementA) > String(elemenrB)) {
+        return 1;
+      }
+
+      if (String(elementA) === String(elemenrB)) {
+        return 0;
+      }
+
+      return -1;
     };
 
     const currentSort = compareFunction === undefined
@@ -24,8 +28,10 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 1; i < quantityElements; i++) {
-        if (currentSort(this[i - 1], this[i]) > 0) {
-          [this[i], this[i - 1]] = [this[i - 1], this[i]];
+        const [prev, current] = [this[i - 1], this[i]];
+
+        if (currentSort(prev, current) > 0) {
+          [this[i], this[i - 1]] = [prev, current];
           count++;
         }
       }
