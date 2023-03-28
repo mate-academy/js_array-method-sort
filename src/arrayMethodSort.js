@@ -3,9 +3,17 @@
 /**
  * Implement method Sort
  */
-const compareStrings = (firstString, secondString) => {
-  return String(firstString) > String(secondString);
-};
+function compareStrings(firstString, secondString) {
+  if (String(firstString) < String(secondString)) {
+    return -1;
+  }
+
+  if (String(firstString) > String(secondString)) {
+    return 1;
+  }
+
+  return 0;
+}
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
