@@ -9,18 +9,14 @@ function applyCustomSort() {
 
     for (let i = 0; i < this.length; i++) {
       for (let j = i + 1; j < this.length; j++) {
-        if (compareFunction === undefined) {
-          if (String(this[i]) > String(this[j])) {
-            rememberValue = this[i];
-            this[i] = this[j];
-            this[j] = rememberValue;
-          }
-        } else {
-          if (compareFunction(this[i], this[j]) > 0) {
-            rememberValue = this[i];
-            this[i] = this[j];
-            this[j] = rememberValue;
-          }
+        const condition = compareFunction
+          ? compareFunction(this[i], this[j]) > 0
+          : String(this[i]) > String(this[j]);
+
+        if (condition) {
+          rememberValue = this[i];
+          this[i] = this[j];
+          this[j] = rememberValue;
         }
       }
     }
