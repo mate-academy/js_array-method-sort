@@ -33,7 +33,8 @@ function applyCustomSort() {
 
           this[i] = second;
           this[i + 1] = first;
-          sort();
+
+          return sort();
         }
       }
     };
