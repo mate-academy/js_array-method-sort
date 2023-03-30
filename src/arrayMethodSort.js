@@ -10,7 +10,9 @@ function applyCustomSort() {
 
     if (currentElement > prevElement) {
       return -1;
-    } else if (currentElement < prevElement) {
+    }
+
+    if (currentElement < prevElement) {
       return 1;
     }
 
