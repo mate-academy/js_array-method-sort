@@ -12,9 +12,9 @@ function applyCustomSort() {
       return -1;
     } else if (currentElement < prevElement) {
       return 1;
-    } else {
-      return 0;
     }
+
+    return 0;
   };
 
   [].__proto__.sort2 = function(compareFunction = defaultFunction) {
