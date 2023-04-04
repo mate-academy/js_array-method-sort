@@ -10,6 +10,12 @@ function defaultSort(firstItem, secondItem) {
   if (currentItem < previousItem) {
     return -1;
   }
+
+  if (currentItem === previousItem) {
+    return 0;
+  }
+
+  return 1;
 }
 
 function applyCustomSort() {
