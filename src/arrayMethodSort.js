@@ -5,10 +5,11 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
+    let lengthOfArray = this.length;
 
     // default sort:
+
     if (compareFunction === undefined) {
-      let lengthOfArray = this.length;
       const type = typeof this[0];
 
       while (lengthOfArray > 1) {
@@ -34,8 +35,6 @@ function applyCustomSort() {
 
       return this;
     } else { // run callback:
-      let lengthOfArray = this.length;
-
       while (lengthOfArray > 0) {
         for (let i = 0; i < lengthOfArray - 1; i++) {
           const a = this[i];
