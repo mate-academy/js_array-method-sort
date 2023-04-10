@@ -17,11 +17,6 @@ function applyCustomSort() {
             this[i] = b;
             this[i + 1] = a;
           };
-
-          if ((compareFunction.bind(this)(a, b) <= 0)) {
-            this[i] = a;
-            this[i + 1] = b;
-          };
         };
       };
 
