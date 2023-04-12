@@ -3,15 +3,15 @@
 /**
  * Implement method Sort
  */
-function compareAsStrings(x, y) {
-  const a = String(x);
-  const b = String(y);
+function compareAsStrings(...args) {
+  const first = String(args[0]);
+  const second = String(args[1]);
 
-  if (a > b) {
+  if (first > second) {
     return 1;
   }
 
-  if (a < b) {
+  if (first < second) {
     return -1;
   }
 
@@ -26,13 +26,9 @@ function applyCustomSort() {
       count = 0;
 
       for (let i = 0; i < this.length - 1; i++) {
-        const a = this[i];
-        const b = this[i + 1];
-
-        if (compareFunction(a, b) > 0) {
+        if (compareFunction(this[i], this[i + 1]) > 0) {
           count++;
-          this[i] = b;
-          this[i + 1] = a;
+          [this[i], this[i + 1]] = [this[i + 1], this[i]];
         }
       }
     } while (count > 0);
