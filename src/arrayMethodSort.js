@@ -30,8 +30,7 @@ function applyCustomSort() {
         const secondElement = this[i + 1];
 
         if (compareFunction(firstElement, secondElement) > 0) {
-          this[i + 1] = firstElement;
-          this[i] = secondElement;
+          [this[i + 1], this[i]] = [firstElement, secondElement];
           isSorted = false;
         }
       }
