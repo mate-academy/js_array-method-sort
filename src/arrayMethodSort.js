@@ -7,7 +7,15 @@ function compareStrings(previous, current) {
   const previousString = String(previous);
   const currentString = String(current);
 
-  return previousString > currentString;
+  if (previousString > currentString) {
+    return 1;
+  }
+
+  if (previousString === currentString) {
+    return 0;
+  }
+
+  return -1;
 };
 
 function applyCustomSort() {
