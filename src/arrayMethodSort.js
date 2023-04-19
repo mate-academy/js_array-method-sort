@@ -5,10 +5,10 @@
  */
 function applyCustomSort() {
   function compareAsStrings(a, b) {
-    const StringA = String(a);
-    const StringB = String(b);
+    const stringA = String(a);
+    const stringB = String(b);
 
-    if (StringA > StringB) {
+    if (stringA > stringB) {
       return 1;
     } else {
       return -1;
@@ -36,5 +36,6 @@ function applyCustomSort() {
 
     return this;
   };
+}
 
 module.exports = applyCustomSort;
