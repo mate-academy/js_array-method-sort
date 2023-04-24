@@ -5,10 +5,10 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareFunctionWithString) {
-    let count;
+    let hasSwapped = false;
 
     do {
-      count = 0;
+      hasSwapped = false;
 
       for (let i = 1; i < this.length; i++) {
         const prev = this[i - 1];
@@ -17,10 +17,10 @@ function applyCustomSort() {
         if (compareFunction(prev, current) > 0) {
           this[i - 1] = current;
           this[i] = prev;
-          count++;
+          hasSwapped = true;
         }
       }
-    } while (count > 0);
+    } while (hasSwapped);
 
     return this;
   };
