@@ -9,15 +9,19 @@ const compareToString = (a, b) => {
 
   if (stringA > stringB) {
     return 1;
+  } else if (stringA === stringB) {
+    return 0;
+  } else {
+    return -1;
   }
 };
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareToString) {
-    let count;
+    let doneSort;
 
     do {
-      count = 0;
+      doneSort = true;
 
       for (let i = 1; i < this.length; i++) {
         const start = this[i - 1];
@@ -26,10 +30,10 @@ function applyCustomSort() {
         if (compareFunction(start, end) > 0) {
           this[i - 1] = end;
           this[i] = start;
-          count++;
+          doneSort = false;
         }
       }
-    } while (count > 0);
+    } while (doneSort === false);
 
     return this;
   };
