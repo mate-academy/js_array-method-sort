@@ -18,21 +18,21 @@ function applyCustomSort() {
 
     return this;
   };
+}
 
-  function compare(a, b) {
-    const stringA = String(a);
-    const stringB = String(b);
+function compare(a, b) {
+  const stringA = String(a);
+  const stringB = String(b);
 
-    if (stringA > stringB) {
-      return 1;
-    }
-
-    if (stringA < stringB) {
-      return -1;
-    }
-
-    return 0;
+  if (stringA > stringB) {
+    return 1;
   }
+
+  if (stringA < stringB) {
+    return -1;
+  }
+
+  return 0;
 }
 
 module.exports = applyCustomSort;
