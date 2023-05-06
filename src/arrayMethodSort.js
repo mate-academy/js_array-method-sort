@@ -30,7 +30,7 @@ function applyCustomSort() {
         if (compareFunction(prev, current) > 0) {
           count++;
           this[i - 1] = current;
-          this[1] = prev;
+          this[i] = prev;
         }
       }
     } while (count > 0);
