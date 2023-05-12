@@ -1,10 +1,10 @@
 'use strict';
 
-const compareAsSrting = (a, b) =>
+const compareAsString = (a, b) =>
   (String(a) > String(b)) - (String(a) < String(b));
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = compareAsSrting) {
+  [].__proto__.sort2 = function(compareFunction = compareAsString) {
     let count;
 
     do {
