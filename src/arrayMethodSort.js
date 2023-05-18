@@ -27,7 +27,15 @@ function applyCustomSort() {
 }
 
 function defaultCompare(a, b) {
-  return String(a) > String(b);
+  if (String(a) < String(b)) {
+    return -1;
+  }
+
+  if (String(a) > String(b)) {
+    return 1;
+  }
+
+  return 0;
 }
 
 module.exports = applyCustomSort;
