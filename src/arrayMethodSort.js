@@ -12,9 +12,7 @@ function applyCustomSort() {
     let counter = 0;
 
     while (counter < this.length) {
-      let forward = 1;
-
-      for (; forward < this.length; forward++) {
+      for (let forward = 1; forward < this.length; forward++) {
         const previous = forward - 1;
 
         if (compareFunction(this[forward], this[previous]) < 0) {
@@ -32,14 +30,14 @@ function applyCustomSort() {
   };
 
   function alphabeticSort(a, b) {
-    const forwardChar = String(a);
-    const previousChar = String(b);
+    const stringA = String(a);
+    const stringB = String(b);
 
-    if (forwardChar > previousChar) {
+    if (stringA > stringB) {
       return 1;
     }
 
-    if (previousChar > forwardChar) {
+    if (stringB > stringA) {
       return -1;
     }
 
