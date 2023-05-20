@@ -10,13 +10,11 @@ function applyCustomSort() {
     let transposition = 0;
 
     do {
-      const thisCopy = [...this];
-
       transposition = 0;
 
-      for (let i = 0; i < thisCopy.length - 1; i++) {
-        const currentItem = thisCopy[i];
-        const nextItem = thisCopy[i + 1];
+      for (let i = 0; i < this.length - 1; i++) {
+        const currentItem = this[i];
+        const nextItem = this[i + 1];
         const compareMethod = compareFunction(nextItem, currentItem);
 
         if (compareMethod < 0 || compareMethod === true) {
