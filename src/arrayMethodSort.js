@@ -4,13 +4,9 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    let compareFunc = (a, b) => String(a) < String(b);
-
-    if (arguments.length !== 0) {
-      compareFunc = compareFunction;
-    }
-
+  [].__proto__.sort2 = function(
+    compareFunction = (a, b) => String(a) < String(b)
+  ) {
     let transposition = 0;
 
     do {
@@ -21,7 +17,7 @@ function applyCustomSort() {
       for (let i = 0; i < thisCopy.length - 1; i++) {
         const currentItem = thisCopy[i];
         const nextItem = thisCopy[i + 1];
-        const compareMethod = compareFunc(nextItem, currentItem);
+        const compareMethod = compareFunction(nextItem, currentItem);
 
         if (compareMethod < 0 || compareMethod === true) {
           this[i] = nextItem;
