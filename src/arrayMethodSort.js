@@ -6,25 +6,26 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(
     compareFunction = (a, b) => String(a) < String(b)
+      ? -1
+      : 0
   ) {
-    let transposition = 0;
+    let countChanges = 0;
 
     do {
-      transposition = 0;
+      countChanges = 0;
 
       for (let i = 0; i < this.length - 1; i++) {
         const currentItem = this[i];
         const nextItem = this[i + 1];
-        const compareMethod = compareFunction(nextItem, currentItem);
+        const itemsComparetion = compareFunction(nextItem, currentItem);
 
-        if (compareMethod < 0 || compareMethod === true) {
+        if (itemsComparetion < 0) {
           this[i] = nextItem;
           this[i + 1] = currentItem;
-          transposition++;
-          break;
+          countChanges++;
         }
       }
-    } while (transposition > 0);
+    } while (countChanges > 0);
 
     return this;
   };
