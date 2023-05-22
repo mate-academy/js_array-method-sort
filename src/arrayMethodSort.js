@@ -3,11 +3,9 @@
 /**
  * Implement method Sort
  */
-function applyCustomSort() {
-  [].__proto__.sort2 = function(callback) {
-    const compareFunction = callback
-    || ((a, b) => String(a).localeCompare(String(b)));
 
+function applyCustomSort() {
+  [].__proto__.sort2 = function(callback = (a, b) => String(a) > (String(b))) {
     let isSwapped;
 
     do {
@@ -17,7 +15,7 @@ function applyCustomSort() {
         const prev = this[i - 1];
         const current = this[i];
 
-        if (compareFunction(prev, current) > 0) {
+        if (callback(prev, current) > 0) {
           [this[i - 1], this[i]] = [this[i], this[i - 1]];
           isSwapped = true;
         }
