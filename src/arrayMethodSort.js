@@ -9,23 +9,27 @@ function applyCustomSort() {
       ? -1
       : 0
   ) {
-    let countChanges = 0;
+    let swapped;
 
-    do {
-      countChanges = 0;
+    for (let i = 0; i < this.length - 1; i++) {
+      swapped = false;
 
-      for (let i = 0; i < this.length - 1; i++) {
-        const currentItem = this[i];
-        const nextItem = this[i + 1];
+      for (let j = 0; j < this.length - i - 1; j++) {
+        const currentItem = this[j];
+        const nextItem = this[j + 1];
         const itemsComparetion = compareFunction(nextItem, currentItem);
 
         if (itemsComparetion < 0) {
-          this[i] = nextItem;
-          this[i + 1] = currentItem;
-          countChanges++;
+          this[j] = nextItem;
+          this[j + 1] = currentItem;
+          swapped = true;
         }
       }
-    } while (countChanges > 0);
+
+      if (swapped === false) {
+        break;
+      }
+    }
 
     return this;
   };
