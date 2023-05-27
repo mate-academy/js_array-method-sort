@@ -9,19 +9,22 @@ const defaultCompare = (a, b) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = defaultCompare) {
-    let i = 0;
+    let count;
 
-    while (i < this.length) {
-      let j = 0;
+    do {
+      count = 0;
 
-      while (j < this.length - i - 1) {
-        if (compareFunction(this[j], this[j + 1]) > 0) {
-          [this[j], this[j + 1]] = [this[j + 1], this[j]];
+      for (let i = 1; i < this.length; i++) {
+        const prev = this[i - 1];
+        const current = this[i];
+
+        if (compareFunction(prev, current) > 0) {
+          this[i - 1] = current;
+          this[i] = prev;
+          count++;
         }
-        j++;
       }
-      i++;
-    }
+    } while (count > 0);
 
     return this;
   };
