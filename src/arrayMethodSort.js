@@ -1,10 +1,5 @@
-/* eslint-disable space-before-function-paren */
-/* eslint-disable quotes */
-"use strict";
+'use strict';
 
-/**
- * Implement method Sort
- */
 function applyCustomSort() {
   const defaultFunction = (a, b) => {
     const strA = String(a);
@@ -19,7 +14,7 @@ function applyCustomSort() {
     return -1;
   };
 
-  [].__proto__.sort2 = function (compareFunction = defaultFunction) {
+  [].__proto__.sort2 = function(compareFunction = defaultFunction) {
     let count;
 
     do {
