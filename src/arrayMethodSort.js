@@ -9,15 +9,7 @@ function applyCustomSort() {
     const itemA = String(a);
     const itemB = String(b);
 
-    if (itemA > itemB) {
-      return 1;
-    }
-
-    if (itemA === itemB) {
-      return 0;
-    }
-
-    return -1;
+    return itemA > itemB ? 1 : -1;
   };
 
   [].__proto__.sort2 = function(compareFunction = defoult) {
