@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
-
 function applyCustomSort() {
   const defoult = (a, b) => {
     const itemA = String(a);
