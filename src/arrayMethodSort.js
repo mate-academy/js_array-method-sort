@@ -3,10 +3,10 @@
 /**
  * Implement method Sort
  */
+const defaultCompare = (a, b) => ((a.toString() < b.toString()) ? -1 : 1);
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => (
-    (a.toString() < b.toString()) ? -1 : 1)
-  ) {
+  [].__proto__.sort2 = function(compareFunction = defaultCompare) {
     for (let i = 0; i < this.length - 1; i++) {
       let minValue = this[i];
       let indexOfBiggerValue = i;
