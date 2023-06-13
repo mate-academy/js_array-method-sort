@@ -1,36 +1,22 @@
 'use strict';
 
-const compareAsStrings = (a, b) => {
-  const stringA = String(a);
-  const stringB = String(b);
-
-  if (stringA > stringB) {
-    return 1;
-  } else if (stringA === stringB) {
-    return 0;
-  }
-
-  return -1;
-};
-
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = compareAsStrings) {
-    let count;
+  [].__proto__.sort2 = function(compareFunction) {
+    // write code here
+    for (let i = 0; i < this.length - 1; i++) {
+      for (let j = 0; j < this.length - i - 1; j++) {
+        const shouldSwap = compareFunction
+          ? compareFunction(this[j], this[j + 1]) > 0
+          : String(this[j]) > String(this[j + 1]);
 
-    do {
-      count = 0;
+        if (shouldSwap) {
+          const temp = this[j];
 
-      for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
-        const current = this[i];
-
-        if (compareFunction(prev, current) > 0) {
-          count++;
-          this[i - 1] = current;
-          this[i] = prev;
+          this[j] = this[j + 1];
+          this[j + 1] = temp;
         }
       }
-    } while (count > 0);
+    }
 
     return this;
   };
