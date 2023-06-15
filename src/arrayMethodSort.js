@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(compareFunction = defaultStringSorting) {
     let count = true;
 
     do {
@@ -14,26 +14,20 @@ function applyCustomSort() {
         const prev = this[i - 1];
         const current = this[i];
 
-        if (compareFunction) {
-          if (compareFunction(prev, current) > 0) {
-            count = true;
-            this[i - 1] = current;
-            this[i] = prev;
-          }
-        }
-
-        if (!compareFunction) {
-          if (`${prev}` > `${current}`) {
-            count = true;
-            this[i - 1] = current;
-            this[i] = prev;
-          }
+        if (compareFunction(prev, current) > 0) {
+          count = true;
+          this[i - 1] = current;
+          this[i] = prev;
         }
       }
     } while (count);
 
     return this;
   };
+}
+
+function defaultStringSorting(a, b) {
+  return `${a}` > `${b}`;
 }
 
 module.exports = applyCustomSort;
