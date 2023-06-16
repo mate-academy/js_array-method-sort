@@ -21,13 +21,13 @@ function applyCustomSort() {
       return 0;
     };
 
-    for (let i = 0; i < this.length; i++) {
-      for (let j = i + 1; j < this.length; j++) {
-        if (compare(this[i], this[j]) > 0) {
-          [this[i], this[j]] = [this[j], this[i]];
+    for (let prev = 0; prev < this.length; prev++) {
+      for (let next = prev + 1; next < this.length; next++) {
+        if (compare(this[prev], this[next]) > 0) {
+          [this[prev], this[next]] = [this[next], this[prev]];
         }
       }
-    };
+    }
 
     return this;
   };
