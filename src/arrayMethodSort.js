@@ -21,10 +21,7 @@ function applyCustomSort() {
 }
 
 const defaultCompare = (a, b) => {
-  const asc = a.toString() > b.toString();
-  const desc = a.toString() < b.toString();
-
-  return asc ? 1 : desc ? -1 : 0;
+  return Number(a.toString() > b.toString());
 };
 
 module.exports = applyCustomSort;
