@@ -4,9 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => {
-    return a.toString() > b.toString();
-  }) {
+  [].__proto__.sort2 = function(compareFunction = itemsComparison) {
     for (let i = 0; i < this.length - 1; i++) {
       for (let y = i + 1; y < this.length; y++) {
         if (compareFunction(this[i], this[y]) > 0) {
@@ -20,6 +18,10 @@ function applyCustomSort() {
 
     return this;
   };
+}
+
+function itemsComparison(item1, item2) {
+  return item1.toString() > item2.toString();
 }
 
 module.exports = applyCustomSort;
