@@ -8,7 +8,15 @@ const compareStringFunction = (x, y) => {
   const stringX = x.toString();
   const stringY = y.toString();
 
-  return stringX > stringY ? 1 : stringX < stringY ? -1 : 0;
+  if (stringX > stringY) {
+    return 1;
+  }
+
+  if (stringY > stringX) {
+    return -1;
+  }
+
+  return 0;
 };
 
 function applyCustomSort() {
