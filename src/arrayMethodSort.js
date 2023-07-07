@@ -5,22 +5,16 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareAsString) {
-    let count;
+    for (let i = 0; i < this.length - 1; i++) {
+      for (let j = 0; j < this.length - i - 1; j++) {
+        if (compareFunction(this[j], this[j + 1]) > 0) {
+          const temp = this[j];
 
-    do {
-      count = 0;
-
-      for (let i = 1; i < this.length; i++) {
-        const prev = this[i - 1];
-        const current = this[i];
-
-        if (compareFunction(prev, current) > 0) {
-          count++;
-          this[i - 1] = prev;
-          this[i] = current;
+          this[j] = this[j + 1];
+          this[j + 1] = temp;
         }
       }
-    } while (count > 0);
+    }
 
     return this;
   };
