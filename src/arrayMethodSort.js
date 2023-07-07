@@ -6,7 +6,6 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     let i = 0;
-    // 3, 12, 2, 11
 
     while (true) {
       if (compareFunction) {
