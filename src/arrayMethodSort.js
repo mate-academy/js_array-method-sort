@@ -1,19 +1,24 @@
 'use strict';
 
+/**
+ * Implement method Sort
+ */
+function compareFn(a, b) {
+  if (String(a) < String(b)) {
+    return -1;
+  }
+
+  if (String(a) > String(b)) {
+    return 1;
+  }
+  // a must be equal to b
+
+  return 0;
+}
+
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    // write code here
     let count;
-
-    const compareAsString = (a, b) => {
-      if (String(a) > String(b)) {
-        return 1;
-      } else if (String(a) === String(b)) {
-        return 0;
-      } else {
-        return -1;
-      }
-    };
 
     do {
       count = 0;
@@ -24,7 +29,7 @@ function applyCustomSort() {
 
         if (compareFunction
           ? compareFunction(prev, current) > 0
-          : compareAsString(prev, current) > 0) {
+          : compareFn(prev, current) > 0) {
           count++;
           this[i - 1] = current;
           this[i] = prev;
