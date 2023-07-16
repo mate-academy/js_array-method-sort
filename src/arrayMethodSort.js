@@ -5,19 +5,19 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(
-    compareFunction = (a, b) => String(a) > String(b) ? 1 : -1) {
+    compareFunction = (a, b) => String(a) > String(b)) {
     let count;
 
     do {
-      count = 0;
+      count = false;
 
       for (let i = 0; i < this.length - 1; i++) {
         if (compareFunction(this[i], this[i + 1]) > 0) {
-          count = 1;
+          count = true;
           [this[i], this[i + 1]] = [this[i + 1], this[i]];
         }
       }
-    } while (count === 1);
+    } while (count);
 
     return this;
   };
