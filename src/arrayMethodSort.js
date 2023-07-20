@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
 const compareStr = (a, b) => {
   const strA = String(a);
   const strB = String(b);
