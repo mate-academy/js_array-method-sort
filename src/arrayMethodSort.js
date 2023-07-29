@@ -14,7 +14,6 @@ function defaultSort(a, b) {
   }
 }
 
-// Custom sort method
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     if (!compareFunction) {
