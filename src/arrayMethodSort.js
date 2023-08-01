@@ -61,9 +61,3 @@ function applyCustomSort() {
 };
 
 module.exports = applyCustomSort;
-
-const source = [3, 12, 2, 2, 11, 233, 234, 23, 35, 53, 35, 23, 5, 6, 6, 6, 565];
-
-applyCustomSort();
-
-console.log(source.sort2((a, b) => a - b));
