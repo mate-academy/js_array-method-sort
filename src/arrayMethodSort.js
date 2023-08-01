@@ -9,35 +9,28 @@ function applyCustomSort() {
 
     this.length = 0;
 
-    const sortLikeAString = function sort2(arr) {
-      let arrRight = arr.filter(el => `${el}`
-      > `${arr[arr.length - 1]}`);
+    let compare = compareFunction;
 
-      let arrLeft = arr.filter(el => `${el}`
-      < `${arr[arr.length - 1]}`);
+    if (!compareFunction) {
+      compare = (a, b) => {
+        if (`${a}` > `${b}`) {
+          return 1;
+        } else if (`${a}` < `${b}`) {
+          return -1;
+        } else {
+          return 0;
+        }
+      };
+    }
 
-      const middle = arr.filter(el => `${el}`
-      === `${arr[arr.length - 1]}`);
-
-      if (arrRight.length > 1) {
-        arrRight = sort2(arrRight);
-      }
-
-      if (arrLeft.length > 1) {
-        arrLeft = sort2(arrLeft);
-      }
-
-      return [...arrLeft, ...middle, ...arrRight];
-    };
-
-    const sortNumbers = function sort2(arr) {
+    function sort2(arr) {
       const last = arr[arr.length - 1];
 
-      let arrRight = arr.filter(el => compareFunction(el, last) > 0);
+      let arrRight = arr.filter(el => compare(el, last) > 0);
 
-      let arrLeft = arr.filter(el => compareFunction(el, last) < 0);
+      let arrLeft = arr.filter(el => compare(el, last) < 0);
 
-      const middle = arr.filter(el => compareFunction(el, last) === 0);
+      const middle = arr.filter(el => compare(el, last) === 0);
 
       if (arrRight.length > 1) {
         arrRight = sort2(arrRight);
@@ -50,9 +43,7 @@ function applyCustomSort() {
       return [...arrLeft, ...middle, ...arrRight];
     };
 
-    !compareFunction ? sortLikeAString(array).forEach((el, i) => {
-      this[i] = el;
-    }) : sortNumbers(array).forEach((el, i) => {
+    sort2(array).forEach((el, i) => {
       this[i] = el;
     });
 
