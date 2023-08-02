@@ -6,11 +6,14 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     const compare = compareFunction || function(a, b) {
-      if (a < b) {
+      const item1 = a.toString();
+      const item2 = b.toString();
+
+      if (item1 < item2) {
         return -1;
       }
 
-      if (a > b) {
+      if (item1 > item2) {
         return 1;
       }
 
@@ -18,9 +21,9 @@ function applyCustomSort() {
     };
 
     for (let i = 0; i < this.length - 1; i++) {
-      for (let q = 0; q < this.length - 1 - i; q++) {
-        if (compare(this[q].toString(), this[q + 1].toString()) > 0) {
-          [this[q], this[q + 1]] = [this[q + 1], this[q]];
+      for (let j = 0; j < this.length - 1 - i; j++) {
+        if (compare(this[j], this[j + 1]) > 0) {
+          [this[j], this[j + 1]] = [this[j + 1], this[j]];
         }
       }
     }
