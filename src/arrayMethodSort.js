@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 'use strict';
 
 /**
@@ -8,29 +9,23 @@ function applyCustomSort() {
     const length = this.length;
 
     for (let i = 0; i < length - 1; i++) {
-      let minIndex = i;
-
       for (let j = i + 1; j < length; j++) {
         if (compareFunction !== undefined) {
-          if (compareFunction(this[j], this[minIndex]) < 0) {
-            minIndex = j;
-          }
+          compareFunction(this[j], this[i]) < 0
+            ? [this[i], this[j]] = [this[j], this[i]]
+            : [this[i], this[j]];
+        } else if (compareFunction === undefined
+          && typeof this[0] !== 'number') {
+          [this[i], this[j]]
+            = this[j] < this[i]
+              ? [this[i], this[j]] = [this[j], this[i]]
+              : [this[i], this[j]];
         } else {
-          if (this[j] < this[i]
-          && typeof this[0] === 'string') {
-            minIndex = j;
-          } else if (this[j].toString().localeCompare(this[i].toString()) < 0
-            && typeof this[0] === 'number') {
-            minIndex = j;
-          }
+          [this[i], this[j]]
+            = this[j].toString().localeCompare(this[i]) === -1
+              ? [this[j], this[i]]
+              : [this[i], this[j]];
         }
-      }
-
-      if (minIndex !== i) {
-        const temp = this[i];
-
-        this[i] = this[minIndex];
-        this[minIndex] = temp;
       }
     }
 
