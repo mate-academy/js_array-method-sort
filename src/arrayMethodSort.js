@@ -6,10 +6,8 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    const length = this.length;
-
-    for (let i = 0; i < length - 1; i++) {
-      for (let j = i + 1; j < length; j++) {
+    for (let i = 0; i < this.length - 1; i++) {
+      for (let j = i + 1; j < this.length; j++) {
         if (compareFunction !== undefined) {
           compareFunction(this[j], this[i]) < 0
             ? [this[i], this[j]] = [this[j], this[i]]
