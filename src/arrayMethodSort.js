@@ -23,7 +23,7 @@ function applyCustomSort() {
     return this;
 
     function defaultComparator(a, b) {
-      return a.toString() > b.toString();
+      return a.toString() > b.toString() ? 1 : -1;
     }
 
     function swap(arr, i, j) {
