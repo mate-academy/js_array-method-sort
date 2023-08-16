@@ -6,22 +6,17 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     // write code here
-    const newArray = this.slice();
+    for (let i = 0; i < this.length - 1; i++) {
+      for (let j = 0; j < this.length - i - 1; j++) {
+        const shouldSwap = compareFunction
+          ? compareFunction(this[j], this[j + 1]) > 0
+          : String(this[j]) > String(this[j + 1]);
 
-    for (let i = 0; i < newArray.length - 1; i++) {
-      for (let j = 0; j < newArray.length - i - 1; j++) {
-        if (compareFunction ? compareFunction(newArray[j], newArray[j + 1]) > 0
-          : String(newArray[j]) > String(newArray[j + 1])) {
-          const temp = newArray[j];
-
-          newArray[j] = newArray[j + 1];
-          newArray[j + 1] = temp;
+        if (shouldSwap) {
+          [this[j], this[j + 1]] = [this[j + 1], this[j]];
         }
       }
     }
-
-    this.length = 0;
-    newArray.forEach(item => this.push(item));
 
     return this;
   };
