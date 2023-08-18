@@ -4,7 +4,7 @@ const applyCustomSort = require('./arrayMethodSort');
 
 applyCustomSort();
 
-test('sort2 is added to [].__proto__', () => {
+test('sort2 is added to []._(_proto__', () => {
   expect([].sort2)
     .toBeInstanceOf(Function);
 });
@@ -53,7 +53,7 @@ test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => a - b)',
   });
 
 test(
-  `custom compare function, strings: 
+  `custom compare function, strings:
   ['ёж','як','аист'].sort2((a, b) => a.localeCompare(b))`, () => {
     expect(['ёж', 'як', 'аист'].sort2((a, b) => a.localeCompare(b)))
       .toEqual(['аист', 'ёж', 'як']);
