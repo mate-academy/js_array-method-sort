@@ -11,9 +11,7 @@ function applyCustomSort() {
 
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < n - i - 1; j++) {
-        const compareResult = compareFunction
-          ? compareFunction(array[j], array[j + 1])
-          : String(array[j]).localeCompare(array[j + 1]);
+        const compareResult = compareFunction(this[j], this[j + 1]);
 
         if (compareResult > 0) {
           [array[j], array[j + 1]] = [array[j + 1], array[j]];
