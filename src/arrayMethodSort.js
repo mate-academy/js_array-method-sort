@@ -3,6 +3,16 @@
 /**
  * Implement method Sort
  */
+const isSorted = function(arr, compareFunction) {
+  for (let i = 1; i < arr.length; i++) {
+    if (compareFunction(arr[i - 1], arr[i]) > 0) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = function(a, b) {
     if (b.toString() === a.toString()) {
@@ -13,24 +23,16 @@ function applyCustomSort() {
       ? 1
       : -1;
   }) {
-    let x = 0;
+    let swap = 0;
 
-    const isSorted = function(arr) {
-      for (let i = 1; i < arr.length; i++) {
-        if (compareFunction(arr[i - 1], arr[i]) > 0) {
-          return false;
-        }
-      }
-
-      return true;
-    };
-
-    while (!isSorted(this)) {
-      for (let i = 1; i < this.length; i++) {
-        if (compareFunction(this[i - 1], this[i]) > 0) {
-          x = this[i];
-          this[i] = this[i - 1];
-          this[i - 1] = x;
+    while (!isSorted(this, compareFunction)) {
+      for (let j = 0; j < this.length; j++) {
+        for (let i = j + 1; i < this.length; i++) {
+          if (compareFunction(this[j], this[i]) > 0) {
+            swap = this[j];
+            this[j] = this[i];
+            this[i] = swap;
+          }
         }
       }
     }
