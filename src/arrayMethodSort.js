@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
 function applyCustomSort() {
   [].__proto__.sort2 = function(
     compareFunction = (a, b) => (String(a) > String(b) ? 1 : -1)
