@@ -5,7 +5,34 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+    if (!compareFunction) {
+      // eslint-disable-next-line no-param-reassign
+      compareFunction = (a, b) => {
+        if (a.toString() > b.toString()) {
+          return 1;
+        }
+      };
+    }
+
+    for (let i = 0; i < this.length; i++) {
+      let currentItem = this[i];
+      let index = i;
+      let callbackResult;
+
+      for (let j = i; j < this.length; j++) {
+        callbackResult = compareFunction(currentItem, this[j]);
+
+        if (callbackResult > 0) {
+          currentItem = this[j];
+          index = j;
+        }
+      }
+
+      this[index] = this[i];
+      this[i] = currentItem;
+    }
+
+    return this;
   };
 }
 
