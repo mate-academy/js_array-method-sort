@@ -11,6 +11,14 @@ function applyCustomSort() {
         if (a.toString() > b.toString()) {
           return 1;
         }
+
+        if (a.toString() < b.toString()) {
+          return -1;
+        }
+
+        if (a.toString() === b.toString()) {
+          return 0;
+        }
       };
     }
 
