@@ -21,6 +21,7 @@ function applyCustomSort() {
       for (let j = 0; j < this.length - i - 1; j++) {
         if (callback(this[j], this[j + 1]) > 0) {
           const currentValue = this[j];
+
           this[j] = this[j + 1];
           this[j + 1] = currentValue;
         }
