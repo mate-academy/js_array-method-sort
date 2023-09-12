@@ -5,7 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(
-    compareFunction = (a, b) => a.toString().localeCompare(b)
+    compareFunction = (a, b) => a.toString() < b.toString() ? -1 : 1
   ) {
     return BubbleSort(this, compareFunction);
   };
