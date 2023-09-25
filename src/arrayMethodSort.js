@@ -6,17 +6,7 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     const standartCompare = function(a, b) {
-      if (String(a) < String(b)) {
-        return -1;
-      }
-
-      if (String(a) > String(b)) {
-        return 1;
-      }
-
-      if (String(a) === String(b)) {
-        return 0;
-      }
+      return (String(a) < String(b)) ? -1 : 1;
     };
 
     const method = compareFunction || standartCompare;
