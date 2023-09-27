@@ -19,11 +19,8 @@ function applyCustomSort() {
           : compareFunctionResult = compareFunction(this[i], this[i + 1]);
 
         if (compareFunctionResult > 0) {
-          const temporaryValue = this[i];
-
           // swap values
-          this[i] = this[i + 1];
-          this[i + 1] = temporaryValue;
+          [this[i], this[i + 1]] = [this[i + 1], this[i]];
         }
       }
 
