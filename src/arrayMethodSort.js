@@ -17,10 +17,9 @@ function applyCustomSort() {
         }
       }
     } else {
-      // If no compare function is provided, sort as strings by default
       for (let i = 0; i < this.length - 1; i++) {
         for (let j = 0; j < this.length - i - 1; j++) {
-          if (String(this[j]).localeCompare(String(this[j + 1])) > 0) {
+          if (String(this[j]) > (String(this[j + 1]))) {
             const temp = this[j];
 
             this[j] = this[j + 1];
