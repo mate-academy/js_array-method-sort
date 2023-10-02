@@ -6,17 +6,18 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction =
   (a, b) => String(a) === String(b) ? 0 : String(a) > String(b) ? 1 : -1) {
-    let f = true; let t;
+    let checkProceed = true;
+    let temporaryContainer;
 
-    while (f) {
-      f = false;
+    while (checkProceed) {
+      checkProceed = false;
 
       for (let i = 0; i < this.length - 1; i++) {
         if (compareFunction(this[i], this[i + 1]) > 0) {
-          t = this[i];
+          temporaryContainer = this[i];
           this[i] = this[i + 1];
-          this[i + 1] = t;
-          f = true;
+          this[i + 1] = temporaryContainer;
+          checkProceed = true;
         }
       }
     }
