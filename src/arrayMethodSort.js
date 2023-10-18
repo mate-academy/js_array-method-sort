@@ -21,7 +21,14 @@ function applyCustomSort() {
     return this;
   };
 
-  const defaultSort = (a, b) => String(a) > String(b);
+  const defaultSort = (a, b) => {
+    // eslint-disable-next-line curly
+    if (String(a) < String(b)) return -1;
+    // eslint-disable-next-line curly
+    if (String(a) > String(b)) return 1;
+
+    return 0;
+  };
 }
 
 module.exports = applyCustomSort;
