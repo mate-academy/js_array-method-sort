@@ -22,10 +22,13 @@ function applyCustomSort() {
   };
 
   const defaultSort = (a, b) => {
-    // eslint-disable-next-line curly
-    if (String(a) < String(b)) return -1;
-    // eslint-disable-next-line curly
-    if (String(a) > String(b)) return 1;
+    if (String(a) < String(b)) {
+      return -1;
+    }
+
+    if (String(a) > String(b)) {
+      return 1;
+    }
 
     return 0;
   };
