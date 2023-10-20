@@ -5,38 +5,27 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    if (compareFunction === undefined) {
-      for (let index = 0; index < this.length; index++) {
-        for (let nextIndex = index; nextIndex < this.length; nextIndex++) {
-          const element = String(this[index]);
-          const nextElement = String(this[nextIndex]);
+    const defaultCompareFunc = (a, b) => String(a) > String(b) ? 1 : -1;
+    let difference;
 
-          if (element > nextElement) {
-            const temp = this[index];
+    for (let index = 0; index < this.length; index++) {
+      for (let nextIndex = index; nextIndex < this.length; nextIndex++) {
+        if (compareFunction === undefined) {
+          difference = defaultCompareFunc(this[index], this[nextIndex]);
+        } else {
+          difference = compareFunction(this[index], this[nextIndex]);
+        }
 
-            this[index] = this[nextIndex];
-            this[nextIndex] = temp;
-          }
+        if (difference > 0) {
+          const temp = this[index];
+
+          this[index] = this[nextIndex];
+          this[nextIndex] = temp;
         }
       }
-
-      return this;
     }
 
-    if (compareFunction !== undefined) {
-      for (let index = 0; index < this.length; index++) {
-        for (let nextIndex = index; nextIndex < this.length; nextIndex++) {
-          if (compareFunction(this[index], this[nextIndex]) > 0) {
-            const temp = this[index];
-
-            this[index] = this[nextIndex];
-            this[nextIndex] = temp;
-          }
-        }
-      }
-
-      return this;
-    }
+    return this;
   };
 }
 
