@@ -10,10 +10,9 @@ the beginning is already there
 */
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const compFn = compareFunction || ((a, b) => String(a) > String(b));
-
-    // (a, b) => (''+ a).localeCompare(b, 'uk')
+  [].__proto__.sort2 = function(compareFunction = (a, b) =>
+    String(a) > String(b)) {
+    const compFn = compareFunction;
 
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - i - 1; j++) {
