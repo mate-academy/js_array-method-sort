@@ -16,9 +16,9 @@ function applyCustomSort() {
         }
       }
     }
-  };
 
-  return this;
-};
+    return this;
+  };
+}
 
 module.exports = applyCustomSort;
