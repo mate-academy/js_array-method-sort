@@ -4,7 +4,8 @@
  * Implement method Sort
  */
 
-const compareStr = (a, b) => `${a}` > `${b}` ? 1 : -1;
+const compareStr = (a, b) =>
+  (`${a}` === `${b}`) ? 0 : ((`${a}` > `${b}`) ? 1 : -1);
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareStr) {
