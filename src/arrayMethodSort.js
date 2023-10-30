@@ -5,7 +5,32 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+    const array = this;
+    const length = array.length;
+
+    for (let i = 0; i < length - 1; i++) {
+      for (let j = 0; j < length - i - 1; j++) {
+        if (compareFunction) {
+          if (compareFunction(array[j], array[j + 1]) > 0) {
+            // Swap elements
+            const temp = array[j];
+
+            array[j] = array[j + 1];
+            array[j + 1] = temp;
+          }
+        } else {
+          if (String(array[j]) > String(array[j + 1])) {
+            // Swap elements
+            const temp = array[j];
+
+            array[j] = array[j + 1];
+            array[j + 1] = temp;
+          }
+        }
+      }
+    }
+
+    return array;
   };
 }
 
