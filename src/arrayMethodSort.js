@@ -5,15 +5,31 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2
-  = function(compareFunction
-    = (a, b) => String(a) > String(b) ? 1 : -1) {
-      for (let i = 0; i < this.length; i++) {
-        for (let j = i + 1; j < this.length; j++) {
-          if (compareFunction(this[i], this[j]) > 0) {
-            const result = this[i];
+  = function(compareFunction) {
+      const defaultCompareFunction = (a, b) => {
+        const aStr = a.toString();
+        const bStr = b.toString();
 
-            this[i] = this[j];
-            this[j] = result;
+        if (aStr < bStr) {
+          return -1;
+        }
+
+        if (aStr > bStr) {
+          return 1;
+        }
+
+        return 0;
+      };
+
+      const compareMethod = compareFunction || defaultCompareFunction;
+
+      for (let i = 0; i < this.length - 1; i++) {
+        for (let k = 0; k < this.length - i - 1; k++) {
+          if (compareMethod(this[k], this[k + 1]) > 0) {
+            const temp = this[k];
+
+            this[k] = this[k + 1];
+            this[k + 1] = temp;
           }
         }
       }
