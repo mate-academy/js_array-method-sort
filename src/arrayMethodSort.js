@@ -25,21 +25,21 @@ function applyCustomSort() {
 
     return this;
   };
-}
 
-function compareStrings(a, b) {
-  const first = String(a);
-  const second = String(b);
+  function compareStrings(a, b) {
+    const first = String(a);
+    const second = String(b);
 
-  if (first > second) {
-    return 1;
+    if (first > second) {
+      return 1;
+    }
+
+    if (first < second) {
+      return -1;
+    }
+
+    return 0;
   }
-
-  if (first < second) {
-    return -1;
-  }
-
-  return 0;
 }
 
 module.exports = applyCustomSort;
