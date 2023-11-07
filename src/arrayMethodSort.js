@@ -6,10 +6,10 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
     // write code here
-    let counter;
+    let isSorting;
 
     do {
-      counter = 0;
+      isSorting = false;
 
       for (let i = 0; i < this.length - 1; i++) {
         const a = this[i];
@@ -18,10 +18,10 @@ function applyCustomSort() {
         if (compareFunction(a, b) > 0) {
           this[i] = b;
           this[i + 1] = a;
-          counter++;
+          isSorting = true;
         }
       }
-    } while (counter > 0);
+    } while (isSorting === true);
 
     return this;
   };
