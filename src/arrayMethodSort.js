@@ -21,7 +21,7 @@ const compareStrings = (previous, current) => {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = compareStrings) {
-    let sorted;
+    let sorted = false;
 
     for (let j = this.length - 1; j > 0; j--) {
       sorted = true;
