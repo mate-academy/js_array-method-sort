@@ -52,6 +52,12 @@ test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => a - b)',
       .toEqual([2, 3, 11, 12]);
   });
 
+test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => b - a)',
+  () => {
+    expect([3, 12, 2, 11].sort2((a, b) => b - a))
+      .toEqual([12, 11, 3, 2]);
+  });
+
 test(
   `custom compare function, strings: 
   ['їжачок','яблуко','апельсин'].sort2((a, b) => a.localeCompare(b))`, () => {
