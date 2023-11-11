@@ -3,21 +3,23 @@
 /**
  * Implement method Sort
  */
-function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = () => {
-    for (let i = 0; i < this.length - 1; i++) {
-      for (let j = i + 1; j < this.length; j++) {
-        const a = '' + this[i];
-        const b = '' + this[j];
-        const change = this[i];
+const defaultCompairFunction = (a, b) => {
+  const aStr = a.toString();
+  const bStr = b.toString();
 
-        if (a > b) {
-          this[i] = this[j];
-          this[j] = change;
-        }
-      }
-    }
-  }) {
+  if (aStr < bStr) {
+    return -1;
+  }
+
+  if (aStr > bStr) {
+    return 1;
+  }
+
+  return 0;
+};
+
+function applyCustomSort() {
+  [].__proto__.sort2 = function(compareFunction = defaultCompairFunction) {
     for (let i = 0; i < this.length - 1; i++) {
       for (let j = i; j < this.length; j++) {
         if (compareFunction(this[i], this[j]) > 0) {
