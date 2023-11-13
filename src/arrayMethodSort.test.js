@@ -41,9 +41,9 @@ test(`sort strings: ['c','b','a','d'].sort2()`, () => {
     .toEqual(['a', 'b', 'c', 'd']);
 });
 
-test(`sort cyrillic letters: ['ёж','як','аист'].sort2()`, () => {
-  expect(['ёж', 'як', 'аист'].sort2())
-    .toEqual(['аист', 'як', 'ёж']);
+test(`sort cyrillic letters: ['їжачок','яблуко','апельсин'].sort2()`, () => {
+  expect(['їжачок', 'яблуко', 'апельсин'].sort2())
+    .toEqual(['апельсин', 'яблуко', 'їжачок']);
 });
 
 test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => a - b)',
@@ -54,7 +54,7 @@ test('custom compare function, numbers: [3, 12, 2, 11].sort2((a, b) => a - b)',
 
 test(
   `custom compare function, strings: 
-  ['ёж','як','аист'].sort2((a, b) => a.localeCompare(b))`, () => {
-    expect(['ёж', 'як', 'аист'].sort2((a, b) => a.localeCompare(b)))
-      .toEqual(['аист', 'ёж', 'як']);
+  ['їжачок','яблуко','апельсин'].sort2((a, b) => a.localeCompare(b))`, () => {
+    expect(['їжачок', 'яблуко', 'апельсин'].sort2((a, b) => a.localeCompare(b)))
+      .toEqual(['апельсин', 'їжачок', 'яблуко']);
   });
