@@ -3,7 +3,7 @@
 /**
  * Implement method Sort
  */
-function applyCustomSort(arr) {
+function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     const defaultCompareFunction = (a, b) => {
       const aStr = a.toString();
