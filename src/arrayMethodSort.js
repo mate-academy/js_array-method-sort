@@ -4,8 +4,8 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const defaultCompareFunction = (a, b) => {
+  [].__proto__.sort2 = function(compareFunction = 0) {
+    const deafultcompareFunction = (a, b) => {
       const aStr = a.toString();
       const bStr = b.toString();
 
@@ -20,7 +20,7 @@ function applyCustomSort() {
       return 0;
     };
 
-    const compareMethod = compareFunction || defaultCompareFunction;
+    const compareMethod = compareFunction || deafultcompareFunction;
 
     for (let i = 0; i < this.length - 1; i++) {
       for (let j = 0; j < this.length - i - 1; j++) {
