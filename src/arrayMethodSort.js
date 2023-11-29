@@ -15,16 +15,18 @@ function applyCustomSort() {
             this[j + 1] = prev;
           }
         } else {
-          const a = `${this[j]}`;
-          const b = `${this[j + 1]}`;
-
-          if (a > b) {
+          if (typeof (this[j]) === 'string') {
+            if (this[j] > this[j + 1]) {
+              this[j] = this[j + 1];
+              this[j + 1] = prev;
+            }
+          } else if (String(this[j]) > String(this[j + 1])) {
             this[j] = this[j + 1];
             this[j + 1] = prev;
           }
         }
       }
-    };
+    }
 
     return this;
   };
