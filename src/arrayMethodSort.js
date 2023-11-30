@@ -9,18 +9,16 @@ function applyCustomSort() {
       for (let j = 0; j < this.length; j++) {
         const prev = this[j];
 
-        if (typeof (compareFunction) === 'function') {
-          if ((compareFunction(this[j], this[j + 1])) > 0) {
-            this[j] = this[j + 1];
-            this[j + 1] = prev;
-          }
+        if ((compareFunction(this[j], this[j + 1])) > 0) {
+          this[j] = this[j + 1];
+          this[j + 1] = prev;
         }
       }
     }
 
     return this;
   };
-}
+};
 
 function defaultCompareFunction(a, b) {
   if (typeof (a) === 'number') {
