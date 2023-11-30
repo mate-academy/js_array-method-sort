@@ -22,11 +22,11 @@ function applyCustomSort() {
 
 function defaultCompareFunction(a, b) {
   if (typeof (a) === 'number') {
-    return String(a) > String(b) ? 1 : -1;
+    return (String(a) > String(b) ? 1 : -1);
   }
 
   if (typeof (a) === 'string') {
-    return a > b ? 1 : -1;
+    return (a > b ? 1 : -1);
   }
 }
 
