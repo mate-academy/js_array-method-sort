@@ -4,8 +4,31 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(compareFunction = -1) {
     // write code here
+    for (let i = 0; i < this.length - 1; i++) {
+      for (let j = i + 1; j < this.length; j++) {
+        let resultOfCompare = compareFunction;
+
+        if (typeof compareFunction === 'number') {
+          if (this[i].toString() > this[j].toString()) {
+            resultOfCompare = 1;
+          }
+        } else {
+          resultOfCompare = compareFunction(this[i], this[j]);
+        }
+
+        if (resultOfCompare > 0) {
+          const value = this[i];
+
+          this[i] = this[j];
+
+          this[j] = value;
+        }
+      }
+    }
+
+    return this;
   };
 }
 
