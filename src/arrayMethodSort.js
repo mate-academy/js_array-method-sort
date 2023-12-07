@@ -18,10 +18,7 @@ function applyCustomSort() {
     for (let i = 0; i < this.length; i++) {
       for (let k = i + 1; k < this.length; k++) {
         if (compareFunction(this[i], this[k]) > 0) {
-          const valueI = this[i];
-
-          this[i] = this[k];
-          this[k] = valueI;
+          [this[i], this[k]] = [this[k], this[i]];
         }
       }
     }
