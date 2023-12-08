@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction = (a, b) => {
+  function defaultcompareFunction(a, b) {
     if (a.toString() > b.toString()) {
       return 1;
     }
@@ -14,7 +14,9 @@ function applyCustomSort() {
     }
 
     return 0;
-  }) {
+  }
+
+  [].__proto__.sort2 = function(compareFunction = defaultcompareFunction) {
     for (let i = 0; i < this.length; i++) {
       for (let k = i + 1; k < this.length; k++) {
         if (compareFunction(this[i], this[k]) > 0) {
