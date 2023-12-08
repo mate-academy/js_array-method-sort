@@ -1,8 +1,5 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
 function applyCustomSort() {
   function defaultcompareFunction(a, b) {
     if (a.toString() > b.toString()) {
