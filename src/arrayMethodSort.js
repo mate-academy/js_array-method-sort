@@ -7,7 +7,7 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(
     compareFunction = (elem1, elem2) => elem1.toString() > elem2.toString()
   ) {
-    // write code here
+
     const bubbleSort = (arr) => {
       for (let i = 0; i < arr.length - 1; i++) {
         let wasSwap = false;
