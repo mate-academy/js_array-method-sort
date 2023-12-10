@@ -11,9 +11,9 @@ function applyCustomSort() {
 }
 
 function stringComparator(a, b) {
-  if (a.toString() < b.toString()) {
+  if (String(a) < String(b)) {
     return -1;
-  } else if (a.toString() > b.toString()) {
+  } else if (String(a) > String(b)) {
     return 1;
   }
 
