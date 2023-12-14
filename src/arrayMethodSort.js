@@ -6,15 +6,16 @@
 
 function applyCustomSort() {
   [].__proto__.sort2 = function(cb) {
-    for (let i = 0; i < this.length - 1; i++) {
-      const currElem = this[i];
-      const nextElem = this[i + 1];
+    for (let i = 0; i < this.length; i++) {
+      for (let j = 0; j < this.length - 1 - i; j++) {
+        const currElem = this[j];
+        const nextElem = this[j + 1];
 
-      if (cb ? cb(nextElem, currElem, i, this) < 0
-        : nextElem.toString()[0] < currElem.toString()[0]) {
-        this.splice(i + 1, 1);
-        this.unshift(nextElem);
-        i = -1;
+        if (cb ? cb(currElem, nextElem, i, this) > 0
+          : nextElem.toString() < currElem.toString()) {
+          this[j] = nextElem;
+          this[j + 1] = currElem;
+        }
       }
     }
 
