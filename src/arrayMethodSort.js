@@ -4,13 +4,13 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  const defaultCallback = (a, b) => (a.toString() > b.toString() ? 1 : -1);
+  const defaultSort = (a, b) => (a.toString() > b.toString() ? 1 : -1);
 
-  [].__proto__.sort2 = function(callback = defaultCallback) {
-    let isReplaced = false;
+  [].__proto__.sort2 = function(callback = defaultSort) {
+    let isReplaced = true;
 
-    while (isReplaced !== true) {
-      isReplaced = true;
+    while (isReplaced !== false) {
+      isReplaced = false;
 
       for (let i = 0; i < this.length - 1; i++) {
         if (callback(this[i], this[i + 1]) > 0) {
@@ -18,7 +18,7 @@ function applyCustomSort() {
 
           this[i] = this[i + 1];
           this[i + 1] = bufferValue;
-          isReplaced = false;
+          isReplaced = true;
         }
       }
     }
