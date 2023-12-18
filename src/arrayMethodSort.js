@@ -4,14 +4,10 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    const callBek = compareFunction === undefined
-      ? (item1, item2) => `${item1}` > `${item2}` ? 1 : 0
-      : compareFunction;
-
+  [].__proto__.sort2 = function(compareFunction = compareByDefault) {
     for (let ii = this.length - 1; ii > 0; ii--) {
       for (let i = 0; i < ii; i++) {
-        if (callBek(this[i], this[i + 1]) > 0) {
+        if (compareFunction(this[i], this[i + 1]) > 0) {
           const _ = this[i];
 
           this[i] = this[i + 1];
@@ -22,6 +18,10 @@ function applyCustomSort() {
 
     return this;
   };
+}
+
+function compareByDefault(item1, item2) {
+  return `${item1}` > `${item2}` ? 1 : 0;
 }
 
 module.exports = applyCustomSort;
