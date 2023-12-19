@@ -5,7 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction =
-  (a, b) => a.toString() > b.toString()) {
+  defaultCompare) {
     const arrLength = this.length;
     let counter = 0;
 
@@ -27,5 +27,9 @@ function applyCustomSort() {
     return this;
   };
 }
+
+function defaultCompare(a, b) {
+  return a.toString() > b.toString();
+};
 
 module.exports = applyCustomSort;
