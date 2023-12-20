@@ -4,22 +4,19 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2
-    = function(compareFunction = (a, b) => a.toString() > b.toString()) {
-      chooseMethod(this, compareFunction);
-
-      return this;
-
-      function chooseMethod(array, method) {
-        for (let i = 0; i < array.length; i++) {
-          for (let j = i + 1; j < array.length; j++) {
-            if (method(array[i], array[j]) > 0) {
-              [array[i], array[j]] = [array[j], array[i]];
-            }
-          }
+  [].__proto__.sort2 = function(compareFunction = (a, b) => {
+    return a.toString() > b.toString();
+  }) {
+    for (let i = 0; i < this.length; i++) {
+      for (let j = i + 1; j < this.length; j++) {
+        if (compareFunction(this[i], this[j]) > 0) {
+          [this[i], this[j]] = [this[j], this[i]];
         }
       }
-    };
+    }
+
+    return this;
+  };
 }
 
 module.exports = applyCustomSort;
