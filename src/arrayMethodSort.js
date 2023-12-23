@@ -7,29 +7,37 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     const inputArray = [...this];
 
-    if (compareFunction === undefined) {
-      for (let l = 0; l < inputArray.length; l++) {
-        inputArray[l] += '';
+    function compareElements(a, b) {
+      if (a < b) {
+        return -1;
+      } else if (a > b) {
+        return 1;
+      } else {
+        return 0;
       }
+    }
 
-      for (let i = 0; i <= this.length - 1; i++) {
-        for (let j = 0; j < this.length - 1; j++) {
-          for (let k = 0; k <= inputArray[j].length - 1; k++) {
-            const firstValue = inputArray[j];
-            const secondValue = inputArray[j + 1];
+    function reorganiseArray(array, comparison = compareElements) {
+      for (let i = 0; i < array.length - 1; i++) {
+        for (let j = 0; j < array.length - 1; j++) {
+          let firstValue = array[j] + '';
+          let secondValue = array[j + 1] + '';
 
-            if (firstValue.charCodeAt(k) === secondValue.charCodeAt(k)) {
-              continue;
-            } else if (firstValue.charCodeAt(k) > secondValue.charCodeAt(k)) {
-              inputArray[j + 1] = firstValue;
-              inputArray[j] = secondValue;
-              break;
-            } else {
-              break;
-            }
+          if (comparison !== compareElements) {
+            firstValue = array[j];
+            secondValue = array[j + 1];
+          }
+
+          if (comparison(firstValue, secondValue) > 0) {
+            array[j] = secondValue;
+            array[j + 1] = firstValue;
           }
         }
       }
+    }
+
+    if (compareFunction === undefined) {
+      reorganiseArray(inputArray);
 
       if (typeof this[0] === 'number') {
         for (let i = 0; i < this.length; i++) {
@@ -43,17 +51,7 @@ function applyCustomSort() {
 
       return this;
     } else {
-      for (let i = 0; i < this.length; i++) {
-        for (let j = 0; j <= this.length - 2; j++) {
-          const firstValue = inputArray[j];
-          const secondValue = inputArray[j + 1];
-
-          if (compareFunction(inputArray[j], inputArray[j + 1]) > 0) {
-            inputArray[j] = secondValue;
-            inputArray[j + 1] = firstValue;
-          };
-        }
-      }
+      reorganiseArray(inputArray, compareFunction);
 
       for (let i = 0; i < this.length; i++) {
         this[i] = inputArray[i];
