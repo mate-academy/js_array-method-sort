@@ -31,16 +31,15 @@ function defaultFunction(prevEl, currEl) {
   const prevStr = prevEl.toString();
   const currStr = currEl.toString();
 
-  switch (true) {
-    case prevStr > currStr:
-      return 1;
-
-    case prevStr === currStr:
-      return 0;
-
-    case prevStr < currStr:
-      return -1;
+  if (prevStr > currStr) {
+    return 1;
   }
+
+  if (prevStr === currStr) {
+    return 0;
+  }
+
+  return -1;
 }
 
 module.exports = applyCustomSort;
