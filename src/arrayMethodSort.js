@@ -12,14 +12,10 @@ function applyCustomSort() {
     return String(a).localeCompare(String(b));
   }
 
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(compareFunction = customCompare) {
     for (let i = 0; i < this.length - 1; i++) {
       for (let j = 0; j < this.length - 1 - i; j++) {
-        const compareResult = compareFunction
-          ? compareFunction(this[j], this[j + 1])
-          : customCompare(this[j], this[j + 1]);
-
-        if (compareResult > 0) {
+        if (compareFunction(this[j], this[j + 1]) > 0) {
           const temp = this[j];
 
           this[j] = this[j + 1];
