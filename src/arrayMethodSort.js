@@ -6,25 +6,23 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     // write code here
-    const copy = [...this];
     const isNumber = typeof this[0] === 'number';
 
     if (compareFunction === undefined) {
-      for (let i = 0; i < copy.length; ++i) {
-        copy[i] += '';
-      }
+      this.forEach((element, index) => {
+        this[index] = element.toString();
+      });
     }
 
-    for (let i = 0; i < copy.length - 1; i++) {
+    for (let i = 0; i < this.length - 1; i++) {
       let changes = false;
 
-      for (let j = 1; j < copy.length - i; j++) {
-        const prev = copy[j - 1];
-        const cur = copy[j];
+      for (let j = 1; j < this.length - i; j++) {
+        const prev = this[j - 1];
+        const cur = this[j];
         let localChanges = false;
 
         if (compareFunction === undefined) {
-          // const compare = prev.localeCompare(cur);
           const compare = prev > cur;
 
           if (compare > 0) {
@@ -37,8 +35,8 @@ function applyCustomSort() {
         }
 
         if (localChanges) {
-          copy[j - 1] = cur;
-          copy[j] = prev;
+          this[j - 1] = cur;
+          this[j] = prev;
         }
       }
 
@@ -47,12 +45,10 @@ function applyCustomSort() {
       }
     }
 
-    for (let index = 0; index < this.length; index++) {
-      if (isNumber) {
-        this[index] = +copy[index];
-        continue;
-      }
-      this[index] = copy[index];
+    if (isNumber) {
+      this.forEach((element, index) => {
+        this[index] = +element;
+      });
     }
 
     return this;
