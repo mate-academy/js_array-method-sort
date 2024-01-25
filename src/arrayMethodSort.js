@@ -16,7 +16,6 @@ function applyCustomSort() {
 
     for (let i = 0; i < this.length - 1; i++) {
       let changes = false;
-
       for (let j = 1; j < this.length - i; j++) {
         const prev = this[j - 1];
         const cur = this[j];
