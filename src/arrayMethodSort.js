@@ -5,31 +5,30 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    function swap(i, j, array) {
-      const temp = array[i];
+    function sortString(data) {
+      for (let i = 0; i < data.length; i++) {
+        let flag = false;
 
-      array[i] = array[j];
-      array[j] = temp;
-    }
-
-    if (compareFunction === undefined) {
-      let flag = false;
-
-      for (let i = 0; i < this.length; i++) {
-        for (let j = i + 1; j < this.length; j++) {
-          const a = this[i].toString().charCodeAt();
-          const b = this[j].toString().charCodeAt();
+        for (let j = i + 1; j < data.length; j++) {
+          const a = data[i].toString();
+          const b = data[j].toString();
 
           if (a === b) {
-            if (this[i] > this[j]) {
-              swap(i, j, this);
+            if (data[i] > data[j]) {
+              const temp = data[i];
+
+              data[i] = data[j];
+              data[j] = temp;
               i = j;
               flag = true;
             }
           }
 
           if (a > b) {
-            swap(i, j, this);
+            const temp = data[i];
+
+            data[i] = data[j];
+            data[j] = temp;
             i = j;
             flag = true;
           }
@@ -40,26 +39,41 @@ function applyCustomSort() {
           i = -1;
         }
       }
+    }
+
+    if (compareFunction === undefined) {
+      sortString(this);
 
       return this;
-    } else {
+    }
+
+    if (compareFunction) {
       for (let i = 0; i < this.length; i++) {
         let flag = false;
 
         for (let j = i + 1; j < this.length; j++) {
           if (compareFunction(this[i], this[j]) > 0) {
-            swap(i, j, this);
+            const temp = this[i];
+
+            this[i] = this[j];
+            this[j] = temp;
             flag = true;
+            i--;
+          } else if (compareFunction(this[i], this[i + 1]) < 0
+            || (this[i], this[i + 1]) === 0) {
+            continue;
           }
         }
 
-        if (flag) {
+        if ((i === this.length - 1) && flag) {
           i = -1;
         }
       }
 
       return this;
     }
+
+    return this;
   };
 };
 
