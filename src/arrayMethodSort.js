@@ -49,21 +49,21 @@ function applyCustomSort() {
     // }
 
     // !!!QuickSort!!!
-    QuickSort(arr, 0, arr.length - 1, compareFunction);
+    quickSort(arr, 0, arr.length - 1, compareFunction);
 
     return arr;
   };
 }
 
-function QuickSort(array, minIndex, maxIndex, compareFunction) {
+function quickSort(array, minIndex, maxIndex, compareFunction) {
   if (minIndex >= maxIndex) {
     return;
   }
 
   const pivot = getPivotIndex(array, minIndex, maxIndex, compareFunction);
 
-  QuickSort(array, minIndex, pivot - 1, compareFunction);
-  QuickSort(array, pivot + 1, maxIndex, compareFunction);
+  quickSort(array, minIndex, pivot - 1, compareFunction);
+  quickSort(array, pivot + 1, maxIndex, compareFunction);
 }
 
 function getPivotIndex(array, minIndex, maxIndex, compareFunction) {
