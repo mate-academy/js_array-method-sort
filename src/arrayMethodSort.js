@@ -25,29 +25,6 @@ function applyCustomSort() {
       return arr;
     }
 
-    //  !!!selection sort for simple items!!!
-    // for (let i = 0; i < arr.length; i++) {
-    //   let min = arr[i];
-    //   let minIndex = i;
-
-    //   for (let j = i; j < arr.length; j++) {
-    //     const isMin = compareFunction
-    //       ? compareFunction(arr[j].toString(), min.toString())
-    //       : ((a, b) => a < b)(arr[j].toString(), min.toString());
-
-    //     if (isMin) {
-    //       min = arr[j];
-    //       minIndex = j;
-    //     }
-    //   }
-
-    //   const temp = arr[i];
-
-    //   arr[i] = arr[minIndex];
-
-    //   arr[minIndex] = temp;
-    // }
-
     // !!!QuickSort!!!
     quickSort(arr, 0, arr.length - 1, compareFunction);
 
