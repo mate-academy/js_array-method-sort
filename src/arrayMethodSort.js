@@ -3,8 +3,23 @@
 /**
  * Implement method Sort
  */
+
+const defaultSort = (a, b) => {
+  const stringValueA = a.toString(); const stringValueB = b.toString();
+
+  if (stringValueA < stringValueB) {
+    return -1;
+  }
+
+  if (stringValueA > stringValueB) {
+    return 1;
+  }
+
+  return 0;
+};
+
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(compareFunction = defaultSort) {
     let n = this.length;
     let swapped;
 
@@ -12,18 +27,7 @@ function applyCustomSort() {
       swapped = false;
 
       for (let i = 1; i < n; i++) {
-        const isCompareFunction = compareFunction !== undefined
-          && compareFunction !== null
-          && typeof compareFunction === 'function';
-        let shouldSwap;
-
-        if (isCompareFunction) {
-          shouldSwap = compareFunction(this[i - 1], this[i]) > 0;
-        } else {
-          shouldSwap = this[i - 1].toString() > this[i].toString();
-        }
-
-        if (shouldSwap) {
+        if (compareFunction(this[i - 1], this[i]) > 0) {
           [this[i - 1], this[i]] = [this[i], this[i - 1]];
           swapped = true;
         }
