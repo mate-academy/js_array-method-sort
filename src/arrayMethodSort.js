@@ -9,40 +9,18 @@ function applyCustomSort() {
       return this;
     }
 
-    const isFunc = compareFunction !== undefined ? 1 : 0;
-    let res = [];
+    for (let i = 0; i < this.length; i++) {
+      for (let j = 0; j < (this.length - i - 1); j++) {
+        if ((compareFunction !== undefined
+          && (compareFunction(this[j], this[j + 1]) > 0))
+          || (compareFunction === undefined
+          && (this[j].toString() > this[j + 1].toString()))) {
+          const temp = this[j];
 
-    const startItem = this[0];
-    const lessThenStart = [];
-    const biggerThenStart = [];
-    const equalStart = [startItem];
-
-    for (let i = 1; i < this.length; i++) {
-      if (!isFunc) {
-        if (startItem.toString() > this[i].toString()) {
-          lessThenStart.push(this[i]);
-        } else if (startItem.toString() < this[i].toString()) {
-          biggerThenStart.push(this[i]);
-        } else {
-          equalStart.push(this[i]);
-        }
-      } else {
-        if (compareFunction(startItem, this[i]) > 0) {
-          lessThenStart.push(this[i]);
-        } else if (compareFunction(startItem, this[i]) < 0) {
-          biggerThenStart.push(this[i]);
-        } else {
-          equalStart.push(this[i]);
+          this[j] = this[j + 1];
+          this[j + 1] = temp;
         }
       }
-    }
-
-    res = lessThenStart.sort2().concat(
-      equalStart.sort2(),
-      biggerThenStart.sort2());
-
-    for (let i = 0; i < this.length; i++) {
-      this[i] = res[i];
     }
 
     return this;
