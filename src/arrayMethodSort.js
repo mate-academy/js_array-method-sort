@@ -4,6 +4,13 @@
  * Implement method Sort
  */
 function applyCustomSort() {
+  function swap(array, index1, index2) {
+    const temp = array[index1];
+
+    array[index1] = array[index2];
+    array[index2] = temp;
+  }
+
   [].__proto__.sort2 = function(compareFunction) {
     for (let i = 0; i < this.length - 1; i++) {
       let swapped = false;
@@ -14,18 +21,12 @@ function applyCustomSort() {
 
         if (compareFunction) {
           if (compareFunction(a, b) > 0) {
-            const temp = this[j];
-
-            this[j] = this[j + 1];
-            this[j + 1] = temp;
+            swap(this, j, j + 1);
             swapped = true;
           }
         } else {
           if (a > b) {
-            const temp = this[j];
-
-            this[j] = this[j + 1];
-            this[j + 1] = temp;
+            swap(this, j, j + 1);
             swapped = true;
           }
         }
