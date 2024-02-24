@@ -11,7 +11,7 @@ function applyCustomSort() {
       for (let j = 0; j < this.length - i - 1; j++) {
         let compareResult;
 
-        if (compareFunction !== undefined) {
+        if (compareFunction) {
           compareResult = compareFunction(this[j], this[j + 1]);
         } else {
           compareResult = (String(this[j]) > String(this[j + 1]));
