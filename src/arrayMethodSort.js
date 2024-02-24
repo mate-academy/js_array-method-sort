@@ -4,7 +4,9 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function(
+    compareFunction = (a, b) => String(a) > String(b)
+  ) {
     for (let i = 0; i < this.length - 1; i++) {
       for (let j = 0; j < this.length - i - 1; j++) {
         let compareResult;
