@@ -28,10 +28,10 @@ function applyCustomSort() {
 
     return this;
   };
-}
 
-function defaultCompareFn(value1, value2) {
-  return value1.toString() > value2.toString();
+  function defaultCompareFn(value1, value2) {
+    return value1.toString() > value2.toString();
+  }
 }
 
 module.exports = applyCustomSort;
