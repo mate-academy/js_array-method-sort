@@ -7,23 +7,19 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction = defaultCompareFn) {
     let isSorted;
 
-    if (compareFunction !== undefined) {
-      while (!isSorted) {
-        isSorted = true;
+    while (!isSorted) {
+      isSorted = true;
 
-        for (let i = 1; i < this.length; i++) {
-          const previousValue = this[i - 1];
-          const currentValue = this[i];
+      for (let i = 1; i < this.length; i++) {
+        const previousValue = this[i - 1];
+        const currentValue = this[i];
 
-          if (compareFunction(previousValue, currentValue) > 0) {
-            this[i] = previousValue;
-            this[i - 1] = currentValue;
-            isSorted = false;
-          }
+        if (compareFunction(previousValue, currentValue) > 0) {
+          this[i] = previousValue;
+          this[i - 1] = currentValue;
+          isSorted = false;
         }
       }
-
-      return this;
     }
 
     return this;
