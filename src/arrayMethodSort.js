@@ -6,7 +6,7 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function(
     compareFunction = (a, b) => {
-      if (String(this[a]) > String(this[b])) {
+      if (String(a) > String(b)) {
         return 1;
       }
     }
@@ -27,3 +27,4 @@ function applyCustomSort() {
 }
 
 module.exports = applyCustomSort;
+
