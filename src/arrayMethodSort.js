@@ -5,8 +5,23 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+    let callBackFn = compareFunction;
+
+    if (!callBackFn) {
+      callBackFn = (item1, item2) => (item1 + '') > (item2 + '');
+    }
+
+    for (let i = 0; i < this.length - 1; i++) {
+      for (let k = 0; k < this.length - 1 - i; k++) {
+        const compareResult = callBackFn(this[k], this[k + 1]);
+
+        if (compareResult > 0) {
+          [this[k], this[k + 1]] = [this[k + 1], this[k]];
+        }
+      }
+    }
+
+    return this;
   };
 }
-
 module.exports = applyCustomSort;
