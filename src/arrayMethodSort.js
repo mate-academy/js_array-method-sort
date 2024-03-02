@@ -20,15 +20,12 @@ function standartCompare(first, second) {
 
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction = standartCompare) {
-    // Run this.length iterations
     for (let iteration = 0; iteration < this.length; iteration++) {
-      // Compare all values
       for (let i = 1; i < this.length; i++) {
         const first = this[i - 1];
         const second = this[i];
         const compare = compareFunction(first, second);
 
-        // If compare >= 1 we should swap values
         if (compare >= 1) {
           this[i - 1] = second;
           this[i] = first;
