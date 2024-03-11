@@ -6,38 +6,38 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     // write code here
-    let toSort;
-    let compFun;
-    let convert = 0;
-    let sorted = [];
+    let arrayToSort;
+    let definedCompareFunction;
+    let needConvertToInt = 0;
+    let arraySorted = [];
 
     // Settings if compare fuction is given or not.
     if (compareFunction) {
-      toSort = this;
-      compFun = compareFunction;
+      arrayToSort = this;
+      definedCompareFunction = compareFunction;
     } else {
-      if (typeof this[0] !== typeof '') {
-        toSort = this.map((element) => String(element));
-        convert = 1;
+      if (typeof this[0] !== 'string') {
+        arrayToSort = this.map((element) => String(element));
+        needConvertToInt = 1;
       } else {
-        toSort = this.map((element) => element);
+        arrayToSort = this.map((element) => element);
       }
 
       // Notice that is always lexicographic comparation by default
-      compFun = (a, b) => {
+      definedCompareFunction = (a, b) => {
         return a > b ? 1 : -1;
       };
     }
 
-    sorted = quick(toSort, compFun);
+    arraySorted = quick(arrayToSort, definedCompareFunction);
 
     // Put Values in original array.
     this.length = 0;
 
-    if (convert) {
-      sorted.forEach((e, i) => (this[i] = +e));
+    if (needConvertToInt) {
+      arraySorted.forEach((e, i) => (this[i] = +e));
     } else {
-      sorted.forEach((e, i) => (this[i] = e));
+      arraySorted.forEach((e, i) => (this[i] = e));
     }
 
     return this;
@@ -45,25 +45,28 @@ function applyCustomSort() {
 }
 
 /* This is the quickSort recursive method for sorting */
-function quick(param, funC) {
-  if (param.length < 2) {
-    return param;
+function quick(arrayToSort, compareFunction) {
+  if (arrayToSort.length < 2) {
+    return arrayToSort;
   }
 
   // Whe chose param[0] to simplify the code.
-  const pivot = param[0];
+  const pivot = arrayToSort[0];
   const less = [];
   const greater = [];
 
-  for (let i = 1; i < param.length; i++) {
-    if (funC(param[i], pivot) < 0) {
-      less.push(param[i]);
+  for (let i = 1; i < arrayToSort.length; i++) {
+    if (compareFunction(arrayToSort[i], pivot) < 0) {
+      less.push(arrayToSort[i]);
     } else {
-      greater.push(param[i]);
+      greater.push(arrayToSort[i]);
     }
   }
 
-  return quick(less, funC).concat(pivot, quick(greater, funC));
+  return quick(less, compareFunction).concat(
+    pivot,
+    quick(greater, compareFunction),
+  );
 }
 
 module.exports = applyCustomSort;
