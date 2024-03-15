@@ -11,12 +11,9 @@ function applyCustomSort() {
           }
       }
     }
+
+    return this;
   };
-
-  let array = [1, 2, 3];
-  array.sort2((a, b) => a  < b);
-
-  return array;
 }
 
-applyCustomSort();
+module.exports = applyCustomSort;
