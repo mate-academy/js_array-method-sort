@@ -4,7 +4,9 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction) {
+  [].__proto__.sort2 = function (
+    compareFunction = (a, b) => String(a) > String(b),
+  ) {
     const arr = this.slice();
 
     function swap(array, i, j) {
@@ -22,7 +24,7 @@ function applyCustomSort() {
           return -1;
         }
 
-        if (String(a) > String(b)) {
+        if (compareFunction) {
           return 1;
         }
 
