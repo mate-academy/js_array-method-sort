@@ -7,8 +7,6 @@ function applyCustomSort() {
   [].__proto__.sort2 = function (
     compareFunction = (a, b) => String(a) > String(b),
   ) {
-    const arr = this.slice();
-
     function swap(array, i, j) {
       const temp = array[i];
 
@@ -20,7 +18,7 @@ function applyCustomSort() {
       if (compareFunction) {
         return compareFunction(a, b);
       } else {
-        if (String(a) < String(b)) {
+        if (!compareFunction) {
           return -1;
         }
 
@@ -32,16 +30,12 @@ function applyCustomSort() {
       }
     }
 
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr.length - i - 1; j++) {
-        if (compare(arr[j], arr[j + 1]) > 0) {
-          swap(arr, j, j + 1);
+    for (let i = 0; i < this.length; i++) {
+      for (let j = 0; j < this.length - i - 1; j++) {
+        if (compare(this[j], this[j + 1]) > 0) {
+          swap(this, j, j + 1);
         }
       }
-    }
-
-    for (let i = 0; i < arr.length; i++) {
-      this[i] = arr[i];
     }
 
     return this;
