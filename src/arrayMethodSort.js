@@ -1,15 +1,11 @@
 'use strict';
 
-/**
- * Implement method Sort
- */
 function applyCustomSort() {
   function defaultCompare(a, b) {
     return a.toString() > b.toString();
   }
 
   [].__proto__.sort2 = function (compareFunction = defaultCompare) {
-    // write code here
     const compare = compareFunction;
 
     for (let i = 0; i < this.length - 1; i++) {
