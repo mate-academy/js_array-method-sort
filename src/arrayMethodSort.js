@@ -27,16 +27,13 @@ function applyCustomSort() {
     }
 
     for (let i = 0; i < this.length; i++) {
-      let swapped = false;
-
       for (let j = 0; j < this.length - i - 1; j++) {
         if (defaultCompareFunction(this[j], this[j + 1]) > 0) {
           [this[j], this[j + 1]] = [this[j + 1], this[j]];
-          swapped = true;
         }
       }
 
-      if (!swapped) {
+      if (i > 0 && defaultCompareFunction(this[i], this[i - 1]) === 0) {
         break;
       }
     }
