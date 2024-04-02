@@ -3,7 +3,36 @@
 /**
  * Implement method Sort
  */
+'use strict';
+
 function applyCustomSort() {
+  function quicksort(arr, compareFunction, start = 0, end = arr.length - 1) {
+    if (start >= end) {
+      return;
+    }
+
+    const pivotIndex = partition(arr, compareFunction, start, end);
+
+    quicksort(arr, compareFunction, start, pivotIndex - 1);
+    quicksort(arr, compareFunction, pivotIndex + 1, end);
+  }
+
+  function partition(arr, compareFunction, start, end) {
+    const pivot = arr[end];
+    let pivotIndex = start;
+
+    for (let i = start; i < end; i++) {
+      if (compareFunction(arr[i], pivot) < 0) {
+        [arr[i], arr[pivotIndex]] = [arr[pivotIndex], arr[i]];
+        pivotIndex++;
+      }
+    }
+
+    [arr[pivotIndex], arr[end]] = [arr[end], arr[pivotIndex]];
+
+    return pivotIndex;
+  }
+
   [].__proto__.sort2 = function (
     compareFunction = (a, b) => {
       if (String(a) < String(b)) {
@@ -17,16 +46,7 @@ function applyCustomSort() {
       return 0;
     },
   ) {
-    for (let i = 0; i < this.length - 1; i++) {
-      for (let j = 0; j < this.length - 1 - i; j++) {
-        if (compareFunction(this[j], this[j + 1]) > 0) {
-          const temp = this[j];
-
-          this[j] = this[j + 1];
-          this[j + 1] = temp;
-        }
-      }
-    }
+    quicksort(this, compareFunction);
 
     return this;
   };
