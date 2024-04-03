@@ -4,23 +4,14 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction) {
+  [].__proto__.sort2 = function (compareFunction = basicComparing) {
     for (let i = 0; i < this.length; i++) {
-      for (let j = 0; j < this.length; j++) {
-        let compareResult = String(this[i]) < String(this[j]);
+      for (let j = 0; j < this.length - 1 - i; j++) {
+        if (compareFunction(this[j], this[j + 1]) > 0) {
+          const temp = this[j];
 
-        if (compareFunction) {
-          compareResult = compareFunction(this[i], this[j]);
-        }
-
-        if (
-          (compareResult && compareFunction === undefined) ||
-          (compareFunction && compareResult <= 0)
-        ) {
-          const temp = this[i];
-
-          this[i] = this[j];
-          this[j] = temp;
+          this[j] = this[j + 1];
+          this[j + 1] = temp;
         }
       }
     }
@@ -30,3 +21,7 @@ function applyCustomSort() {
 }
 
 module.exports = applyCustomSort;
+
+function basicComparing(a, b) {
+  return String(a) >= String(b);
+}
