@@ -5,7 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (callback) {
-    if (callback !== undefined) {
+    if (callback) {
       for (let i = 0; i < this.length; i++) {
         for (let j = 0; j < this.length - 1; j++) {
           const result = callback(this[j], this[j + 1]);
@@ -18,8 +18,6 @@ function applyCustomSort() {
           }
         }
       }
-
-      return this;
     } else if (callback === undefined) {
       for (let i = 0; i < this.length; i++) {
         for (let j = 0; j < this.length - 1; j++) {
@@ -34,9 +32,9 @@ function applyCustomSort() {
           }
         }
       }
-
-      return this;
     }
+
+    return this;
   };
 }
 
