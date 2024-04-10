@@ -4,8 +4,8 @@
  * Implement method Sort
  */
 const compareFunctionDefault = (item1, item2) => {
-  const stringItem1 = typeof item1 === 'string' ? item1 : `${item1}`;
-  const stringItem2 = typeof item2 === 'string' ? item2 : `${item2}`;
+  const stringItem1 = `${item1}`;
+  const stringItem2 = `${item2}`;
 
   if (stringItem1 === stringItem2) {
     return 0;
