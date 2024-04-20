@@ -3,7 +3,7 @@
 /**
  * Implement method Sort
  */
-function compareByDefolt(a, b) {
+function compareByDefault(a, b) {
   const srtingA = String(a);
   const srtingB = String(b);
 
@@ -19,7 +19,7 @@ function compareByDefolt(a, b) {
 }
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction = compareByDefolt) {
+  [].__proto__.sort2 = function (compareFunction = compareByDefault) {
     for (let i = 0; i < this.length - 1; i++) {
       for (let j = i + 1; j < this.length; j++) {
         const a = this[i];
