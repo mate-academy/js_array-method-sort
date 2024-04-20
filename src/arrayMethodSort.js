@@ -32,6 +32,7 @@ function applyCustomSort() {
       }
     }
 
+    
     return this;
   };
 }
