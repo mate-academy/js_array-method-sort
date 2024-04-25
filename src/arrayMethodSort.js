@@ -3,18 +3,16 @@
 /**
  * Implement method Sort
  */
+
 function applyCustomSort() {
   [].__proto__.sort2 = function (
     compareFunction = (a, b) => String(a) > String(b),
   ) {
     for (let i = 0; i < this.length - 1; i++) {
-      const currentElement = this[i];
-
-      if (compareFunction(this[i], this[i + 1]) > 0) {
-        this[i] = this[i + 1];
-        this[i + 1] = currentElement;
-
-        i = -1;
+      for (let k = i + 1; k < this.length; k++) {
+        if (compareFunction(this[i], this[k]) > 0) {
+          [this[i], this[k]] = [this[k], this[i]];
+        }
       }
     }
 
