@@ -23,6 +23,7 @@ function applyCustomSort() {
     return this;
   };
 }
+
 applyCustomSort();
 
 module.exports = applyCustomSort;
