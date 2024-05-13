@@ -4,32 +4,26 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction) {
+  [].__proto__.sort2 = function (compareFunction = (a, b) => a > b) {
     let isAllNaN = true;
 
-    /* compareFunction is omitted */
-    if (!compareFunction) {
-      for (let i = 0; i < this.length; i++) {
-        if (isAllNaN) {
-          isAllNaN = !(typeof this[i] === 'number');
-        }
-        this[i] = this[i].toString();
+    for (let i = 0; i < this.length; i++) {
+      if (isAllNaN) {
+        isAllNaN = !(typeof this[i] === 'number');
       }
-
-      const result = bubbleSort(this, (a, b) => a > b);
-
-      /* if initial array have nums than convert all items back to num */
-      if (!isAllNaN) {
-        for (let i = 0; i < result.length; i++) {
-          result[i] = Number(result[i]);
-        }
-      }
-
-      return result;
+      this[i] = this[i].toString();
     }
 
-    /* if compareFunction was passed */
-    return bubbleSort(this, compareFunction);
+    const result = bubbleSort(this, compareFunction);
+
+    /* if initial array have nums than convert all items back to num */
+    if (!isAllNaN) {
+      for (let i = 0; i < result.length; i++) {
+        result[i] = Number(result[i]);
+      }
+    }
+
+    return result;
 
     function bubbleSort(array, compareFn) {
       const n = array.length;
