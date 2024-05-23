@@ -8,12 +8,12 @@ function applyCustomSort() {
     compareFunction = (a, b) => String(a) > String(b),
   ) {
     for (let i = 0; i < this.length; i++) {
-      for (let j = 0; j < this.length - 1 - i; j++) {
-        if (compareFunction(this[j], this[j + 1]) > 0) {
-          const temp = this[j];
+      for (let index = i + 1; index < this.length; index++) {
+        if (compareFunction(this[i], this[index]) > 0) {
+          const value = this[i];
 
-          this[j] = this[j + 1];
-          this[j + 1] = temp;
+          this[i] = this[index];
+          this[index] = value;
         }
       }
     }
@@ -21,5 +21,4 @@ function applyCustomSort() {
     return this;
   };
 }
-
 module.exports = applyCustomSort;
