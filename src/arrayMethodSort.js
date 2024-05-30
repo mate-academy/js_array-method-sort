@@ -5,11 +5,14 @@
  */
 function applyCustomSort() {
   function defaultCompare(a, b) {
-    if (a.toString() < b.toString()) {
+    const start = a.toString();
+    const end = b.toString();
+
+    if (start < end) {
       return -1;
     }
 
-    if (a.toString() > b.toString()) {
+    if (start > end) {
       return 1;
     }
 
@@ -23,12 +26,34 @@ function applyCustomSort() {
 
     const compare = compareFunction;
 
-    for (let i = 0; i < this.length - 1; i++) {
-      for (let j = 0; j < this.length - 1 - i; j++) {
-        if (compare(this[j], this[j + 1]) > 0) {
-          [this[j + 1], this[j]] = [this[j], this[j + 1]];
+    const quickSort = (arr) => {
+      if (arr.length <= 1) {
+        return arr;
+      }
+
+      const pivot = arr[Math.floor(arr.length / 2)];
+      const left = [];
+      const right = [];
+
+      for (let i = 0; i < arr.length; i++) {
+        if (i === Math.floor(arr.length / 2)) {
+          continue;
+        }
+
+        if (compare(arr[i], pivot) < 0) {
+          left.push(arr[i]);
+        } else {
+          right.push(arr[i]);
         }
       }
+
+      return [...quickSort(left), pivot, ...quickSort(right)];
+    };
+
+    const sortedArray = quickSort([...this]);
+
+    for (let i = 0; i < this.length; i++) {
+      this[i] = sortedArray[i];
     }
 
     return this;
