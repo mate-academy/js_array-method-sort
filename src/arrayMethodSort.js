@@ -4,7 +4,7 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction = defoultSortFunction) {
+  [].__proto__.sort2 = function (compareFunction = defaultSortFunction) {
     for (let i = 0; i < this.length - 1; i++) {
       let current = this[i];
 
@@ -12,21 +12,19 @@ function applyCustomSort() {
         const next = this[j];
 
         if (compareFunction(current, next) > 0) {
+          this[i] = next;
+          this[j] = current;
+
           current = next;
         }
       }
-
-      const temp = this[i];
-
-      this[this.indexOf(current)] = temp;
-      this[i] = current;
     }
 
     return this;
   };
 }
 
-function defoultSortFunction(a, b) {
+function defaultSortFunction(a, b) {
   const stringA = String(a);
   const stringB = String(b);
 
