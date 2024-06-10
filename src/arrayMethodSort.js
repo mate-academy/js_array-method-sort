@@ -24,11 +24,7 @@ function applyCustomSort() {
         const result = compare(this[idx], this[idx + 1]);
 
         if (result > 0) {
-          const temp = this[idx];
-
-          this[idx] = this[idx + 1];
-
-          this[idx + 1] = temp;
+          [this[idx], this[idx + 1]] = [this[idx + 1], this[idx]];
 
           isSwapped = true;
         }
