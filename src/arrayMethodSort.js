@@ -5,6 +5,10 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction = defaultComparator) {
+    if (typeof compareFunction !== 'function') {
+      throw new Error('Comparator must be a function');
+    }
+
     // just a bubble sort with some optimizations
     let swapped;
 
