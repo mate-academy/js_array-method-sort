@@ -34,6 +34,18 @@ function applyCustomSort() {
 }
 
 function defaultComparator(a, b) {
+  if (a === undefined && b === undefined) {
+    return 0;
+  }
+
+  if (a === undefined) {
+    return 1;
+  }
+
+  if (b === undefined) {
+    return -1;
+  }
+
   const aStr = String(a);
   const bStr = String(b);
 
