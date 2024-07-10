@@ -4,36 +4,31 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction) {
-    // write code here
-    let tempFunction = compareFunction;
+  [].__proto__.sort2 = function (
+    compareFunction = (a, b) => {
+      if (String(a) < String(b)) {
+        return -1;
+      }
 
-    if (typeof compareFunction !== 'function') {
-      tempFunction = function (a, b) {
-        if (String(a) < String(b)) {
-          return -1;
-        }
+      if (String(a) > String(b)) {
+        return 1;
+      }
 
-        if (String(a) > String(b)) {
-          return 1;
-        }
-
-        return 0;
-      };
-    }
-
+      return 0;
+    },
+  ) {
     const quickSort = (array) => {
       if (array.length <= 1) {
         return array;
       }
 
-      const pivot = array[Math.floor(array.length / 2)];
+      const pivot = array[0];
       const left = [];
       const right = [];
       const equal = [];
 
       for (const element of array) {
-        const comparison = tempFunction(element, pivot);
+        const comparison = compareFunction(element, pivot);
 
         if (comparison < 0) {
           left.push(element);
