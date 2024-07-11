@@ -5,19 +5,19 @@
  */
 
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction) {
-    if (compareFunction === undefined) {
-      for (let i = 0; i < this.length - 1; i++) {
-        if (this[i] + '' > this[i + 1] + '') {
-          const currentIndex = this[i];
+  [].__proto__.sort2 = function (compareFunction = undefined) {
+    for (let i = 0; i < this.length - 1; i++) {
+      if (String(this[i]) > String(this[i + 1])) {
+        const currentIndex = this[i];
 
-          this[i] = this[i + 1];
-          this[i + 1] = currentIndex;
+        this[i] = this[i + 1];
+        this[i + 1] = currentIndex;
 
-          i = -1;
-        }
+        i = -1;
       }
-    } else {
+    }
+
+    if (compareFunction !== undefined) {
       for (let i = 0; i < this.length - 1; i++) {
         if (compareFunction(this[i], this[i + 1]) > 0) {
           const currentIndex = this[i];
