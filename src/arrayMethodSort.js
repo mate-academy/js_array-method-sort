@@ -8,10 +8,10 @@ function applyCustomSort() {
     if (compareFunction === undefined) {
       for (let i = 0; i < this.length - 1; i++) {
         if (this[i] + '' > this[i + 1] + '') {
-          const currentIndex = this[i];
+          const tempValue = this[i];
 
           this[i] = this[i + 1];
-          this[i + 1] = currentIndex;
+          this[i + 1] = tempValue;
 
           i = -1;
         }
@@ -19,10 +19,10 @@ function applyCustomSort() {
     } else {
       for (let i = 0; i < this.length - 1; i++) {
         if (compareFunction(this[i], this[i + 1]) > 0) {
-          const currentIndex = this[i];
+          const tempValue = this[i];
 
           this[i] = this[i + 1];
-          this[i + 1] = currentIndex;
+          this[i + 1] = tempValue;
 
           i = -1;
         }
