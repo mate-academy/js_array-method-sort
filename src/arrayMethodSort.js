@@ -9,6 +9,10 @@ function applyCustomSort() {
 
     if (typeof comparator !== 'function') {
       comparator = function (a, b) {
+        if (a === b) {
+          return 0;
+        }
+
         return String(a) > String(b) ? 1 : -1;
       };
     }
