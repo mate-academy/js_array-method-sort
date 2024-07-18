@@ -6,6 +6,14 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     const defaultCompare = (a, b) => {
+      if (a === undefined || a === null) {
+        return 1;
+      }
+
+      if (b === undefined || b === null) {
+        return -1;
+      }
+
       const strA = String(a);
       const strB = String(b);
 
@@ -22,23 +30,40 @@ function applyCustomSort() {
 
     const compare = compareFunction || defaultCompare;
 
-    const array = this.slice();
-    const len = array.length;
+    const quicksort = (array, left = 0, right = array.length - 1) => {
+      if (left < right) {
+        const pivotIndex = partition(array, left, right);
 
-    for (let i = 0; i < len - 1; i++) {
-      for (let j = 0; j < len - 1 - i; j++) {
-        if (compare(array[j], array[j + 1]) > 0) {
-          const temp = array[j];
+        quicksort(array, left, pivotIndex - 1);
+        quicksort(array, pivotIndex, right);
+      }
+    };
 
-          array[j] = array[j + 1];
-          array[j + 1] = temp;
+    const partition = (array, left, right) => {
+      const pivot = array[Math.floor((left + right) / 2)];
+      let i = left;
+      let j = right;
+
+      while (i <= j) {
+        while (compare(array[i], pivot) < 0) {
+          i++;
+        }
+
+        while (compare(array[j], pivot) > 0) {
+          j--;
+        }
+
+        if (i <= j) {
+          [array[i], array[j]] = [array[j], array[i]];
+          i++;
+          j--;
         }
       }
-    }
 
-    for (let i = 0; i < len; i++) {
-      this[i] = array[i];
-    }
+      return i;
+    };
+
+    quicksort(this);
 
     return this;
   };
