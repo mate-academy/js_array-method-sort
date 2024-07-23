@@ -6,7 +6,7 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function (
     compareFunction = (a, b) => {
-      if (a === b) {
+      if (String(a) === String(b)) {
         return 0;
       }
 
