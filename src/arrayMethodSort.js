@@ -5,7 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    const defaultCompareFun = (a, b) => {
+    const defaultCompareFunc = (a, b) => {
       const strA = String(a);
       const strB = String(b);
 
@@ -15,15 +15,12 @@ function applyCustomSort() {
     const compare =
       typeof compareFunction === 'function'
         ? compareFunction
-        : defaultCompareFun;
+        : defaultCompareFunc;
 
-    for (let i = 0; i < this.length - 1; i++) {
+    for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - 1 - i; j++) {
         if (compare(this[j], this[j + 1]) > 0) {
-          const temp = this[j];
-
-          this[j] = this[j + 1];
-          this[j + 1] = temp;
+          [this[j], this[j + 1]] = [this[j + 1], this[j]];
         }
       }
     }
