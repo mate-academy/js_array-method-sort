@@ -7,12 +7,9 @@ function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     if (compareFunction === undefined) {
       for (let i = 0; i < this.length; i++) {
-        for (let k = 0; k < this.length; k++) {
+        for (let k = 0; k < this.length - i - 1; k++) {
           if ('' + this[k] > '' + this[k + 1]) {
-            const temp = this[k];
-
-            this[k] = this[k + 1];
-            this[k + 1] = temp;
+            [this[k], this[k + 1]] = [this[k + 1], this[k]];
           }
         }
       }
@@ -22,12 +19,9 @@ function applyCustomSort() {
 
     if (compareFunction) {
       for (let i = 0; i < this.length; i++) {
-        for (let k = 0; k < this.length; k++) {
-          if (compareFunction(this[k], this[k + 1]) >= 1) {
-            const temp = this[k];
-
-            this[k] = this[k + 1];
-            this[k + 1] = temp;
+        for (let k = 0; k < this.length - i - 1; k++) {
+          if (compareFunction(this[k], this[k + 1]) > 0) {
+            [this[k], this[k + 1]] = [this[k + 1], this[k]];
           }
         }
       }
