@@ -42,7 +42,9 @@ function applyCustomSort() {
     const sortedArray = quickSort(this, compareFunc);
 
     for (let i = 0; i < sortedArray.length; i++) {
-      this[i] = sortedArray[i];
+      if (this[i] !== sortedArray[i]) {
+        this[i] = sortedArray[i];
+      }
     }
 
     return this;
