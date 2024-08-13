@@ -5,23 +5,18 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    for (let i = 0; i < this.length; i++) {
+    for (let i = 1; i < this.length; i++) {
       for (let k = 0; k < this.length; k++) {
-        const comparedEl = this[i];
-        const currentEl = this[k];
-
         if (compareFunction === undefined) {
-          if (this[i].toString() < this[k].toString()) {
-            this[i] = currentEl;
-            this[k] = comparedEl;
+          if (String(this[k]) > String(this[i])) {
+            [this[k], this[i]] = [this[i], this[k]];
           }
 
           continue;
         }
 
         if (compareFunction(this[i], this[k]) < 0) {
-          this[i] = currentEl;
-          this[k] = comparedEl;
+          [this[k], this[i]] = [this[i], this[k]];
         }
       }
     }
