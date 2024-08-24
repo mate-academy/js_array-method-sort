@@ -7,13 +7,17 @@ function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     // write code here
     const defaultCompare = (el1, el2) => {
-      const itemOne = `${el1}`;
-      const itemTwo = `${el2}`;
+      if (el1 === el2) {
+        return 0;
+      } else {
+        const itemOne = `${el1}`;
+        const itemTwo = `${el2}`;
 
-      return itemOne > itemTwo ? +1 : -1;
+        return itemOne > itemTwo ? +1 : -1;
+      }
     };
 
-    const comparer = arguments.length === 0 ? defaultCompare : compareFunction;
+    const comparer = compareFunction || defaultCompare;
 
     for (let i = 0; i < this.length; i++) {
       for (let n = i + 1; n < this.length; n++) {
