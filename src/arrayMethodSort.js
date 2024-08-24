@@ -22,10 +22,7 @@ function applyCustomSort() {
     for (let i = 0; i < this.length; i++) {
       for (let n = i + 1; n < this.length; n++) {
         if (comparer(this[i], this[n]) > 0) {
-          const buffer = this[i];
-
-          this[i] = this[n];
-          this[n] = buffer;
+          [this[i], this[n]] = [this[n], this[i]];
         }
       }
     }
