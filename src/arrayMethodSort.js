@@ -22,7 +22,8 @@ function applyCustomSort() {
             swapped = true;
           } else if (
             compareFunction(this[i], this[i + 1]) < 0 ||
-            compareFunction(this[i], this[i + 1]).isNan()
+            compareFunction(this[i], this[i + 1]).isNaN() ||
+            compareFunction(this[i], this[i + 1]) === 0
           ) {
             swapped = true;
           }
