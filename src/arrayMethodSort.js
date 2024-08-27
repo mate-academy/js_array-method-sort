@@ -5,15 +5,7 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (
-    compareFunction = function (a, b) {
-      return (
-        String(a).toLowerCase().localeCompare(String(b).toLowerCase()) ||
-        String(a).localeCompare(String(b)) ||
-        String(a)
-          .toLocaleUpperCase()
-          .localeCompare(String(b).toLocaleUpperCase())
-      );
-    },
+    compareFunction = (a, b) => String(a) > String(b),
   ) {
     for (let i = 0; i < this.length - 1; i++) {
       for (let j = 0; j < this.length - 1 - i; j++) {
