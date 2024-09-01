@@ -17,28 +17,26 @@ function applyCustomSort() {
         } else if (stringB.match(/\p{Lu}/u) && !stringA.match(/\p{Lu}/u)) {
           return 1;
         } else {
-          return stringA.localeCompare(stringB, undefined, {
-            sensitivity: 'base',
-          });
+          return stringA.localeCompare(stringB);
         }
       };
     } else {
       compareFunctionFinished = compareFunction;
     }
 
-    for (let i = 0; i < this.length - 1; i++) {
-      let minIndex = i;
+    const length = this.length;
+    let swapped;
 
-      for (let j = i + 1; j < this.length; j++) {
-        if (compareFunctionFinished(this[j], this[minIndex]) < 0) {
-          minIndex = j;
+    do {
+      swapped = false;
+
+      for (let i = 0; i < length - 1; i++) {
+        if (compareFunctionFinished(this[i], this[i + 1]) > 0) {
+          [this[i], this[i + 1]] = [this[i + 1], this[i]];
+          swapped = true;
         }
       }
-
-      if (minIndex !== i) {
-        [this[i], this[minIndex]] = [this[minIndex], this[i]];
-      }
-    }
+    } while (swapped);
 
     return this;
   };
