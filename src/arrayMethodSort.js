@@ -14,7 +14,9 @@ function applyCustomSort() {
 
         if (aStr < bStr) {
           return -1;
-        } else if (aStr > bStr) {
+        }
+
+        if (aStr > bStr) {
           return 1;
         }
 
@@ -24,13 +26,10 @@ function applyCustomSort() {
 
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - i - 1; j++) {
-        const a = this[j];
-        const b = this[j + 1];
-        const resultCompare = compareFn(a, b);
+        const resultCompare = compareFn(this[j], this[j + 1]);
 
         if (resultCompare > 0) {
-          this[j] = b;
-          this[j + 1] = a;
+          [this[j], this[j + 1]] = [this[j + 1], this[j]];
         }
       }
     }
