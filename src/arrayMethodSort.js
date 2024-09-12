@@ -35,10 +35,7 @@ function applyCustomSort() {
 
       for (let i = 0; i < len - 1; i++) {
         if (comparator(arr[i], arr[i + 1]) > 0) {
-          const temp = arr[i];
-
-          arr[i] = arr[i + 1];
-          arr[i + 1] = temp;
+          [arr[i], arr[i + 1]] = [arr[i + 1], arr[i]];
           swapped = true;
         }
       }
