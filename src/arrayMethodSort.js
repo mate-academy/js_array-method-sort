@@ -24,23 +24,43 @@ function applyCustomSort() {
       };
     }
 
-    // Iterate through the array {this.length - 1} amount of times,
-    // skipping the sorted values
-    for (let maxLength = this.length; maxLength > 0; maxLength--) {
-      for (let i = 1; i < maxLength; i++) {
-        const a = this[i - 1];
-        const b = this[i];
-        const comparisonResult = sortingFunc(a, b);
+    function partition(arr, start, end) {
+      // Take the last element as the pivot
+      const pivotValue = arr[end];
+      let leftIndex = start;
 
-        // Swap objects positions if the result of comparison is positive
-        if (comparisonResult > 0) {
-          this[i - 1] = b;
-          this[i] = a;
+      for (let i = start; i < end; i++) {
+        if (sortingFunc(arr[i], pivotValue) <= 0) {
+          // Swap elements
+          [arr[i], arr[leftIndex]] = [arr[leftIndex], arr[i]];
+
+          // Move to next element
+          leftIndex++;
         }
       }
+
+      // Put the pivot value in the middle
+      [arr[leftIndex], arr[end]] = [arr[end], arr[leftIndex]];
+
+      return leftIndex;
     }
 
-    // Return the sorted array
+    function quickSort(arr, start, end) {
+      // Base case or terminating case
+      if (start >= end) {
+        return;
+      }
+
+      // Returns pivotIndex
+      const index = partition(arr, start, end);
+
+      // Recursively apply the same logic to the left and right subarrays
+      quickSort(arr, start, index - 1);
+      quickSort(arr, index + 1, end);
+    }
+
+    quickSort(this, 0, this.length - 1);
+
     return this;
   };
 }
