@@ -11,7 +11,17 @@ function applyCustomSort() {
     if (compareFunction !== undefined) {
       sortingFunc = compareFunction;
     } else {
-      sortingFunc = (a, b) => String(a) > String(b);
+      sortingFunc = (a, b) => {
+        if (String(a) === String(b)) {
+          return 0;
+        }
+
+        if (String(a) > String(b)) {
+          return 1;
+        }
+
+        return -1;
+      };
     }
 
     // Iterate through the array {this.length - 1} amount of times,
