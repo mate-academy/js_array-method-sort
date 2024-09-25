@@ -30,10 +30,10 @@ function applyCustomSort() {
       for (let i = 1; i < maxLength; i++) {
         const a = this[i - 1];
         const b = this[i];
-        const comparissonResult = sortingFunc(a, b);
+        const comparisonResult = sortingFunc(a, b);
 
         // Swap objects positions if the result of comparison is positive
-        if (comparissonResult > 0) {
+        if (comparisonResult > 0) {
           this[i - 1] = b;
           this[i] = a;
         }
