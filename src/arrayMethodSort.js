@@ -12,8 +12,8 @@ function applyCustomSort() {
         const isStringB = typeof b === 'string';
 
         if (isStringA && isStringB) {
-          const isUpperA = a[0] === a[0].toUpperCase();
-          const isUpperB = b[0] === b[0].toUpperCase();
+          const isUpperA = a.charCodeAt(0) >= 65 && a.charCodeAt(0) <= 90;
+          const isUpperB = b.charCodeAt(0) >= 65 && b.charCodeAt(0) <= 90;
 
           if (isUpperA && !isUpperB) {
             return -1;
@@ -28,16 +28,36 @@ function applyCustomSort() {
       };
     }
 
-    for (let i = 0; i < this.length - 1; i++) {
-      for (let j = 0; j < this.length - 1 - i; j++) {
-        if (compareFunction(this[j], this[j + 1]) > 0) {
-          [this[j], this[j + 1]] = [this[j + 1], this[j]];
-        }
-      }
-    }
+    quickSort(this, 0, this.length - 1, compareFunction);
 
     return this;
   };
+}
+
+function quickSort(arr, low, high, compareFunction) {
+  if (low < high) {
+    const pivotIndex = partition(arr, low, high, compareFunction);
+
+    quickSort(arr, low, pivotIndex - 1, compareFunction);
+
+    quickSort(arr, pivotIndex + 1, high, compareFunction);
+  }
+}
+
+function partition(arr, low, high, compareFunction) {
+  const pivot = arr[high];
+  let i = low - 1;
+
+  for (let j = low; j < high; j++) {
+    if (compareFunction(arr[j], pivot) < 0) {
+      i++;
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+
+  return i + 1;
 }
 
 module.exports = applyCustomSort;
