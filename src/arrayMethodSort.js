@@ -8,23 +8,18 @@ function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     if (compareFunction === undefined) {
       compareFunction = (a, b) => {
-        const isStringA = typeof a === 'string';
-        const isStringB = typeof b === 'string';
-
-        if (isStringA && isStringB) {
-          const isUpperA = a.charCodeAt(0) >= 65 && a.charCodeAt(0) <= 90;
-          const isUpperB = b.charCodeAt(0) >= 65 && b.charCodeAt(0) <= 90;
-
-          if (isUpperA && !isUpperB) {
-            return -1;
-          }
-
-          if (!isUpperA && isUpperB) {
-            return 1;
-          }
+        if (a === undefined) {
+          return 1;
         }
 
-        return String(a).localeCompare(String(b));
+        if (b === undefined) {
+          return -1;
+        }
+
+        const strA = String(a);
+        const strB = String(b);
+
+        return strA < strB ? -1 : strA > strB ? 1 : 0;
       };
     }
 
@@ -39,7 +34,6 @@ function quickSort(arr, low, high, compareFunction) {
     const pivotIndex = partition(arr, low, high, compareFunction);
 
     quickSort(arr, low, pivotIndex - 1, compareFunction);
-
     quickSort(arr, pivotIndex + 1, high, compareFunction);
   }
 }
