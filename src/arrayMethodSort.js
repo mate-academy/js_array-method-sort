@@ -4,8 +4,16 @@ function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     const compare =
       compareFunction ||
-      function compareFunction2(x, y) {
-        return String(x) > String(y);
+      function (x, y) {
+        if (String(x) > String(y)) {
+          return 1;
+        }
+
+        if (String(x) < String(y)) {
+          return -1;
+        }
+
+        return 0;
       };
 
     for (let i = 0; i < this.length - 1; i++) {
