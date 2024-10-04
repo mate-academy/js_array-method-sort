@@ -10,10 +10,7 @@ function applyCustomSort() {
     for (let i = 0; i < this.length; i++) {
       for (let j = i + 1; j < this.length; j++) {
         if (compareFunction(this[i], this[j]) > 0) {
-          const word = this[i];
-
-          this[i] = this[j];
-          this[j] = word;
+          [this[i], this[j]] = [this[j], this[i]];
         }
       }
     }
@@ -21,5 +18,4 @@ function applyCustomSort() {
     return this;
   };
 }
-
 module.exports = applyCustomSort;
