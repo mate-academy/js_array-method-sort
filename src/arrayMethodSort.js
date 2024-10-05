@@ -18,4 +18,5 @@ function applyCustomSort() {
     return this;
   };
 }
+
 module.exports = applyCustomSort;
