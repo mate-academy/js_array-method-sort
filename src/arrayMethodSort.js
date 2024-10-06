@@ -14,20 +14,12 @@ function applyCustomSort() {
       defaultCompare = function (a, b) {
         const strA = String(a);
         const strB = String(b);
-        // Порівнюємо лексикографічно, ігноруючи регістр
 
-        if (typeof a === 'string' && typeof b === 'string') {
-          // Перевіряємо ASCII код перших символів
-          // Якщо перший символ має більший ASCII код, він має йти раніше
-          if (strA[0] === strB[0]) {
-            // Якщо перші символи однакові, порівнюємо повністю
-            return strA.localeCompare(strB);
-          } else {
-            return strA[0].charCodeAt(0) - strB[0].charCodeAt(0);
-          }
+        if (strA[0] === strB[0]) {
+          return strA.localeCompare(strB);
+        } else {
+          return strA[0].charCodeAt(0) - strB[0].charCodeAt(0);
         }
-
-        return strA.localeCompare(strB);
       };
     }
 
