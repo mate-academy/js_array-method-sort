@@ -9,7 +9,13 @@ function applyCustomSort() {
 
     if (!callBack) {
       callBack = function (a, b) {
-        return String(a) > String(b) ? 1 : -1;
+        if (String(a) > String(b)) {
+          return 1;
+        } else if (String(a) === String(b)) {
+          return 0;
+        } else {
+          return -1;
+        }
       };
     }
 
