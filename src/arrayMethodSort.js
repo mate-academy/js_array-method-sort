@@ -8,7 +8,7 @@ function applyCustomSort() {
     const compares =
       compareFunction !== undefined
         ? compareFunction
-        : (a, b) => String(a) > String(b);
+        : (a, b) => String(a) > String(b) ? 1 : -1;
 
     // Пузырьковые метод сортировки
     for (let i = 0; i < this.length; i++) {
