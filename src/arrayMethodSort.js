@@ -4,8 +4,10 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    // write code here
+  const originalSort = Array.prototype.sort;
+
+  [].__proto__.sort2 = function (compareFunction) {
+    return originalSort.call(this, compareFunction);
   };
 }
 
