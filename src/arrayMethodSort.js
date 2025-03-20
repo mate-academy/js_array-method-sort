@@ -15,10 +15,7 @@ function applyCustomSort() {
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - 1; j++) {
         if (sortedFunction(this[j], this[j + 1]) > 0) {
-          const res = this[j];
-
-          this[j] = this[j + 1];
-          this[j + 1] = res;
+          [this[j], this[j + 1]] = [this[j + 1], this[j]];
         }
       }
     }
