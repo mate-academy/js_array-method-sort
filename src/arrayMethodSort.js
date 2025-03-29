@@ -52,10 +52,6 @@ function applyCustomSort() {
     };
 
     const defaultCompare = (a, b) => {
-      if (typeof a === 'number' && typeof b === 'number') {
-        return a - b; // Numeric comparison
-      }
-
       const aStr = String(a);
       const bStr = String(b);
 
