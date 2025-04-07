@@ -12,18 +12,14 @@ function applyCustomSort() {
             const aStr = String(a);
             const bStr = String(b);
 
+            if (aStr < bStr) return -1;
+            if (aStr > bStr) return 1;
+
             const aLower = aStr.toLowerCase();
             const bLower = bStr.toLowerCase();
 
             if (aLower < bLower) return -1;
             if (aLower > bLower) return 1;
-
-            // lower-cased values are equal, prioritize upper-case earlier
-            const aCharCode = aStr.charCodeAt(0);
-            const bCharCode = bStr.charCodeAt(0);
-
-            if (aCharCode < bCharCode) return -1;
-            if (aCharCode > bCharCode) return 1;
 
             return 0;
           };
