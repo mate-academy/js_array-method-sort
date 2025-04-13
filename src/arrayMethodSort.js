@@ -4,54 +4,37 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
-    // Usar uma variável separada para a função de comparação efetiva
-    const effectiveCompare = typeof compareFunction === 'function'
-      ? compareFunction
-      : (a, b) => {
-          const aStr = String(a);
-          const bStr = String(b);
-          if (aStr < bStr) return -1;
-          if (aStr > bStr) return 1;
-          return 0;
-        };
+  [].__proto__.sort2 = function (compareFunction) {
+    const defaultCompare = (a, b) => {
+      const aStr = String(a);
+      const bStr = String(b);
 
-    // Resto da implementação permanece igual
-    const elementsInfo = [];
-    for (let i = 0; i < this.length; i++) {
-      const hasOwn = Object.hasOwn(this, i);
-      elementsInfo.push({
-        value: hasOwn ? this[i] : undefined,
-        isHole: !hasOwn
-      });
-    }
-
-    // Algoritmo de ordenação
-    for (let i = 0; i < elementsInfo.length; i++) {
-      for (let j = 0; j < elementsInfo.length - i - 1; j++) {
-        const a = elementsInfo[j].value;
-        const b = elementsInfo[j + 1].value;
-        if (effectiveCompare(a, b) > 0) {
-          const temp = elementsInfo[j];
-          elementsInfo[j] = elementsInfo[j + 1];
-          elementsInfo[j + 1] = temp;
-        }
+      if (aStr < bStr) {
+        return -1;
+      } else if (aStr > bStr) {
+        return 1;
       }
-    }
 
-    // Reconstrução do array
-    for (let i = 0; i < this.length; i++) {
-      delete this[i];
-    }
+      return 0;
+    };
 
-    for (let i = 0; i < elementsInfo.length; i++) {
-      const info = elementsInfo[i];
-      if (!info.isHole) {
-        this[i] = info.value;
+    const comparator = compareFunction || defaultCompare;
+    const arr = this;
+    const len = arr.length;
+
+    for (let i = 1; i < len; i++) {
+      const current = arr[i];
+      let j = i - 1;
+
+      while (j >= 0 && comparator(arr[j], current) > 0) {
+        arr[j + 1] = arr[j];
+        j--;
       }
+
+      arr[j + 1] = current;
     }
 
-    return this;
+    return arr;
   };
 }
 
