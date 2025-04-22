@@ -5,26 +5,31 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    const comparator =
-      compareFunction ||
-      ((a, b) => {
+    let comparator;
+
+    if (typeof compareFunction === 'function') {
+      comparator = compareFunction;
+    } else {
+      comparator = function (a, b) {
         if (typeof a === 'number' && typeof b === 'number') {
           return String(a).localeCompare(String(b));
           // Числа сортуються як рядки
         }
 
-        // Спочатку розміщуємо рядки з великої літери перед рядками з малої
         const isUpperA = /^[A-Z]/.test(a);
         const isUpperB = /^[A-Z]/.test(b);
 
         if (isUpperA !== isUpperB) {
-          return isUpperA ? -1 : 1;
-          // Рядки з великої літери йдуть раніше
+          if (isUpperA) {
+            return -1; // Великі літери йдуть першими
+          } else {
+            return 1;
+          }
         }
 
-        return a.localeCompare(b);
-        // Лексикографічне сортування всередині групи
-      });
+        return a.localeCompare(b); // Лексикографічне сортування всередині групи
+      };
+    }
 
     for (let i = 0; i < this.length - 1; i++) {
       for (let j = 0; j < this.length - 1 - i; j++) {
