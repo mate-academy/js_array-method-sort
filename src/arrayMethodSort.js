@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Implement method Sort
+ * Implement method Sorts
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
