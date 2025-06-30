@@ -27,7 +27,7 @@ function applyCustomSort() {
         }
       }
 
-      [this[i], this[mIndex]] = [min, this[i]];
+      [this[i], this[mIndex]] = [this[mIndex], this[i]];
     }
 
     return this;
