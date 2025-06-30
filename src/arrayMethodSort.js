@@ -27,7 +27,6 @@ function applyCustomSort() {
         }
       }
 
-      console.log(this, this[i], min);
       [this[i], this[mIndex]] = [min, this[i]];
     }
 
