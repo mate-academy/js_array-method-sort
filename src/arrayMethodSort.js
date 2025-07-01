@@ -7,7 +7,18 @@ function applyCustomSort() {
 
     if (typeof compareFunction !== 'function') {
       compareFunctionToUse = function (a, b) {
-        return String(a).localeCompare(String(b));
+        const sA = String(a);
+        const sB = String(b);
+
+        if (sA > sB) {
+          return 1;
+        }
+
+        if (sA < sB) {
+          return -1;
+        }
+
+        return 0;
       };
     } else {
       compareFunctionToUse = compareFunction;
