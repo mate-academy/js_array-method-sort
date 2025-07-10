@@ -20,18 +20,6 @@ function applyCustomSort() {
     }
 
     return this;
-
-    // let buffer = 0;
-
-    // for (let i = 0; i < this.length; i++) {
-    //   for (let j = 1; j < this.length; j++) {
-    //     if (this[i] - this[j] > 0) {
-    //       buffer = this[j];
-    //       this[j] = this[i];
-    //       this[i] = buffer;
-    //     }
-    //   }
-    // }
   };
 }
 
