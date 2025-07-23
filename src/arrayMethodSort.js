@@ -22,11 +22,11 @@ function applyCustomSort() {
         const bLowerString = bString.toLowerCase();
 
         if (aLowerString > bLowerString) {
-          return -1;
+          return 1;
         }
 
         if (aLowerString < bLowerString) {
-          return 1;
+          return -1;
         }
       }
     };
