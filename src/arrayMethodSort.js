@@ -19,12 +19,17 @@ function applyCustomSort() {
 
     const definedItems = [];
     let undefinedCount = 0;
+    let emptySlotsCount = 0;
 
-    for (const item of this) {
-      if (item === undefined) {
-        undefinedCount++;
+    for (let i = 0; i < this.length; i++) {
+      if (i in this) {
+        if (this[i] === undefined) {
+          undefinedCount++;
+        } else {
+          definedItems.push(this[i]);
+        }
       } else {
-        definedItems.push(item);
+        emptySlotsCount++;
       }
     }
 
@@ -43,10 +48,20 @@ function applyCustomSort() {
       this[i] = definedItems[i];
     }
 
-    const totalLength = definedItems.length + undefinedCount;
-
-    for (let i = definedItems.length; i < totalLength; i++) {
+    for (
+      let i = definedItems.length;
+      i < definedItems.length + undefinedCount;
+      i++
+    ) {
       this[i] = undefined;
+    }
+
+    for (
+      let i = definedItems.length + undefinedCount;
+      i < definedItems.length + undefinedCount + emptySlotsCount;
+      i++
+    ) {
+      delete this[i];
     }
 
     return this;
