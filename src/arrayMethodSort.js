@@ -49,9 +49,11 @@ function applyCustomSort() {
     configurable: true,
   });
 
-  // Array.prototype.sort = function (compareFunction) {
-  //   return this.sort2(compareFunction);
-  // };
+  /* eslint-disable no-extend-native */
+  Array.prototype.sort = function (compareFunction) {
+    return this.sort2(compareFunction);
+  };
+  /* eslint-enable no-extend-native */
 }
 
 module.exports = applyCustomSort;
