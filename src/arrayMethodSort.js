@@ -4,7 +4,12 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function (compareFunction) {
+  /* eslint-disable no-extend-native */
+  if (typeof Array.prototype.sort2 === 'function') {
+    return;
+  }
+
+  Array.prototype.sort2 = function (compareFunction) {
     const cmp =
       compareFunction ||
       function (a, b) {
@@ -35,6 +40,6 @@ function applyCustomSort() {
 
     return this;
   };
+  /* eslint-enable no-extend-native */
 }
-
 module.exports = applyCustomSort;
