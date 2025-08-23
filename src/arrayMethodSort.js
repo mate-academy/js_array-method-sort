@@ -5,18 +5,41 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
+    if (
+      compareFunction !== undefined &&
+      typeof compareFunction !== 'function'
+    ) {
+      throw new TypeError(
+        'The comparison function must be either a function or undefined',
+      );
+    }
+
     const comparator =
       compareFunction ||
       function (a, b) {
-        const strA = String(a);
+        const aU = a === undefined;
+        const bU = b === undefined;
 
-        const strB = String(b);
+        if (aU && bU) {
+          return 0;
+        }
 
-        if (strA < strB) {
+        if (aU) {
+          return 1;
+        }
+
+        if (bU) {
           return -1;
         }
 
-        if (strA > strB) {
+        const sa = String(a);
+        const sb = String(b);
+
+        if (sa < sb) {
+          return -1;
+        }
+
+        if (sa > sb) {
           return 1;
         }
 
@@ -26,16 +49,21 @@ function applyCustomSort() {
     const arr = this;
     const n = arr.length;
 
-    for (let i = 0; i < n - 1; i++) {
-      for (let j = 0; j < n - i - 1; j++) {
-        if (comparator(arr[j], arr[j + 1]) > 0) {
-          const temp = arr[j];
+    let swapped;
 
-          arr[j] = arr[j + 1];
-          arr[j + 1] = temp;
+    do {
+      swapped = false;
+
+      for (let i = 1; i < n; i++) {
+        if (comparator(arr[i - 1], arr[i]) > 0) {
+          const tmp = arr[i - 1];
+
+          arr[i - 1] = arr[i];
+          arr[i] = tmp;
+          swapped = true;
         }
       }
-    }
+    } while (swapped);
 
     return arr;
   };
