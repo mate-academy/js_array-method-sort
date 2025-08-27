@@ -5,7 +5,8 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    const defaultCompare = (a, b) => (String(a) > String(b) ? 1 : -1);
+    const defaultCompare = (a, b) =>
+      String(a) > String(b) ? 1 : String(a) < String(b) ? -1 : 0;
 
     const compare =
       typeof compareFunction === 'function' ? compareFunction : defaultCompare;
