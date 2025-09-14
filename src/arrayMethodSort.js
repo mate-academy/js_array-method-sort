@@ -5,9 +5,24 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
+    if (
+      compareFunction !== undefined &&
+      typeof compareFunction !== 'function'
+    ) {
+      throw new TypeError('The comparison function must be a function');
+    }
+
     const cmp =
       compareFunction ||
       ((a, b) => {
+        if (a === undefined && b !== undefined) {
+          return 1;
+        }
+
+        if (a !== undefined && b === undefined) {
+          return -1;
+        }
+
         const strA = String(a);
         const strB = String(b);
 
