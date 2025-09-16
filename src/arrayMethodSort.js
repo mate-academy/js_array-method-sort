@@ -15,6 +15,15 @@ function applyCustomSort() {
     const arr = this;
     let item = arr[0];
 
+    if (
+      compareFunction !== undefined &&
+      typeof compareFunction !== 'function'
+    ) {
+      throw new TypeError(
+        'The comparison function must be either a function or undefined',
+      );
+    }
+
     for (let i = 0; i < arr.length - 1; i++) {
       for (let j = i + 1; j < arr.length; j++) {
         if (compareFunction(arr[i], arr[j]) > 0) {
