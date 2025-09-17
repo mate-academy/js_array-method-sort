@@ -3,37 +3,34 @@
 /**
  * Implement method Sort
  */
+function defaultComparator(a, b) {
+  const stringA = String(a);
+  const stringB = String(b);
+
+  if (stringA < stringB) {
+    return -1;
+  }
+
+  if (stringA > stringB) {
+    return 1;
+  }
+
+  return 0;
+}
+
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     if (this.length < 2) {
       return this;
     }
 
-    if (
-      compareFunction !== undefined &&
-      typeof compareFunction !== 'function'
-    ) {
-      throw new TypeError('The comparison function must be a function');
-    }
+    const compare =
+      typeof compareFunction === 'function'
+        ? compareFunction
+        : defaultComparator;
 
     const length = this.length;
 
-    const compare =
-      compareFunction ||
-      function (a, b) {
-        const stringA = String(a);
-        const stringB = String(b);
-
-        if (stringA < stringB) {
-          return -1;
-        }
-
-        if (stringA > stringB) {
-          return 1;
-        }
-
-        return 0;
-      };
     let sorted = true;
 
     do {
