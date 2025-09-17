@@ -5,10 +5,20 @@
  */
 function applyCustomSort() {
   const defaultCompare = (a, b) => {
-    const stringA = String(a);
-    const stringB = String(b);
+    const stringA = a !== undefined ? String(a) : undefined;
+    const stringB = b !== undefined ? String(b) : undefined;
 
-    return stringA > stringB ? 1 : stringA < stringB ? -1 : 0;
+    return stringA === undefined && stringB === undefined
+      ? 0
+      : stringA === undefined
+        ? 1
+        : stringB === undefined
+          ? -1
+          : stringA > stringB
+            ? 1
+            : stringA < stringB
+              ? -1
+              : 0;
   };
 
   [].__proto__.sort2 = function (compareFunction = defaultCompare) {
