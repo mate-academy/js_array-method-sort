@@ -9,6 +9,13 @@ function applyCustomSort() {
       return this;
     }
 
+    if (
+      compareFunction !== undefined &&
+      typeof compareFunction !== 'function'
+    ) {
+      throw new TypeError('The comparison function must be a function');
+    }
+
     const length = this.length;
 
     const compare =
@@ -33,7 +40,15 @@ function applyCustomSort() {
       sorted = true;
 
       for (let i = 0; i < length - 1; i++) {
-        if (compare(this[i], this[i + 1]) > 0) {
+        let res = compare(this[i], this[i + 1]);
+
+        res = Number(res);
+
+        if (!Number.isFinite(res)) {
+          res = 0;
+        }
+
+        if (res > 0) {
           const temp = this[i];
 
           this[i] = this[i + 1];
