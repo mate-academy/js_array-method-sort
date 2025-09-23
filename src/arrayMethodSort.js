@@ -6,6 +6,21 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     function compare(a, b) {
+      const aIsUndefined = a === undefined;
+      const bIsUndefined = b === undefined;
+
+      if (aIsUndefined && !bIsUndefined) {
+        return 1;
+      }
+
+      if (!aIsUndefined && bIsUndefined) {
+        return -1;
+      }
+
+      if (aIsUndefined && bIsUndefined) {
+        return 0;
+      }
+
       const firstValue = String(a);
       const secondValue = String(b);
 
