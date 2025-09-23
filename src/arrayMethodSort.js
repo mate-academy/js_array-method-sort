@@ -16,12 +16,11 @@ function applyCustomSort() {
             this[j + 1] = x;
           }
         } else {
-          if (String(this[j]).localeCompare(String(this[j + 1])) > 0) {
-            const x = this[j];
-            const y = this[j + 1];
+          const a = String(this[j]);
+          const b = String(this[j + 1]);
 
-            this[j] = y;
-            this[j + 1] = x;
+          if (a > b) {
+            [this[j], this[j + 1]] = [this[j + 1], this[j]];
           }
         }
       }
