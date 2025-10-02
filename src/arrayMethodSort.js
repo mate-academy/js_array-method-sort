@@ -9,8 +9,22 @@ function applyCustomSort() {
 
     if (!compareFunction) {
       cmp = (a, b) => {
-        return String(a) > String(b) ? 1 : -1;
+        const sa = String(a);
+        const sb = String(b);
+
+        if (sa === sb) {
+          return 0;
+        }
+
+        return sa > sb ? 1 : -1;
       };
+    }
+
+    if (
+      compareFunction !== undefined &&
+      typeof compareFunction !== 'function'
+    ) {
+      throw new TypeError('The comparison function must be a function');
     }
 
     for (let i = 0; i < this.length; i++) {
