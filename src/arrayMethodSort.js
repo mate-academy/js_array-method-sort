@@ -5,28 +5,39 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    const arr = [...this];
+    if (
+      compareFunction !== undefined &&
+      typeof compareFunction !== 'function'
+    ) {
+      throw new TypeError('compareFunction must be a function');
+    }
 
-    for (let i = 0; i < arr.length - 1; i++) {
-      for (let j = 0; j < arr.length - i - 1; j++) {
-        const a = arr[j];
-        const b = arr[j + 1];
+    const len = this.length;
 
-        const shouldSwap = compareFunction
-          ? compareFunction(a, b) > 0
-          : String(a) > String(b);
+    for (let i = 0; i < len - 1; i++) {
+      for (let j = 0; j < len - i - 1; j++) {
+        const a = this[j];
+        const b = this[j + 1];
 
-        if (shouldSwap) {
-          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        const cmpResult = compareFunction
+          ? compareFunction(a, b)
+          : String(a) > String(b)
+            ? 1
+            : String(a) < String(b)
+              ? -1
+              : 0;
+
+        if (cmpResult > 0) {
+          [this[j], this[j + 1]] = [this[j + 1], this[j]];
         }
       }
     }
 
-    for (let i = 0; i < this.length; i++) {
-      this[i] = arr[i];
-    }
-
     return this;
+  };
+
+  [].__proto__.sort = function (compareFunction) {
+    return this.sort2(compareFunction);
   };
 }
 
