@@ -6,6 +6,7 @@
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     // write code here
+
     let cmp;
 
     if (typeof compareFunction === 'function') {
