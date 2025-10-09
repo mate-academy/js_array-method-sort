@@ -4,16 +4,9 @@
  * Implement method Sort
  */
 
-const nums = [5, 2, 9, 1];
+applyCustomSort();
 
-
-
-const words = ['banana', 'apple', 'cherry'];
-
-
-
-
-function applyCustomSort() {
+function applyCustomSort(callback) {
   [].__proto__.sort2 = function(compareFunction) {
     if (typeof compareFunction !== 'function') {
       compareFunction = function(a, b) {
