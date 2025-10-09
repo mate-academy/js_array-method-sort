@@ -40,10 +40,6 @@ function applyCustomSort() {
   };
 }
 
-// nums.sort2((a, b) => a - b); // [1, 2, 5, 9]
-// words.sort2(); // default lexicographic sort
-console.log(nums);
-console.log(words);
 
 
 
