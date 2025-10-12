@@ -24,10 +24,6 @@ function applyCustomSort() {
     }
     return this;
   };
-
-  Array.prototype.sort = function(compareFn) {
-    return this.sort2(compareFn);
-  };
 }
 
 module.exports = applyCustomSort;
