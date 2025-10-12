@@ -1,14 +1,22 @@
+'use strict';
+
+/**
+ * Implement method Sort
+ */
 function applyCustomSort() {
+  // Dodajemy metodę sort2 do prototypu Array
   [].__proto__.sort2 = function(compareFunction) {
-    const compare = compareFunction || function(a, b) {
-      if (a === undefined) return 1;
-      if (b === undefined) return -1;
-      const A = String(a);
-      const B = String(b);
-      if (A < B) return -1;
-      if (A > B) return 1;
-      return 0;
-    };
+    const compare = compareFunction
+      ? compareFunction
+      : (a, b) => {
+          if (a === undefined) return 1;
+          if (b === undefined) return -1;
+          const A = String(a);
+          const B = String(b);
+          if (A < B) return -1;
+          if (A > B) return 1;
+          return 0;
+        };
 
     for (let i = 0; i < this.length - 1; i++) {
       let swapped = false;
@@ -20,13 +28,19 @@ function applyCustomSort() {
           swapped = true;
         }
       }
-      if (!swapped) break;
+      if (!swapped) break; // optymalizacja: jeśli brak zamiany, kończymy
     }
     return this;
+  };
+
+  // Delegacja standardowej metody sort do sort2
+  Array.prototype.sort = function(compareFunction) {
+    return this.sort2(compareFunction);
   };
 }
 
 module.exports = applyCustomSort;
+
 
 
 
