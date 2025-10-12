@@ -5,7 +5,6 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    // write code here
     const arr = this;
 
     if (
@@ -41,7 +40,7 @@ function applyCustomSort() {
   };
 
   // eslint-disable-next-line no-extend-native
-  Array.prototype.soft = function (compareFunction) {
+  Array.prototype.sort = function (compareFunction) {
     return this.sort2(compareFunction);
   };
 }
