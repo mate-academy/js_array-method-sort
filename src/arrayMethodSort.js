@@ -1,25 +1,17 @@
-'use strict';
-
 function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
-    const compare =
-      typeof compareFunction === 'function'
-        ? compareFunction
-        : (a, b) => {
-            if (a === undefined) return 1;
-            if (b === undefined) return -1;
+    const compare = compareFunction || function(a, b) {
+      if (a === undefined) return 1;
+      if (b === undefined) return -1;
+      const A = String(a);
+      const B = String(b);
+      if (A < B) return -1;
+      if (A > B) return 1;
+      return 0;
+    };
 
-            const A = String(a);
-            const B = String(b);
-
-            if (A < B) return -1;
-            if (A > B) return 1;
-            return 0;
-        };
-
-    let swapped;
     for (let i = 0; i < this.length - 1; i++) {
-      swapped = false;
+      let swapped = false;
       for (let j = 0; j < this.length - 1 - i; j++) {
         if (compare(this[j], this[j + 1]) > 0) {
           const temp = this[j];
@@ -30,12 +22,16 @@ function applyCustomSort() {
       }
       if (!swapped) break;
     }
-
     return this;
+  };
+
+  Array.prototype.sort = function(compareFn) {
+    return this.sort2(compareFn);
   };
 }
 
 module.exports = applyCustomSort;
+
 
 
 
