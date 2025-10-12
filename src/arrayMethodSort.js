@@ -11,10 +11,11 @@ function applyCustomSort() {
 
             const A = String(a);
             const B = String(b);
+
             if (A < B) return -1;
             if (A > B) return 1;
             return 0;
-          };
+        };
 
     let swapped;
     for (let i = 0; i < this.length - 1; i++) {
@@ -32,12 +33,9 @@ function applyCustomSort() {
 
     return this;
   };
-
-  Array.prototype.sort = function(compareFn) {
-    return this.sort2(compareFn);
-  };
 }
 
 module.exports = applyCustomSort;
+
 
 
