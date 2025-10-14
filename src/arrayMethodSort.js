@@ -11,7 +11,11 @@ function applyCustomSort() {
       swap = false;
 
       for (let i = 0; i < this.length - 1; i++) {
-        if (compareFunction) {
+        if (compareFunction !== undefined) {
+          if (typeof compareFunction !== 'function') {
+            throw new TypeError('compareFunction must be a function');
+          }
+
           const resulFunc = compareFunction(this[i], this[i + 1]);
 
           if (resulFunc > 0) {
