@@ -4,36 +4,26 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function (callback) {
-    // write code here\\
-    const compareFn =
-      typeof callback === 'function'
-        ? callback
-        : (a, b) => {
-            const A = String(a);
-            const B = String(b);
-            const len = Math.min(A.length, B.length);
+  [].__proto__.sort2 = function (compareFunction) {
+    for (let i = 0; i < this.length; i++) {
+      for (let j = i + 1; j < this.length; j++) {
+        let result;
 
-            for (let i = 0; i < len; i++) {
-              const codeA = A.charCodeAt(i);
-              const codeB = B.charCodeAt(i);
+        if (compareFunction) {
+          result = compareFunction(this[i], this[j]);
+        } else if (String(this[i]) > String(this[j])) {
+          result = 1;
+        } else if (String(this[i]) < String(this[j])) {
+          result = -1;
+        } else {
+          result = 0;
+        }
 
-              if (codeA !== codeB) {
-                return codeA - codeB;
-              }
-            }
+        if (result > 0) {
+          const temp = this[i];
 
-            if (A.length === B.length) {
-              return 0;
-            }
-
-            return A.length - B.length;
-          };
-
-    for (let i = 0; i < this.length - 1; i++) {
-      for (let j = 0; j < this.length - 1 - i; j++) {
-        if (compareFn(this[j], this[j + 1]) > 0) {
-          [this[j], this[j + 1]] = [this[j + 1], this[j]];
+          this[i] = this[j];
+          this[j] = temp;
         }
       }
     }
