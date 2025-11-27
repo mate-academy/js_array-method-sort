@@ -5,9 +5,23 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    const arr = this; // the array calling sort2
+    const arr = this;
+    const definedElements = [];
+    const undefinedElements = [];
+    const emptySlots = [];
 
-    // If no compareFunction is provided, compare as strings
+    // Separate elements
+    for (let i = 0; i < arr.length; i++) {
+      if (!(i in arr)) {
+        emptySlots.push(i); // Track index of empty slot
+      } else if (arr[i] === undefined) {
+        undefinedElements.push(arr[i]);
+      } else {
+        definedElements.push(arr[i]);
+      }
+    }
+
+    // Default comparator if none provided
     const cmp =
       compareFunction ||
       function (a, b) {
@@ -25,20 +39,34 @@ function applyCustomSort() {
         return 0;
       };
 
-    // Simple bubble sort
-    for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr.length - 1 - i; j++) {
-        if (cmp(arr[j], arr[j + 1]) > 0) {
-          // Swap elements
-          const temp = arr[j];
+    // Simple bubble sort on defined elements
+    for (let i = 0; i < definedElements.length; i++) {
+      for (let j = 0; j < definedElements.length - 1 - i; j++) {
+        if (cmp(definedElements[j], definedElements[j + 1]) > 0) {
+          const temp = definedElements[j];
 
-          arr[j] = arr[j + 1];
-          arr[j + 1] = temp;
+          definedElements[j] = definedElements[j + 1];
+          definedElements[j + 1] = temp;
         }
       }
     }
 
-    return arr; // Return sorted array
+    // Merge back into original array
+    let index = 0;
+
+    for (let i = 0; i < definedElements.length; i++) {
+      arr[index++] = definedElements[i];
+    }
+
+    for (let i = 0; i < undefinedElements.length; i++) {
+      arr[index++] = undefinedElements[i];
+    }
+
+    for (let i = 0; i < emptySlots.length; i++) {
+      delete arr[index++]; // preserve empty slots
+    }
+
+    return arr;
   };
 }
 
