@@ -12,7 +12,15 @@ function applyCustomSort() {
       const stringA = String(a);
       const stringB = String(b);
 
-      return stringA.localeCompare(stringB);
+      if (stringA < stringB) {
+        return -1;
+      }
+
+      if (stringA > stringB) {
+        return 1;
+      }
+
+      return 0;
     };
 
     const compare = compareFunction || defaultCompare;
