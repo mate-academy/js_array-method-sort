@@ -9,18 +9,21 @@ function applyCustomSort() {
 
     if (callback === undefined) {
       callback = function (a, b) {
-        return a > b;
+        const firstValue = String(a);
+        const secondValue = String(b);
+
+        return firstValue > secondValue;
       };
     }
 
     for (let j = 0; j < this.length; j++) {
       for (let i = 0; i < this.length - 1; i++) {
-        const greaterFirstValue = callback(
-          String(this[i]),
-          String(this[i + 1]),
-        );
+        const compare = callback(this[i], this[i + 1]);
 
-        if (greaterFirstValue) {
+        const shouldSwap =
+          typeof compare === 'number' ? compare > 0 : compare === true;
+
+        if (shouldSwap) {
           const temp = this[i];
 
           this[i] = this[i + 1];
