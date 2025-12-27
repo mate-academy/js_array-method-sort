@@ -24,7 +24,7 @@ function applyCustomSort() {
 
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - 1 - i; j++) {
-        if (i in this && compare(this[j], this[j + 1]) > 0) {
+        if (j in this && compare(this[j], this[j + 1]) > 0) {
           const temp = this[j];
 
           this[j] = this[j + 1];
