@@ -21,16 +21,31 @@ function applyCustomSort() {
     };
 
     const compare = compareFunction || compareDefault;
+    const holeArr = [];
+
+    for (let i = 0; i < this.length; i++) {
+      if (!(i in this)) {
+        holeArr.push(this[i]);
+      }
+    }
 
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - 1 - i; j++) {
-        if (j in this && compare(this[j], this[j + 1]) > 0) {
+        if (compare(this[j], this[j + 1]) > 0) {
+          if (this[j] === undefined || this[j + 1] === undefined) {
+            continue;
+          }
+
           const temp = this[j];
 
           this[j] = this[j + 1];
           this[j + 1] = temp;
         }
       }
+    }
+
+    for (const hole of holeArr) {
+      this.push(hole);
     }
 
     return this;
