@@ -5,10 +5,10 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
-    let compareFunctionLocal = compareFunction;
+    let _compareFunction = compareFunction;
 
-    if (compareFunction === undefined) {
-      compareFunctionLocal = (a, b) => {
+    if (typeof compareFunction !== 'function') {
+      _compareFunction = (a, b) => {
         const strA = String(a);
         const strB = String(b);
 
@@ -25,10 +25,21 @@ function applyCustomSort() {
     }
 
     for (let i = 0; i < this.length; i++) {
+      let swapped = false;
+
       for (let j = 0; j < this.length - 1 - i; j++) {
-        if (compareFunctionLocal(this[j], this[j + 1]) > 0) {
-          [this[j], this[j + 1]] = [this[j + 1], this[j]];
+        if (_compareFunction(this[j], this[j + 1]) > 0) {
+          const temp = this[j];
+
+          this[j] = this[j + 1];
+          this[j + 1] = temp;
+
+          swapped = true;
         }
+      }
+
+      if (!swapped) {
+        break;
       }
     }
 
