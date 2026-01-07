@@ -10,11 +10,22 @@ function applyCustomSort() {
     const cmp =
       compareFn ||
       function (a, b) {
-        return a.toString() > b.toString()
-          ? 1
-          : a.toString() < b.toString()
-            ? -1
-            : 0;
+        if (a === undefined && b === undefined) {
+          return 0;
+        }
+
+        if (a === undefined) {
+          return 1;
+        }
+
+        if (b === undefined) {
+          return -1;
+        }
+
+        const sa = a.toString();
+        const sb = b.toString();
+
+        return sa > sb ? 1 : sa < sb ? -1 : 0;
       };
 
     for (let i = 0; i < n - 1; i++) {
