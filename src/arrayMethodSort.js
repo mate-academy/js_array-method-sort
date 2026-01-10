@@ -11,9 +11,9 @@ function applyCustomSort() {
   };
 }
 
-function defaultCompare(a = '', b = '') {
-  const aString = a.toString();
-  const bString = b.toString();
+function defaultCompare(a, b) {
+  const aString = String(a);
+  const bString = String(b)``;
 
   if (aString > bString) {
     return 1;
