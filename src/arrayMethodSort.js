@@ -13,7 +13,7 @@ function applyCustomSort() {
 
 function defaultCompare(a, b) {
   const aString = String(a);
-  const bString = String(b)``;
+  const bString = String(b);
 
   if (aString > bString) {
     return 1;
