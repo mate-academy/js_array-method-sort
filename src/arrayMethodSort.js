@@ -3,6 +3,7 @@
 /**
  * Implement method Sort
  */
+
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
     const arr = this;
@@ -41,3 +42,4 @@ function applyCustomSort() {
 }
 
 module.exports = applyCustomSort;
+///
