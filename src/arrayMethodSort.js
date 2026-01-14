@@ -5,6 +5,10 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
+    if (this.length < 2) {
+      return this;
+    }
+
     const compareCallback =
       compareFunction ??
       ((a, b) => {
