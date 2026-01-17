@@ -8,7 +8,7 @@ function applyCustomSort() {
     const arr = this;
 
     for (let i = 0; i < arr.length; i++) {
-      for (let j = 0; j < arr.length; j++) {
+      for (let j = 0; j < arr.length - 1; j++) {
         const a = arr[j];
         const b = arr[j + 1];
         let shouldSwap;
