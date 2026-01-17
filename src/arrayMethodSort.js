@@ -33,6 +33,7 @@ Array.prototype.sort2 = function (compareFn) {
     for (let j = 0; j < arr.length - 1 - i; j += 1) {
       if (compare(arr[j], arr[j + 1]) > 0) {
         const temp = arr[j];
+
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
       }
