@@ -8,7 +8,7 @@ function applyCustomSort() {
 
   [].__proto__.sort2 = function (callback = compareByDefault) {
     for (let j = 0; j < this.length; j++) {
-      for (let i = 0; i < this.length; i++) {
+      for (let i = 0; i < this.length - 1; i++) {
         if (callback(this[i], this[i + 1]) > 0) {
           const temp = this[i];
 
