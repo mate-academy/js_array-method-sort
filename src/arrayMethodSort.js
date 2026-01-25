@@ -27,10 +27,18 @@ function applyCustomSort() {
 
     for (let i = 0; i < this.length; i++) {
       for (let j = 0; j < this.length - 1 - i; j++) {
-        const result = sortFunction(this[j], this[j + 1]);
-
-        if (result > 0) {
+        if (!(j in this) && j + 1 in this) {
           [this[j], this[j + 1]] = [this[j + 1], this[j]];
+        } else if (j in this && !(j + 1 in this)) {
+          continue;
+        } else if (!(j in this) && !(j + 1 in this)) {
+          continue;
+        } else {
+          const result = sortFunction(this[j], this[j + 1]);
+
+          if (result > 0) {
+            [this[j], this[j + 1]] = [this[j + 1], this[j]];
+          }
         }
       }
     }
