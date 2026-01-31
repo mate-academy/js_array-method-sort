@@ -8,6 +8,7 @@ function applyCustomSort() {
     // const newArray = [];
     let compare = compareFunction;
     const result = [];
+    const undefinedNumber = [];
 
     if (typeof compare !== 'function') {
       compare = (a, b) =>
@@ -30,14 +31,18 @@ function applyCustomSort() {
       }
     }
 
-    for (let i = 0; i < this.length - 1; i++) {
+    for (let i = 0; i < this.length; i++) {
       if (this[i] !== undefined) {
         result[result.length] = this[i];
+      } else {
+        undefinedNumber[undefinedNumber.length] = this[i];
       }
     }
 
-    for (let i = 0; i < result.length - 1; i++) {
-      this[i] = result[i];
+    const sorted = [...result, ...undefinedNumber];
+
+    for (let i = 0; i < sorted.length; i++) {
+      this[i] = sorted[i];
     }
 
     return this;
