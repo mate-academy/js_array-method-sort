@@ -33,13 +33,17 @@ function applyCustomSort() {
         const a = array[j];
         const b = array[j + 1];
 
-        if (a === undefined) {
+        if (a === undefined && b !== undefined) {
+          array[j] = b;
+          array[j + 1] = a;
           continue;
         }
 
-        if (b === undefined) {
-          array[j] = b;
-          array[j + 1] = a;
+        if (a !== undefined && b === undefined) {
+          continue;
+        }
+
+        if (a === undefined && b === undefined) {
           continue;
         }
 
