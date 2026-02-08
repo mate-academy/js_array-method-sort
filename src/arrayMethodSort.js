@@ -5,6 +5,15 @@
  */
 function applyCustomSort() {
   [].__proto__.sort2 = function (compareFunction) {
+    if (
+      compareFunction !== undefined &&
+      typeof compareFunction !== 'function'
+    ) {
+      throw new TypeError(
+        'The comparison function must be either a function or undefined',
+      );
+    }
+
     const compare =
       compareFunction ||
       ((a, b) => {
@@ -40,6 +49,10 @@ function applyCustomSort() {
     }
 
     return this;
+  };
+
+  [].__proto__.sort = function (compareFunction) {
+    return this.sort2(compareFunction);
   };
 }
 
