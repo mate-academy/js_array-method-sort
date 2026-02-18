@@ -37,6 +37,8 @@ function applyCustomSort() {
 
     return this;
   };
+  // eslint-disable-next-line no-extend-native
+  Array.prototype.sort = Array.prototype.sort2;
 }
 
 module.exports = applyCustomSort;
