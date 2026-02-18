@@ -4,7 +4,12 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  [].__proto__.sort2 = function(compareFunction) {
+  [].__proto__.sort2 = function (compareFunction) {
+    
+    if (compareFunction !== undefined && typeof compareFunction !== 'function') {
+      throw new TypeError('The comparison function must be either a function or undefined');
+    }
+
     const compare = compareFunction || function (a, b) {
       const sA = String(a);
       const sB = String(b);
@@ -23,6 +28,10 @@ function applyCustomSort() {
       }
     }
     return this;
+  };
+
+  [].__proto__.sort = function(compareFunction) {
+    return this.sort2(compareFunction);
   };
 }
 
