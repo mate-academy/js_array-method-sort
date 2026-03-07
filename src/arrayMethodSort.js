@@ -4,41 +4,37 @@
  * Implement method Sort
  */
 function applyCustomSort() {
-  Array.prototype.sort2 = function (compareFunction) {
-    const compare =
-      typeof compareFunction === 'function'
-        ? compareFunction
-        : (a, b) => {
-            const left = String(a);
-            const right = String(b);
+  [].__proto__.sort2 = function (compareFunction) {
+    const arr = this;
+    const func = (a, b) => {
+      const A = String(a);
+      const B = String(b);
 
-            if (left > right) {
-              return 1;
-            }
-
-            if (left < right) {
-              return -1;
-            }
-
-            return 0;
-          };
-
-    for (let i = 0; i < this.length; i++) {
-      for (let j = 0; j < this.length - 1 - i; j++) {
-        const a = this[j];
-        const b = this[j + 1];
-
-        // Вызываем колбэк сравнения
-        // Если результат > 0, значит 'a' должно идти после 'b'
-        if (compare(a, b) > 0) {
-          // Меняем элементы местами (деструктуризация)
-          this[j] = b;
-          this[j + 1] = a;
-        }
+      if (A < B) {
+        return -1;
       }
+
+      if (A > B) {
+        return 1;
+      }
+
+      return 0;
+    };
+
+    const cmp = typeof compareFunction === 'function' ? compareFunction : func;
+
+    for (let i = 1; i < arr.length; i++) {
+      const next = arr[i];
+      let prevIdx = i - 1;
+
+      while (prevIdx >= 0 && cmp(arr[prevIdx], next) > 0) {
+        arr[prevIdx + 1] = arr[prevIdx];
+        prevIdx--;
+      }
+      arr[prevIdx + 1] = next;
     }
 
-    return this;
+    return arr;
   };
 }
 
