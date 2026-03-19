@@ -20,7 +20,7 @@ function applyCustomSort() {
             hasChanged = true;
           }
         } else {
-          if (this[i - 1].toString() > this[i].toString()) {
+          if (String(this[i - 1]) > String(this[i])) {
             temporaryValue = this[i - 1];
             this[i - 1] = this[i];
             this[i] = temporaryValue;
