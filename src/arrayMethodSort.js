@@ -8,7 +8,8 @@ function applyCustomSort() {
     let cmp = compareFunction;
 
     if (typeof cmp !== 'function') {
-      cmp = (a, b) => `${a}` > `${b}`;
+      cmp = (a, b) =>
+        String(a) > String(b) ? 1 : String(a) < String(b) ? -1 : 0;
     }
 
     for (let i = 0; i < this.length - 1; i++) {
