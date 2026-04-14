@@ -32,6 +32,10 @@ function applyCustomSort() {
 
     return this;
   };
+
+  [].__proto__.sort = function (compareFunction) {
+    return this.sort2(compareFunction);
+  };
 }
 
 module.exports = applyCustomSort;
