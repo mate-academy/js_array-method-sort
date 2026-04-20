@@ -7,3 +7,7 @@
 Write your own implementation of `Array.prototype.sort` method. Use predefined `[].__proto__.sort2` function for your implementation.
 
 Read more about [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+
+Test
+
+Test
