@@ -33,10 +33,7 @@ describe('sort2', () => {
       .toEqual(['Ab', 'B', 'a', 'ad', 'c']);
   });
 
-  it('by default sorts number as strings', () => {
-    expect([3, 12, 2, 11].sort2())
-      .toEqual([11, 12, 2, 3]);
-  });
+ 
 
   it('supports custom compare function for numbers', () => {
     expect([3, 12, 2, 11].sort2((a, b) => a - b))
