@@ -16,9 +16,9 @@
   "author": "Mate academy",
   "license": "GPL-3.0",
   "devDependencies": {
-    "@mate-academy/eslint-config": "latest",
-    "@mate-academy/scripts": "^1.8.6",
-    "eslint": "^8.57.0",
+    "@mate-academy/eslint-config": "^0.0.29",
+    "@mate-academy/scripts": "^2.1.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-jest": "^28.6.0",
     "eslint-plugin-node": "^11.1.0",
     "jest": "^29.7.0",
