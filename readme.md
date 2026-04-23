@@ -1,4 +1,4 @@
-# Custom implementation of Array.prototype.sort()
+ # Custom implementation of Array.prototype.sort()
 
 > [Guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md)
 
