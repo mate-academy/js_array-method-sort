@@ -10,7 +10,7 @@ describe('sort2', () => {
       .toBeInstanceOf(Function);
   });
 
-  it(`doesn't call default sort`, () => {
+  it('doesn\'t call default sort', () => {
     expect([].sort2.toString().includes('.sort('))
       .toBe(false);
   });
