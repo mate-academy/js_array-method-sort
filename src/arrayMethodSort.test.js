@@ -1,6 +1,6 @@
 'use strict';
 
-const applyCustomSort = require('./arrayMethodSort');
+const { applyCustomSort } = require('./arrayMethodSort');
 
 applyCustomSort();
 
