@@ -11,22 +11,19 @@ function applyCustomSort() {
 
       for (let j = i + 1; j < this.length; j++) {
         if (
+          typeof this[j] === 'string' &&
+          compareFunction(this[j].toLowerCase(), min.toLowerCase()) < 0
+        ) {
+          min = this[j];
+          this[j] = middleValue;
+          middleValue = min;
+        } else if (compareFunction(this[j], min) < 0) {
+          min = this[j];
+          this[j] = middleValue;
+          middleValue = min;
+        } else if (
           String(this[j]) < String(min) &&
           compareFunction(this[j], min) === undefined
-        ) {
-          min = this[j];
-          this[j] = middleValue;
-          middleValue = min;
-        } else if (
-          typeof this[j] === 'string' &&
-          compareFunction(min.toLowerCase(), this[j].toLowerCase()) === 1
-        ) {
-          min = this[j];
-          this[j] = middleValue;
-          middleValue = min;
-        } else if (
-          typeof this[j] !== 'string' &&
-          compareFunction(this[j], min) <= 1
         ) {
           min = this[j];
           this[j] = middleValue;
