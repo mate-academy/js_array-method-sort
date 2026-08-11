@@ -10,7 +10,20 @@ function applyCustomSort() {
     if (compareFunction) {
       comparator = compareFunction;
     } else {
-      comparator = (a, b) => String(a).localeCompare(String(b));
+      comparator = (a, b) => {
+        const first = String(a);
+        const second = String(b);
+
+        if (first > second) {
+          return 1;
+        }
+
+        if (first < second) {
+          return -1;
+        }
+
+        return 0;
+      };
     }
 
     for (let i = 0; i < this.length; i++) {
