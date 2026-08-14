@@ -11,7 +11,7 @@ function applyCustomSort() {
         const nextValue = this[j + 1];
 
         if (compareFunction === undefined) {
-          if (String(currentValue) > String(nextValue) > 0) {
+          if (String(currentValue) > String(nextValue)) {
             this[j] = nextValue;
             this[j + 1] = currentValue;
           }
