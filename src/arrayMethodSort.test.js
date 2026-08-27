@@ -24,30 +24,83 @@ describe('sort2', () => {
   });
 
   it('sorts lower case strings', () => {
-    expect(['c', 'ab', 'a', 'ad', 'b'].sort2())
-      .toEqual(['a', 'ab', 'ad', 'b', 'c']);
+    const input = ['c', 'ab', 'a', 'ad', 'b'];
+    const expected = ['a', 'ab', 'ad', 'b', 'c'];
+
+    // eslint-disable-next-line no-console
+    console.log('\nВХІД:', input);
+    // eslint-disable-next-line no-console
+    console.log('ОЧІКУЄТЕ:', expected);
+
+    const result = input.sort2();
+
+    // eslint-disable-next-line no-console
+    console.log('ОТРИМАЛИ:', result);
+    expect(result).toEqual(expected);
   });
 
   it('sorts mixed case strings', () => {
-    expect(['c', 'Ab', 'a', 'ad', 'B'].sort2())
-      .toEqual(['Ab', 'B', 'a', 'ad', 'c']);
+    const input = ['c', 'Ab', 'a', 'ad', 'B'];
+    const expected = ['Ab', 'B', 'a', 'ad', 'c'];
+
+    // eslint-disable-next-line no-console
+    console.log('\nВХІД:', input);
+    // eslint-disable-next-line no-console
+    console.log('ОЧІКУЄТЕ:', expected);
+
+    const result = input.sort2();
+
+    // eslint-disable-next-line no-console
+    console.log('ОТРИМАЛИ:', result);
+    expect(result).toEqual(expected);
   });
 
   it('by default sorts number as strings', () => {
-    expect([3, 12, 2, 11].sort2())
-      .toEqual([11, 12, 2, 3]);
+    const input = [3, 12, 2, 11];
+    const expected = [11, 12, 2, 3];
+
+    // eslint-disable-next-line no-console
+    console.log('\nВХІД:', input);
+    // eslint-disable-next-line no-console
+    console.log('ОЧІКУЄТЕ:', expected);
+
+    const result = input.sort2();
+
+    // eslint-disable-next-line no-console
+    console.log('ОТРИМАЛИ:', result);
+    expect(result).toEqual(expected);
   });
 
   it('supports custom compare function for numbers', () => {
-    expect([3, 12, 2, 11].sort2((a, b) => a - b))
-      .toEqual([2, 3, 11, 12]);
+    const input = [3, 12, 2, 11];
+    const expected = [2, 3, 11, 12];
+
+    // eslint-disable-next-line no-console
+    console.log('\nВХІД:', input);
+    // eslint-disable-next-line no-console
+    console.log('ОЧІКУЄТЕ:', expected);
+
+    const result = input.sort2((a, b) => a - b);
+
+    // eslint-disable-next-line no-console
+    console.log('ОТРИМАЛИ:', result);
+    expect(result).toEqual(expected);
   });
 
   it('supports custom compare function for strings', () => {
+    const input = ['c', 'Ab', 'a', 'ad', 'B'];
+    const expected = ['a', 'Ab', 'ad', 'B', 'c'];
     const compare = (a, b) => a.localeCompare(b);
 
-    expect(['c', 'Ab', 'a', 'ad', 'B'].sort2(compare))
-      .toEqual(['a', 'Ab', 'ad', 'B', 'c']);
+    // eslint-disable-next-line no-console
+    console.log('\nВХІД:', input);
+    // eslint-disable-next-line no-console
+    console.log('ОЧІКУЄТЕ:', expected);
+
+    const result = input.sort2(compare);
+
+    // eslint-disable-next-line no-console
+    console.log('ОТРИМАЛИ:', result);
+    expect(result).toEqual(expected);
   });
 });
-
