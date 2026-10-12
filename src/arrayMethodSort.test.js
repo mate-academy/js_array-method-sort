@@ -50,4 +50,3 @@ describe('sort2', () => {
       .toEqual(['a', 'Ab', 'ad', 'B', 'c']);
   });
 });
-
