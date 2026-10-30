@@ -12,8 +12,8 @@ function applyCustomSort() {
         if (compareFunction !== undefined) {
           comparison = compareFunction(this[j], this[j + 1]);
         } else {
-          const a = this[j];
-          const b = this[j + 1];
+          const a = String(this[j]);
+          const b = String(this[j + 1]);
 
           if (a < b) {
             comparison = -1;
