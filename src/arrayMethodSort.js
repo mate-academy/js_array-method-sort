@@ -8,12 +8,7 @@ function applyCustomSort() {
     for (let i = 0; i < this.length; i++) {
       for (let n = i + 1; n < this.length; n++) {
         if (compareFunction) {
-          if (
-            compareFunction(
-              String(this[i]).toLowerCase(),
-              String(this[n]).toLowerCase(),
-            ) > 0
-          ) {
+          if (compareFunction(this[i], this[n]) > 0) {
             const previous = this[i];
 
             this[i] = this[n];
