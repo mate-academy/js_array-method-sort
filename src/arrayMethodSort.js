@@ -7,7 +7,6 @@ function applyCustomSort() {
   [].__proto__.sort2 = function(compareFunction) {
     const len = this.length;
     if (len <= 1) return this;
-``
     const defaultCompare = (a, b) => {
       if (a === undefined && b === undefined) return 0;
       if (a === undefined) return 1;
